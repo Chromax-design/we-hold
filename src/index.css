@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+.bg-green{
+  background-color: #1c8034;
+}
+.bg-orange{
+  background-color: #ef7700;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+@keyframes scroll2 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll2 {
+  animation: scroll2 30s linear infinite;
+}
+
+.animate-move {
+  animation: move 3s infinite;
+}
+
+@keyframes move {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  border: 5px solid #000;
+  border-top: 5px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* message card */
+
+.messageCard::-webkit-scrollbar {
+    width: 7px;
+}
+
+.messageCard::-webkit-scrollbar-thumb { 
+    background: #000; 
+    border-radius: 5px; 
+}
