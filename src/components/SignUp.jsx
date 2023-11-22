@@ -5,9 +5,11 @@ import FormBottom from "./FormBottom";
 import { handleRegister } from "../utils/handlers";
 import useLoader from "../store/loaderStore";
 import PreLoader from "./PreLoader";
+import useGoogleAuth from "../hooks/useGoogleAuth"
 
 const SignUp = ({ userType }) => {
-  const {Loader, setLoader}= useLoader()
+  const { googleEmail, setGoogleEmail } = useGoogleAuth();
+  const { Loader, setLoader } = useLoader()
 
   const [data, setdata] = useState({
     firstname: '',
@@ -38,7 +40,7 @@ const SignUp = ({ userType }) => {
 
   return (
     <>
-    {Loader && <PreLoader />}
+      {Loader && <PreLoader />}
       <form
         action=""
         method="post"

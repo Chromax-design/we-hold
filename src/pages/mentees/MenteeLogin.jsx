@@ -6,7 +6,7 @@ import Login from "../../components/Login";
 const MenteeLogin = ({ tab }) => {
   return (
     <div className={`${tab == 1 ? "block" : "hidden"}`}>
-      {/* main form component*/}m
+      {/* main form component*/}
       <Login userType={"mentee"} />
       <p className="uppercase text-center font-medium my-5">or</p>
       <button

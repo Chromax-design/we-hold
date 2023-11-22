@@ -77,6 +77,7 @@ import Error403 from "./pages/Error403";
 import useAuth from "./store/AuthStore";
 import RemoteJobs from "./pages/RemoteJobs";
 import Blog from "./pages/Blog";
+import { socket } from "./config/socket";
 
 const Layout = () => {
   return (
@@ -104,6 +105,11 @@ const DashboardLayout = () => {
 
 function App() {
   const { user } = useAuth();
+
+  useEffect(() => {
+    socket.connect()
+  }, [])
+
   return (
     <BrowserRouter>
       <Routes>
@@ -160,6 +166,7 @@ function App() {
         </Route>
 
         <Route path="/auth/login" element={<LoginBase />} />
+        <Route path="/auth/verify/:userId/:token" element={<LoginBase />} />
 
         <Route path="/auth/signup-as-a-mentee" element={<MenteeSignup />} />
         <Route path="/auth/signup-as-a-mentor" element={<Mentorsignup />} />
