@@ -154,7 +154,7 @@ function App() {
             <Route index element={<MenteesDashboard />} />
             <Route path="history" element={<MenteeHistory />} />
             <Route path="chat" element={<ChatHome role={user?.role} />} />
-            <Route path="chatRoom" element={<Chat chatroom={chatroom} />} />
+            <Route path="chatRoom" element={<Chat />} />
             {/* <Route path="messages" element={<MenteeMessage />} /> */}
             <Route path="notifications" element={<MenteeNotification />} />
             <Route path="payments" element={<MenteePayments />} />
