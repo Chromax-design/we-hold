@@ -5,7 +5,7 @@ import axios from "axios";
 import { BASE_URL } from "../../config/config";
 import messageServices from "../../services/messageServices";
 import useAuth from "../../store/AuthStore";
-import chatStore from "../../store/chatStore";
+import chatStore from "../../store/ChatStore";
 import MessageCard from "./MessageCard";
 import MessageHeader from "./MessageHeader";
 

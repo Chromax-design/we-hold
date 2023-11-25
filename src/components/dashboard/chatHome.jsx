@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import talk from "../../assets/letschat.svg";
 import useAuth from "../../store/AuthStore";
-import chatStore from "../../store/chatStore";
+import chatStore from "../../store/ChatStore";
 import chatServices from "../../services/chatService";
 import { socket } from "../../config/socket";
 import { BASE_URL } from "../../config/config";
 import axios from "axios";
-import userimg from "../../assets/mentors/mentor-3.jpg";
+// import userimg from "../../assets/mentors/mentor-3.jpg";
 
 const ChatHome = () => {
   const { user } = useAuth();
