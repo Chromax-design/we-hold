@@ -79,7 +79,7 @@ import useAuth from "./store/AuthStore";
 import RemoteJobs from "./pages/RemoteJobs";
 import Blog from "./pages/Blog";
 import ChatHome from "./components/dashboard/chatHome";
-import Chat from "./components/dashboard/chat";
+import Chat from "./components/dashboard/Chat";
 import StripeSuccess from "./pages/stripeSuccess";
 import StripeCancel from "./pages/stripeCancel";
 
