@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import letsChat from "../../assets/letsChat.svg";
+import talk from "../../assets/letschat.svg";
 import useAuth from "../../store/AuthStore";
 import chatStore from "../../store/chatStore";
 import chatServices from "../../services/chatService";
@@ -111,7 +111,7 @@ const ChatHome = () => {
               please select a chat to continue
             </h1>
             <div className="max-w-sm mx-auto mt-10">
-              <img src={letsChat} alt="" />
+              <img src={talk} alt="" />
             </div>
           </div>
         </div>
