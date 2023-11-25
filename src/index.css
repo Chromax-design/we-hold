@@ -83,7 +83,7 @@ body {
 /* message card */
 
 .messageCard::-webkit-scrollbar {
-    width: 7px;
+    display: none ;
 }
 
 .messageCard::-webkit-scrollbar-thumb { 

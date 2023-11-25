@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { socket } from "./config/socket";
 
 // other pages
 import Nav from "./components/Nav/Nav";
@@ -77,6 +78,10 @@ import Error403 from "./pages/Error403";
 import useAuth from "./store/AuthStore";
 import RemoteJobs from "./pages/RemoteJobs";
 import Blog from "./pages/Blog";
+import ChatHome from "./components/dashboard/chatHome";
+import Chat from "./components/dashboard/chat";
+import StripeSuccess from "./pages/stripeSuccess";
+import StripeCancel from "./pages/stripeCancel";
 
 const Layout = () => {
   return (
@@ -103,7 +108,14 @@ const DashboardLayout = () => {
 };
 
 function App() {
-  const { user } = useAuth();
+  const {user} = useAuth()
+  const [chatroom, setChatroom] = useState(
+    JSON.parse(localStorage.getItem("chatroom") || null)
+  );
+  useEffect(() => {
+    socket.connect();
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
@@ -126,7 +138,7 @@ function App() {
           <Route path="mentors" element={<Mentors />} />
 
           <Route path="mentors/:id" element={<MentorProfile />} />
-          <Route path="search" element={<Search />} />
+          <Route path="search/:mentorType" element={<Search />} />
           <Route
             path="mentee/:userId/application"
             element={<MenteeApplication />}
@@ -141,7 +153,9 @@ function App() {
           <Route path="/mentee/dashboard" element={<DashboardLayout />}>
             <Route index element={<MenteesDashboard />} />
             <Route path="history" element={<MenteeHistory />} />
-            <Route path="messages" element={<MenteeMessage />} />
+            <Route path="chat" element={<ChatHome role={user?.role} />} />
+            <Route path="chatRoom" element={<Chat chatroom={chatroom} />} />
+            {/* <Route path="messages" element={<MenteeMessage />} /> */}
             <Route path="notifications" element={<MenteeNotification />} />
             <Route path="payments" element={<MenteePayments />} />
             <Route path="settings" element={<MenteeSettings />} />
@@ -153,6 +167,8 @@ function App() {
             <Route index element={<MentorsDashboard />} />
             <Route path="history" element={<MentorsHistory />} />
             <Route path="messages" element={<MentorMessage />} />
+            <Route path="chat" element={<ChatHome />} />
+            <Route path="chatRoom" element={<Chat/>} />
             <Route path="notifications" element={<MentorNotification />} />
             <Route path="payments" element={<MentorPayment />} />
             <Route path="settings" element={<MentorSetting />} />
@@ -207,6 +223,9 @@ function App() {
         <Route path="/auth/signup/success" element={<UpdateSuccess />} />
         <Route path="/auth/passwordUpdate" element={<UpdateSuccess />} />
         <Route path="/verification/success" element={<ActivationSuccess />} />
+
+        <Route path="/stripe/success" element={<StripeSuccess />}/>
+        <Route path="/stripe/cancel" element={<StripeCancel/>}/>
 
         {/* error routes */}
         <Route path="/auth/signup/failed" element={<MentorInvalidpwdToken />} />

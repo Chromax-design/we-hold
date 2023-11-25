@@ -40,7 +40,7 @@ const DesktopMenu = ({ handleClick, toggles, toggle, menu, user }) => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-2">
               {mentor_types.map((link, index) => (
                 <Link
-                  to={link.location}
+                  to={`/search${link.location}`}
                   className="block py-1 px-2 capitalize hover:bg-lime-100 text-sm rounded-sm"
                   onClick={handleClick}
                   key={index}

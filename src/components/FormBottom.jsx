@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Google from "../assets/companies/google-color.svg";
+import LoginGoogle from "./loginGoogle";
 const FormBottom = () => {
   return (
     <>
@@ -10,7 +11,8 @@ const FormBottom = () => {
           terms of use
         </Link>
       </p>
-      <p className="mt-5 text-sm text-center mb-3">Or sign up with google</p>
+      <p className="mt-5 text-sm text-center mb-3">Or</p>
+      <LoginGoogle />
       <hr className="my-5" />
       <p className="text-sm text-gray-500">
         Already have account?{" "}

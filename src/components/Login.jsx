@@ -20,6 +20,7 @@ const Login = ({ userType }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('submitted')
     handleLogin(loginData, userType, setLoader, navigate, login);
   };
 

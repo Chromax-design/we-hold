@@ -11,7 +11,7 @@ const SignUp = ({ userType }) => {
 
   const [data, setdata] = useState({
     firstname: '',
-    lastname: '',
+    initials: '',
     email: '',
     password: '',
     telNumber: ''
@@ -28,7 +28,8 @@ const SignUp = ({ userType }) => {
   const handlesubmit = (e) => {
     e.preventDefault();
     const userData = {
-      fullName: `${data.firstname} ${data.lastname}`,
+      firstName: data.firstname,
+      initials: data.initials,
       email: data.email,
       password: data.password,
       telNumber: phoneData
@@ -61,12 +62,12 @@ const SignUp = ({ userType }) => {
 
           <div>
             <label htmlFor="lname" className="text-sm capitalize font-medium">
-              last name
+              initials
             </label>
             <input
               type="text"
-              id="lname"
-              name="lastname"
+              id="initials"
+              name="initials"
               className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
               onChange={handlechange} required
             />

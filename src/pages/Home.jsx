@@ -42,7 +42,7 @@ const Home = () => {
                       <input
                         type="text"
                         placeholder="find a mentor"
-                        className="max-md:w-full flex-1 p-2 outline-lime-800 placeholder:capitalize"
+                        className="max-md:w-full flex-1 p-2 outline-lime-800 placeholder:capitalize text-black"
                       />
                       <button className="bg-lime-800 text-white px-4 py-2 rounded-md capitalize font-medium hover:bg-lime-900 text-sm">
                         search mentors

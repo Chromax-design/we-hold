@@ -1,5 +1,5 @@
 import React from "react";
-import MessageItem from "../../../components/dashboard/MessageItem";
+import MessageItem from "../../../components/dashboard/ConversationList";
 import MessageHeader from "../../../components/dashboard/MessageHeader";
 import Input from "../../../components/dashboard/Input";
 import Messages from "../../../components/dashboard/Messages";

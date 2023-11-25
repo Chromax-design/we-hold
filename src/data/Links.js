@@ -28,7 +28,7 @@ export const community = [
 
 export const company = [
   { title: "about us", location: "about" },
-  { title: "blog", location: "blog" },
+  // { title: "blog", location: "blog" },
   { title: "contact us", location: "contact-us" },
   { title: "become a mentor", location: "auth/signup-as-a-mentor" },
 ];
@@ -38,9 +38,9 @@ export const footLinks = [
     title: "platform",
     links: [
       { title: "become a mentor", location: "auth/signup-as-a-mentor" },
-      { title: "find a mentor", location: "find-mentor" },
-      { title: "testimonials", location: "testimonials" },
-      { title: "browse mentors", location: "mentor-list" },
+      { title: "find a mentor", location: "info" },
+      // { title: "testimonials", location: "testimonials" },
+      { title: "browse mentors", location: "mentors" },
     ],
   },
   // {
@@ -56,7 +56,7 @@ export const footLinks = [
     title: "company",
     links: [
       { title: "About Us", location: "about" },
-      { title: "Customer Stories", location: "customers" },
+      // { title: "Customer Stories", location: "customers" },
       { title: "terms of service", location: "terms" },
       { title: "privacy policy", location: "privacy-policy" },
     ],
@@ -73,13 +73,13 @@ export const footLinks = [
 export const dashboard = [
   { id: "1", title: "dashboard", icon: `${dashimg}`, link: "" },
   { id: "2", title: "history", icon: `${history}`, link: "history" },
-  { id: "3", title: "messages", icon: `${messages}`, link: "messages" },
-  {
-    id: "4",
-    title: "notifications",
-    icon: `${notification}`,
-    link: "notifications",
-  },
+  { id: "3", title: "chat room", icon: `${messages}`, link: "chat" },
+  // {
+  //   id: "4",
+  //   title: "notifications",
+  //   icon: `${notification}`,
+  //   link: "notifications",
+  // },
   { id: "5", title: "payments", icon: `${payment}`, link: "payments" },
   { id: "6", title: "settings", icon: `${setting}`, link: "settings" },
 ];

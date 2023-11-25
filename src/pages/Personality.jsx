@@ -5,8 +5,11 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Video4 } from "../components/Video";
 import check from "../assets/icons/check.png";
 import { personality_test } from "../data/Information";
+import useAuth from "../store/AuthStore";
 
 const Personality = () => {
+  const {user} = useAuth();
+  console.log(user)
   return (
     <main>
       <section className="py-20 bg-gray-50 px-3">
@@ -57,7 +60,7 @@ const Personality = () => {
               skills.
             </p>
             <Link
-              to={"https://www.16personalities.com"}
+              to={!user ? "" : "https://www.16personalities.com"}
               className="bg-lime-800 inline-block text-sm text-white px-5 py-3 rounded-md capitalize font-medium hover:bg-lime-900 group"
             >
               take a free test

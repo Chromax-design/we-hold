@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-// import user from "../../assets/mentors/mentor-10.jpg";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { loadStripe } from "@stripe/stripe-js";
+import { BASE_URL } from "../../config/config";
 import marker from "../../assets/icons/map.png";
 import userIcon from "../../assets/icons/user_icon.png";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { mentees } from "../../data/Mentees";
-import mentor12 from "../../assets/mentors/mentor-12.jpg";
-
-import { BASE_URL } from "../../config/config";
 import axios from "axios";
 
 const MentorProfile = () => {
@@ -33,6 +29,39 @@ const MentorProfile = () => {
     }
   }, []);
 
+  const product = {
+    name: `${mentor.firstName} ${mentor.initials}`,
+    price: 1000,
+    description: "mentor subscription",
+    quantity: 1,
+  };
+
+  const makePayment = async () => {
+    const stripe = await loadStripe(
+      "pk_test_51N2arXIYmnZ4DnJJ1gSvYCDhGFLAVDTHGPo8vTJTdJPnioyLZYnYAJUho80iMQsHPLXRbFD0SYqyt4y1hmps79ci00xEmplYtF"
+    );
+    const body = { product };
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    const response = await fetch(`${BASE_URL}/stripe/create-checkout-session`, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    });
+
+    const session = await response.json();
+
+    const result = stripe.redirectToCheckout({
+      sessionId: session.id,
+    });
+
+    if (result.error) {
+      console.log(result.error);
+    }
+  };
+
   return (
     <main className="bg-gray-50 space-y-5 py-10">
       <section className="max-w-5xl mx-auto ring-1 ring-gray-100 rounded-md p-10 shadow-sm bg-white">
@@ -41,7 +70,7 @@ const MentorProfile = () => {
             <img
               src={mentor?.image}
               alt=""
-              className="rounded-full shadow-md border-2 border-lime-700 w-full max-lg:max-w-md max-lg:mx-auto"
+              className="rounded-full shadow-md border-2 border-lime-700 w-full max-lg:max-w-sm max-lg:mx-auto"
             />
           </div>
           <div className="col-span-9">
@@ -65,7 +94,9 @@ const MentorProfile = () => {
             </div>
             <div className="flex flex-col text-center mt-7 gap-4 lg:flex-row">
               <div className="flex-1 ring-1 ring-gray-200 p-2 bg-gray-50">
-                <span className="font-bold text-xl">20 yrs</span>
+                <span className="font-bold text-xl">
+                  {mentor.yrs_of_experience} yrs
+                </span>
                 <h4 className=" leading-3 text-sm capitalize">experience</h4>
               </div>
               <div className="flex-1 ring-1 ring-gray-200 p-2 bg-gray-50 flex place-content-center place-items-center">
@@ -73,12 +104,13 @@ const MentorProfile = () => {
                   quick responder
                 </h4>
               </div>
-              <Link
+              <button
                 to={""}
-                className="bg-lime-800 text-white px-5 p-2 rounded-sm capitalize font-medium hover:bg-lime-900 flex-1 ring-1 ring-gray-200 flex place-items-center place-content-center"
+                className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
+                onClick={makePayment}
               >
                 + subscribe
-              </Link>
+              </button>
             </div>
           </div>
         </div>

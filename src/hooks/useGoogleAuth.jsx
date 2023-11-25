@@ -9,8 +9,9 @@ const useGoogleAuth = () => {
 
     const handleGoogleLogin = (response) => {
         const user = jwt_decode(response.credential)
-        localStorage.setItem("user", JSON.stringify(user.email))
-        setUser(user.email);
+        console.log(user)
+        // localStorage.setItem("user", JSON.stringify(user.email))
+        // setUser(user.email);
     }
 
     useEffect(() => {
