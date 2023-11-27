@@ -37,7 +37,7 @@ const Home = () => {
                       support from our reputable Mentors
                     </p>
                   </div>
-                  <form action="#" className="w-full px-1 mb-5">
+                  <form action="#" className="w-full px-1 mb-5 max-w-lg">
                     <div className="my-6 gap-3 w-full space-y-3">
                       {/* <div className="bg-white shadow-md"> */}
                         <input
