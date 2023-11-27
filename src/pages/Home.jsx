@@ -26,9 +26,9 @@ const Home = () => {
             <div className="max-w-6xl mx-auto pb-10 px-3 min-h-[450px] py-20 flex items-center">
               <div className="text-white max-w-xl relative">
                 <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.1)] w-full h-full -z-10 blur-2xl"></div>
-                <div className="p-4">
+                <div className="p-2 sm:p-4">
                   <div>
-                    <h1 className="text-4xl bold mb-5">
+                    <h1 className="text-2xl sm:text-4xl bold mb-5">
                       Struggling to advance in your job or{" "}
                       <span className="font-bold">business?</span>
                     </h1>
@@ -38,13 +38,15 @@ const Home = () => {
                     </p>
                   </div>
                   <form action="#" className="w-full px-1 mb-5">
-                    <div className="bg-white flex my-6 gap-3 rounded-md p-3 shadow-2xl w-full">
-                      <input
-                        type="text"
-                        placeholder="find a mentor"
-                        className="max-md:w-full flex-1 p-2 outline-lime-800 placeholder:capitalize text-black"
-                      />
-                      <button className="bg-lime-800 text-white px-4 py-2 rounded-md capitalize font-medium hover:bg-lime-900 text-sm">
+                    <div className="sm:flex my-6 gap-3 w-full flex-col sm:flex-row max-sm:space-y-3">
+                      <div className="bg-white flex-1 rounded-md p-3 shadow-md">
+                        <input
+                          type="text"
+                          placeholder="find a mentor"
+                          className="w-full border flex-1 border-lime-800 p-2 outline-lime-800 placeholder:capitalize text-black"
+                        />
+                      </div>
+                      <button className="bg-lime-800 text-white rounded-md capitalize font-medium hover:bg-lime-900 p-4 shadow-md">
                         search mentors
                       </button>
                     </div>
@@ -94,7 +96,11 @@ const Home = () => {
             Become a Mentor Today
           </h2>
           <div className="max-w-6xl grid grid-cols-1 lg:grid-cols-2 mx-auto gap-7">
-            <img src={inspireImg} alt="" className="rounded-md shadow-md max-w-full" />
+            <img
+              src={inspireImg}
+              alt=""
+              className="rounded-md shadow-md max-w-full"
+            />
             <div>
               <Inspire />
             </div>

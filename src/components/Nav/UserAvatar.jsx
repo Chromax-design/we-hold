@@ -46,16 +46,16 @@ const UserAvatar = ({ userType }) => {
             className=" max-sm:w-9 max-sm:h-9 w-10 h-10 object-cover object-center rounded-full shadow-md border-lime-700 border-2"
           />
         </div>
-        <div className="hidden min-[320px]:block">
+        <div className="hidden min-[520px]:block">
           <div className="flex items-center">
-            <h5 className=" capitalize font-semibold text-sm max-sm:text-xs">
+            <h5 className=" capitalize font-semibold text-sm">
             {user?.firstName}
             </h5>
             <FontAwesomeIcon
               icon={faChevronDown}
               className={`ml-2 font-medium ${
                 profile && "rotate-180"
-              } text-sm max-sm:text-xs`}
+              } text-sm`}
             />
           </div>
         </div>
@@ -76,7 +76,7 @@ const UserAvatar = ({ userType }) => {
               alt=""
               className="max-sm:w-9 max-sm:h-9 w-10 h-10 object-cover object-center rounded-full shadow-md border-lime-700 border-2"
             />
-            <h5 className="capitalize font-semibold text-sm max-sm:text-xs">
+            <h5 className="capitalize font-semibold text-sm">
               {user?.firstName}
             </h5>
           </div>
@@ -86,13 +86,13 @@ const UserAvatar = ({ userType }) => {
               return (
                 <Link
                   to={`/${userType}/dashboard/${item.link}`}
-                  className="flex items-center gap-3 capitalize hover:bg-gray-50 py-3 px-4 font-medium"
+                  className="flex items-center gap-3 capitalize hover:bg-gray-50 py-2 sm:py-3 px-4 font-medium max-sm:text-sm"
                   key={item.id}
                 >
                   <img
                     src={`${item.icon}`}
                     alt={`${item.title} icon`}
-                    className="w-6"
+                    className="w-5 sm:w-6"
                   />
                   <h5>{item.title}</h5>
                 </Link>
@@ -105,7 +105,7 @@ const UserAvatar = ({ userType }) => {
             className="flex w-full items-center gap-3 py-5 px-4 capitalize hover:bg-gray-50 font-medium"
             onClick={()=>logout()}
           >
-            <img src={`${signOut}`} alt={`${signOut} icon`} className="w-6" />
+            <img src={`${signOut}`} alt={`${signOut} icon`} className="w-5 md:w-6" />
             <h5>sign out</h5>
           </button>
         </div>
