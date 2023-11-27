@@ -9,14 +9,14 @@ const MenteeCard = ({mentee}) => {
         <img
           src={`${mentee.photo}`}
           alt=""
-          className="rounded-full w-16 h-16 object-cover"
+          className="rounded-full w-14 h-14 object-cover"
         />
         <div className="capitalize">
-          <h4 className="font-semibold">{mentee.name}</h4>
+          <h4 className="font-semibold text-sm">{mentee.name}</h4>
           <p className="text-sm">{mentee.title}</p>
         </div>
       </div>
-      <p className="mt-3">
+      <p className="mt-3 text-sm">
         <q>{mentee.review}</q>
       </p>
     </div>

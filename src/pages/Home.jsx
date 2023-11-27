@@ -39,13 +39,11 @@ const Home = () => {
                   </div>
                   <form action="#" className="w-full px-1 mb-5 max-w-lg">
                     <div className="my-6 gap-3 w-full space-y-3">
-                      {/* <div className="bg-white shadow-md"> */}
-                        <input
-                          type="text"
-                          placeholder="find a mentor"
-                          className="w-full px-3 py-4 outline-lime-800 rounded-md placeholder:capitalize placeholder:text-sm text-black text-sm placeholder:font-light shadow-lg"
-                        />
-                      {/* </div> */}
+                      <input
+                        type="text"
+                        placeholder="find a mentor"
+                        className="w-full px-3 py-4 outline-lime-800 rounded-md placeholder:capitalize placeholder:text-sm text-black text-sm placeholder:font-light shadow-lg"
+                      />
                       <button className="bg-lime-800 text-white text-sm rounded-md capitalize hover:bg-lime-900 py-3 px-4 shadow-lg">
                         search mentors
                       </button>
