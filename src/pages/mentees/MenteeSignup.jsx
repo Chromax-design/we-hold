@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo-full.png";
 import Partpage from "../../components/Partpage";
 // import axios from "axios"
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import SignUp from "../../components/SignUp";
 const MenteeSignup = () => {
-
   return (
     <div className="w-full ">
       <div className="grid grid-cols-1 lg:grid-cols-2 mx-auto min-h-screen">
-        <Partpage />
+        <Partpage
+          message={
+            "In the dance of dreams and reality, each step is a note, and the music is composed by the journey of one's heart."
+          }
+        />
 
         <div className="bg-white p-10 max-w-lg mx-auto">
           <Link to={"/"}>

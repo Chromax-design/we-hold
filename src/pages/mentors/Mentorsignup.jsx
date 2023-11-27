@@ -28,7 +28,11 @@ const Mentorsignup = () => {
             </div>
           </div>
         </div>
-        <Partpage />
+        <Partpage
+          message={
+            "Embark on the journey of your dreams with the determination to take each step, for it is the accumulation of these steps that shapes the extraordinary."
+          }
+        />
       </div>
     </div>
   );

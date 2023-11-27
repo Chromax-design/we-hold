@@ -2,7 +2,7 @@ import React from "react";
 import Quote from "../assets/quote.png";
 import avatar from "../assets/mentors/mentor-2.jpg";
 
-const Partpage = () => {
+const Partpage = ({message}) => {
   return (
     <div className="h-full bg-lime-700 sm:flex justify-center flex-col items-center p-5 sm:p-10 max-md:py-10 ">
       <div className="max-w-sm">
@@ -13,9 +13,7 @@ const Partpage = () => {
           <h1 className="text-4xl sm:text-7xl font-semibold">Make a Dream.</h1>
           <div className="border-l border-white pl-5 sm:pl-10 pt-7">
             <p className="text-xs leading-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
-              animi nihil autem officia repudiandae quae neque, nobis expedita.
-              Eius, corrupti?
+              {message}
             </p>
             <div className="mt-5 flex gap-3 items-center">
               <img

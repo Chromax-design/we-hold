@@ -20,12 +20,20 @@ const LoginBase = () => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        <Partpage />
+        <Partpage
+          message={
+            "Embark on the journey of a thousand steps, turning dreams into footsteps, and footsteps into your extraordinary reality."
+          }
+        />
 
         <div className="w-full">
           <div className="bg-white p-4 sm:p-10 max-w-lg mx-auto">
             <Link to={"/"}>
-              <img src={Logo} alt="" className="block w-40 sm:w-52 mx-auto my-5 sm:mb-10" />
+              <img
+                src={Logo}
+                alt=""
+                className="block w-40 sm:w-52 mx-auto my-5 sm:mb-10"
+              />
             </Link>
             <ul className="flex max-sm:flex-col justify-center items-center capitalize text-sm font-medium text-center mb-5 sm:mb-10">
               {tabs.map((t) => (
@@ -44,7 +52,7 @@ const LoginBase = () => {
                 </li>
               ))}
             </ul>
-      
+
             <MenteeLogin tab={tab} />
             <MentorLogin tab={tab} />
           </div>
