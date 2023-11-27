@@ -4,14 +4,14 @@ import avatar from "../assets/mentors/mentor-2.jpg";
 
 const Partpage = () => {
   return (
-    <div className="h-full bg-lime-700 flex justify-center flex-col items-center p-10 max-md:py-20">
+    <div className="h-full bg-lime-700 sm:flex justify-center flex-col items-center p-5 sm:p-10 max-md:py-10 ">
       <div className="max-w-sm">
         <div className="text-white space-y-3">
           <span className="bg-lime-200 rounded-full inline-block p-3">
             <img src={Quote} alt="" width={43} />
           </span>
-          <h1 className="text-7xl font-semibold">Make a Dream.</h1>
-          <div className="border-l border-white pl-10 pt-7">
+          <h1 className="text-4xl sm:text-7xl font-semibold">Make a Dream.</h1>
+          <div className="border-l border-white pl-5 sm:pl-10 pt-7">
             <p className="text-xs leading-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis
               animi nihil autem officia repudiandae quae neque, nobis expedita.

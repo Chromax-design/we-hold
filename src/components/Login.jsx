@@ -44,7 +44,7 @@ const Login = ({ userType }) => {
         <input
           type="text"
           id={emailId}
-          className="mt-3 block p-3 border-lime-700 border w-full rounded-sm"
+          className="mt-3 block p-3 border-lime-700 border w-full rounded-sm max-sm:text-sm"
           name="email"
           onChange={handleChange}
         />
@@ -56,7 +56,7 @@ const Login = ({ userType }) => {
         <input
           type="password"
           id={passwordId}
-          className="mt-3 mb-5 block p-3 border-lime-700 border w-full rounded-sm"
+          className="mt-3 mb-5 block p-3 border-lime-700 border w-full rounded-sm max-sm:text-sm"
           name="password"
           onChange={handleChange}
         />

@@ -7,8 +7,8 @@ import LoginGoogle from "../../components/loginGoogle";
 const MenteeLogin = ({ tab }) => {
   return (
     <div className={`${tab == 1 ? "block" : "hidden"}`}>
-      {/* main form component*/}
       <Login userType={"mentee"} />
+
       <p className="uppercase text-center font-medium my-5">or</p>
       <LoginGoogle />
       <Link

@@ -89,7 +89,7 @@ const Home = () => {
         </section>
 
         <section className="py-20 bg-gray-50 px-4">
-          <h2 className="max-md:text-2xl text-3xl font-semibold capitalize mb-10 text-center">
+          <h2 className="max-md:text-2xl text-3xl font-semibold capitalize mb-10 sm:text-center">
             Inspire the future. <br />
             Become a Mentor Today
           </h2>
@@ -106,7 +106,7 @@ const Home = () => {
         </section>
 
         <section className="bg-gray-50 py-20 px-4">
-          <h2 className="max-md:text-2xl text-3xl font-semibold text-center">FAQs</h2>
+          <h2 className="max-md:text-2xl text-3xl font-semibold sm:text-center">FAQs</h2>
           <div className="max-w-4xl mx-auto">
             <Faqs />
           </div>

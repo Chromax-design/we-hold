@@ -23,11 +23,11 @@ const LoginBase = () => {
         <Partpage />
 
         <div className="w-full">
-          <div className="bg-white p-10 max-w-lg mx-auto">
+          <div className="bg-white p-4 sm:p-10 max-w-lg mx-auto">
             <Link to={"/"}>
-              <img src={Logo} alt="" className="block w-52 mx-auto mb-10" />
+              <img src={Logo} alt="" className="block w-40 sm:w-52 mx-auto my-5 sm:mb-10" />
             </Link>
-            <ul className="flex justify-center items-center capitalize text-sm font-medium text-center mb-10">
+            <ul className="flex max-sm:flex-col justify-center items-center capitalize text-sm font-medium text-center mb-5 sm:mb-10">
               {tabs.map((t) => (
                 <li
                   key={t.index}
@@ -44,7 +44,7 @@ const LoginBase = () => {
                 </li>
               ))}
             </ul>
-            {/* mentees and mentor login components */}
+      
             <MenteeLogin tab={tab} />
             <MentorLogin tab={tab} />
           </div>
