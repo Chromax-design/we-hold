@@ -39,14 +39,14 @@ const Home = () => {
                   </div>
                   <form action="#" className="w-full px-1 mb-5">
                     <div className="sm:flex my-6 gap-3 w-full flex-col sm:flex-row max-sm:space-y-3">
-                      <div className="bg-white flex-1 rounded-md p-3 shadow-md">
+                      <div className="bg-white flex-1 rounded-md p-2 shadow-md">
                         <input
                           type="text"
                           placeholder="find a mentor"
                           className="w-full border flex-1 border-lime-800 p-2 outline-lime-800 placeholder:capitalize text-black"
                         />
                       </div>
-                      <button className="bg-lime-800 text-white rounded-md capitalize font-medium hover:bg-lime-900 p-4 shadow-md">
+                      <button className="bg-lime-800 text-white rounded-md capitalize font-medium hover:bg-lime-900 p-3 shadow-md">
                         search mentors
                       </button>
                     </div>
