@@ -50,7 +50,7 @@ const Nav = () => {
             />
           </div>
 
-          <div className="flex items-center gap-4 relative">
+          <div className="flex items-center gap-2 relative">
             {user ? <UserAvatar userType={user.role} /> : <Actions />}
 
             {/* mobile */}
