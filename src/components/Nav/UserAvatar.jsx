@@ -38,7 +38,7 @@ const UserAvatar = ({ userType }) => {
 
   return (
     <div className="group" onClick={handleProfile} ref={avatarRef}>
-      <div className=" flex items-center gap-2 cursor-pointer py-1">
+      <div className=" flex items-center gap-1 cursor-pointer py-1">
         <div className="relative">
           <img
             src={user.image? user.image : userIcon}
