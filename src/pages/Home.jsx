@@ -61,12 +61,12 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-white py-16 px-10 sm:px-3">
+        <section className="bg-white py-16 px-4">
           <div className="max-w-3xl lg:max-w-5xl mx-auto">
-            <h2 className="capitalize text-center max-md:text-2xl text-3xl font-semibold mb-7">
+            <h2 className="capitalize sm:text-center max-md:text-2xl text-3xl font-semibold mb-7">
               Meet our highly esteemed mentors
             </h2>
-            <p className="text-center max-w-4xl mx-auto mb-10">
+            <p className="sm:text-center max-w-4xl mx-auto mb-10">
               Your online mentor can elevate your career or be a shoulder to
               lean on. Get a personalized mentoring program, including curated
               study plans, regular check-ins, and unlimited actionable support.
@@ -79,7 +79,7 @@ const Home = () => {
         <section className="py-20 px-4">
           <div className="max-w-4xl lg:max-w-6xl grid grid-cols-1 lg:grid-cols-2 mx-auto gap-7">
             <div>
-              <h2 className="text-3xl font-semibold capitalize">
+              <h2 className="max-md:text-2xl text-3xl font-semibold capitalize">
                 why trust us?
               </h2>
               <Trust />
@@ -89,7 +89,7 @@ const Home = () => {
         </section>
 
         <section className="py-20 bg-gray-50 px-4">
-          <h2 className="text-3xl font-semibold capitalize mb-10 text-center">
+          <h2 className="max-md:text-2xl text-3xl font-semibold capitalize mb-10 text-center">
             Inspire the future. <br />
             Become a Mentor Today
           </h2>
@@ -106,7 +106,7 @@ const Home = () => {
         </section>
 
         <section className="bg-gray-50 py-20 px-4">
-          <h2 className="text-3xl font-semibold text-center">FAQs</h2>
+          <h2 className="max-md:text-2xl text-3xl font-semibold text-center">FAQs</h2>
           <div className="max-w-4xl mx-auto">
             <Faqs />
           </div>

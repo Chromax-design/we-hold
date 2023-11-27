@@ -12,11 +12,11 @@ const MenteeCard = ({mentee}) => {
           className="rounded-full w-14 h-14 object-cover"
         />
         <div className="capitalize">
-          <h4 className="font-semibold text-sm">{mentee.name}</h4>
-          <p className="text-sm">{mentee.title}</p>
+          <h4 className="font-semibold max-sm:text-sm">{mentee.name}</h4>
+          <p className="max-sm:text-sm">{mentee.title}</p>
         </div>
       </div>
-      <p className="mt-3 text-sm">
+      <p className="mt-3 max-sm:text-sm">
         <q>{mentee.review}</q>
       </p>
     </div>
