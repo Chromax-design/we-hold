@@ -8,13 +8,13 @@ const Mentorsignup = () => {
   return (
     <div className="w-full ">
       <div className="grid grid-cols-1 lg:grid-cols-2 mx-auto min-h-screen">
-        <div className="bg-white p-10 max-w-lg mx-auto">
+        <div className="bg-white p-4 sm:p-10 max-w-lg mx-auto">
           <Link to={"/"}>
-            <img src={Logo} alt="" className="block w-52 mx-auto mt-10" />
+            <img src={Logo} alt="" className="block w-44 sm:w-52 mx-auto my-5 sm:my-10" />
           </Link>
           <div className="">
-            <div className="p-7 bg-white">
-              <h2 className="first-letter:capitalize text-2xl font-semibold mb-5 py-3">
+            <div className="bg-white">
+              <h2 className="first-letter:capitalize text-lg sm:text-2xl font-semibold mb-5 py-3">
                 create your Mentor account <br />{" "}
                 <Link
                   to={"/auth/signup-as-a-mentee"}

@@ -21,7 +21,7 @@ const MenteeSignup = () => {
             <img src={Logo} alt="" className="block w-44 sm:w-52 mx-auto my-5 sm:my-10" />
           </Link>
           <div className="">
-            <div className=" bg-white">
+            <div className="bg-white">
               <h2 className="first-letter:capitalize text-lg sm:text-2xl font-semibold mb-5 py-3">
                 create your Mentee account <br />{" "}
                 <Link
