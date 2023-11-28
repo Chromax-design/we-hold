@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode"
 
 const useGoogleAuth = () => {
     const { setUser } = useAuth(state => state)
-    const client_id = "679182386524-2aed93unmmrrtr27hjd3nc49bq0b5mkb.apps.googleusercontent.com";
+    const client_id = "180560069205-9m3kfjtjmdsjskqc9rbcj3uh1mm9b7f4.apps.googleusercontent.com";
 
     const handleGoogleLogin = (response) => {
         const user = jwt_decode(response.credential)
