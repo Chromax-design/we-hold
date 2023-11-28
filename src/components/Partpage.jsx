@@ -12,7 +12,7 @@ const Partpage = ({message}) => {
           </span>
           <h1 className="text-4xl sm:text-7xl font-semibold">Make a Dream.</h1>
           <div className="border-l border-white pl-5 sm:pl-10 pt-7">
-            <p className="text-xs leading-5">
+            <p className="text-xs sm:text-sm leading-5">
               {message}
             </p>
             <div className="mt-5 flex gap-3 items-center">
