@@ -5,9 +5,11 @@ import FormBottom from "./FormBottom";
 import { handleRegister } from "../utils/handlers";
 import useLoader from "../store/loaderStore";
 import PreLoader from "./PreLoader";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ userType }) => {
-  const {Loader, setLoader}= useLoader()
+  const {Loader, setLoader}= useLoader();
+  const navigate = useNavigate()
 
   const [data, setdata] = useState({
     firstname: '',
@@ -34,7 +36,7 @@ const SignUp = ({ userType }) => {
       password: data.password,
       telNumber: phoneData
     }
-    handleRegister(userData, setLoader, userType)
+    handleRegister(userData, setLoader, userType, navigate)
   };
 
   return (

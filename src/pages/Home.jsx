@@ -6,7 +6,7 @@ import Mentor from "../components/Mentor";
 import Mentees from "../components/Mentees";
 import Trust from "../components/Trust";
 import Inspire from "../components/Inspire";
-import inspireImg from "../assets/inspire.jpg";
+import inspireImg from "../assets/inspire.png";
 import Faqs from "../components/Faqs";
 
 const Home = () => {
@@ -28,13 +28,17 @@ const Home = () => {
                 <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.1)] w-full h-full -z-10 blur-2xl"></div>
                 <div className="p-2 sm:p-4">
                   <div>
-                    <h1 className="text-2xl sm:text-4xl bold mb-5">
-                      Struggling to advance in your job or{" "}
-                      <span className="font-bold">business?</span>
-                    </h1>
-                    <p>
+                    <h1 className="text-xl sm:text-2xl bold mb-5">
                       Join our robust mentorship community to get guidance and
-                      support from our reputable Mentors
+                      support from our {" "}
+                      <span className="font-bold capitalize">
+                        reputable Mentors
+                      </span>
+                    </h1>
+                    <p className="max-sm:text-xs">
+                      Guiding Africa's Youth with trusted MENTORS to navigate
+                      knowledge gaps, boost accountability, reignite motivation
+                      and expand networks
                     </p>
                   </div>
                   <form action="#" className="w-full px-1 mb-5 max-w-lg">
@@ -55,11 +59,11 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        {/* <section className="py-16 bg-gray-50">
           <div className="flex">
             <Mentees />
           </div>
-        </section>
+        </section> */}
 
         <section className="bg-white py-16 px-4">
           <div className="max-w-3xl lg:max-w-5xl mx-auto">
@@ -106,7 +110,9 @@ const Home = () => {
         </section>
 
         <section className="bg-gray-50 py-20 px-4">
-          <h2 className="max-md:text-2xl text-3xl font-semibold sm:text-center">FAQs</h2>
+          <h2 className="max-md:text-2xl text-3xl font-semibold sm:text-center">
+            FAQs
+          </h2>
           <div className="max-w-4xl mx-auto">
             <Faqs />
           </div>

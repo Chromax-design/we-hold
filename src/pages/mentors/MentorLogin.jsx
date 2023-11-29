@@ -10,7 +10,7 @@ const MentorLogin = ({ tab }) => {
 
       <Link
         className="capitalize font-medium text-sm mt-3 inline-block underline"
-        to={"/auth/mentor/send_reset_link"}
+        to={"/auth/mentor/sendpwdOTP"}
       >
         forgot password?
       </Link>

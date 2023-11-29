@@ -9,7 +9,7 @@ const LoginGoogle = () => {
 
     return (
         <div className='flex justify-center items-center'>
-            <div id="signInDiv" className=''></div>
+            <div id="signInDiv" style={{width: '100%'}}></div>
         </div>
     )
 }

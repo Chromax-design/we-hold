@@ -15,8 +15,15 @@ export const getUserData = async (userType, userId, token, setUser) => {
   }
 };
 
+// ========== REGISTRATION STARTS===============
+
 // registration handler
-export const handleRegister = async (userData, setLoader, userType) => {
+export const handleRegister = async (
+  userData,
+  setLoader,
+  userType,
+  navigate
+) => {
   const url = `${BASE_URL}/${userType}/register`;
   try {
     setLoader(true);
@@ -26,6 +33,7 @@ export const handleRegister = async (userData, setLoader, userType) => {
       setLoader(false);
     }
     toast.success(data.message);
+    navigate(`/auth/${userType}/verifyEmail`);
     setLoader(false);
   } catch (error) {
     setLoader(false);
@@ -34,6 +42,120 @@ export const handleRegister = async (userData, setLoader, userType) => {
     toast.error(`Error: ${errorMessage}`);
   }
 };
+
+// email otp handler
+export const handleEmailOTP = async (otp, userType, setLoader, navigate) => {
+  const url = `${BASE_URL}/${userType}/verifyEmail`;
+  try {
+    setLoader(true);
+    const { data } = await axios.post(url, otp);
+    if (data.expired) {
+      toast.success(data.message);
+      navigate(`/auth/${userType}/expiredEmailOTP`);
+    } else {
+      toast.success(data.message);
+      navigate(`/${userType}/application/${data.userId}`);
+    }
+    setLoader(false);
+  } catch (error) {
+    setLoader(false);
+    console.log(error);
+    toast.error(error.response.data.message);
+  }
+};
+
+// handle resend email otp for both mentors and mentees
+export const handleResendEmailOTP = async (
+  data,
+  setLoader,
+  userType,
+  navigate
+) => {
+  const url =
+    userType === "mentor"
+      ? `${BASE_URL}/mentor/resendEmailOTP`
+      : `${BASE_URL}/mentee/resendEmailOTP`;
+  try {
+    setLoader(true);
+    const response = await axios.post(url, data);
+    navigate(`/auth/${userType}/verifyEmail`);
+    setLoader(false);
+    toast.success(response.data.message);
+  } catch (error) {
+    setLoader(false);
+    if (error.response) {
+      console.error("Error in sendOTP:", error.response.data.message);
+      toast.error(`Error: ${error.response.data.message}`);
+    } else {
+      console.error("Network error in sendOTP:", error);
+      toast.error("An error occurred while sending the OTP.");
+    }
+  }
+};
+
+// ========== REGISTRATION ENDS===============
+
+// ======= PASSWORD RESET STARTS ========
+
+// send reset password OTP for both mentor & mentee as it is the same component controlling both
+export const handlesendpwdOTP = async (data, userType, setLoader, navigate) => {
+  const url = `${BASE_URL}/${userType}/sendpwdResetOTP`;
+  try {
+    setLoader(true);
+    const response = await axios.post(url, data);
+    setLoader(false);
+    toast.success(response.data.message);
+    navigate(`/auth/${userType}/verifyPwdOTP`);
+  } catch (error) {
+    setLoader(false);
+    toast.error(`Error: ${error.response.data.message}`);
+  }
+};
+
+export const handlePwdOTP = async (data, userType, setLoader, navigate) => {
+  const url = `${BASE_URL}/${userType}/verifyPwdOTP`;
+  try {
+    setLoader(true);
+    const response = await axios.post(url, data);
+    if (response.data.expired) {
+      toast.error(response.data.message);
+      navigate(`/auth/${userType}/sendPwdOTP`);
+    } else {
+      toast.success(response.data.message);
+      navigate(`/auth/${userType}/pwdreset/${response.data.userId}`);
+    }
+    setLoader(false);
+  } catch (error) {
+    setLoader(false);
+    console.log(error);
+    toast.error(error.response.data.message);
+  }
+};
+
+// reset password for mentor and mentee as it is the same component controlling both
+export const handleResetPWD = async (
+  data,
+  userType,
+  userId,
+  setLoader,
+  logout,
+  navigate
+) => {
+  const url = `${BASE_URL}/${userType}/resetPwd/${userId}`;
+  try {
+    setLoader(true);
+    const response = await axios.put(url, data);
+    setLoader(false);
+    logout();
+    navigate("/auth/login", { replace: true });
+    toast.success(response.data.message);
+  } catch (error) {
+    setLoader(false);
+    toast.error(`Error: ${error.response.data.message}`);
+  }
+};
+
+// ======= PASSWORD RESET ENDS ========
 
 // handle login
 export const handleLogin = async (
@@ -86,65 +208,7 @@ export const handleUpload = async (
   }
 };
 
-// send reset password link for both mentor & mentee as it is the same component controlling both
-export const handlesendpwdLink = async (data, userType, setLoader) => {
-  const url = `${BASE_URL}/${userType}/sendpwdResetLink`;
-  try {
-    setLoader(true);
-    const response = await axios.post(url, data);
-    setLoader(false);
-    toast.success(response.data.message);
-  } catch (error) {
-    setLoader(false);
-    toast.error(`Error: ${error.response.data.message}`);
-  }
-};
 
-// update password for mentor and mentee as it is the same component controlling both
-export const handleUpdatePWD = async (
-  data,
-  userType,
-  userId,
-  setLoader,
-  logout,
-  navigate
-) => {
-  const url = `${BASE_URL}/${userType}/updatePassword/${userId}`;
-  try {
-    setLoader(true);
-    const response = await axios.put(url, data);
-    setLoader(false);
-    logout();
-    navigate("/auth/login", { replace: true });
-    toast.success(response.data.message);
-  } catch (error) {
-    setLoader(false);
-    toast.error(`Error: ${error.response.data.message}`);
-  }
-};
-
-// handle resend email token for both mentors and mentees
-export const sendEmailVerification = async (data, setLoader, userType) => {
-  const url =
-    userType === "mentor"
-      ? `${BASE_URL}/mentor/sendResetToken`
-      : `${BASE_URL}/mentee/sendResetToken`;
-  try {
-    setLoader(true);
-    const response = await axios.post(url, data);
-    setLoader(false);
-    toast.success(response.data.message);
-  } catch (error) {
-    setLoader(false);
-    if (error.response) {
-      console.error("Error in sendToken:", error.response.data.message);
-      toast.error(`Error: ${error.response.data.message}`);
-    } else {
-      console.error("Network error in sendToken:", error);
-      toast.error("An error occurred while sending the token.");
-    }
-  }
-};
 
 export const updateLocalStorage = (data, setUser) => {
   const Profile = JSON.parse(localStorage.getItem("user"));

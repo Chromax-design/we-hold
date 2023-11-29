@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { handlesendpwdLink } from "../../utils/handlers";
+import { handlesendpwdOTP } from "../../utils/handlers";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../PreLoader";
 
@@ -15,7 +15,7 @@ const PwdUpdate = ({ tab }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handlesendpwdLink(email, "mentee", setLoader);
+    handlesendpwdOTP(email, "mentee", setLoader);
   };
 
   return (

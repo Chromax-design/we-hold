@@ -1,33 +1,32 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Logo from "../assets/logo-full.png";
-import { handleUpdatePWD } from "../utils/handlers";
+import { handleResetPWD } from "../utils/handlers";
 import useLoader from "../store/loaderStore";
 import PreLoader from "./PreLoader";
 import useAuth from "../store/AuthStore";
 
 const Passwordreset = ({ userType }) => {
-  const {logout}= useAuth()
-  const navigate = useNavigate()
-  const{Loader, setLoader}= useLoader()
-  const [data, setData]= useState({})
-  const {userId} = useParams()
-  const handleChange = (e)=>{
-    const {name, value}= e.target;
-    setData((prev)=>{
-      return {...prev, [name]: value}
-    })
-  }
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+  const { Loader, setLoader } = useLoader();
+  const [data, setData] = useState({});
+  const { userId } = useParams();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
 
-  const handleSubmit =(e)=>{
-    e.preventDefault()
-    handleUpdatePWD(data, userType, userId, setLoader, logout, navigate)
-
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleResetPWD(data, userType, userId, setLoader, logout, navigate);
+  };
 
   return (
     <>
-    {Loader && <PreLoader />}
+      {Loader && <PreLoader />}
       <div className="w-full min-h-screen bg-[url('./assets/bg-gradient.jpg')] backdrop-blur-lg bg-cover pt-32 pb-20 px-4">
         <Link to={"/"}>
           <img src={Logo} alt="" className="block w-52 mx-auto mb-5" />
