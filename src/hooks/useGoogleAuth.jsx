@@ -1,9 +1,14 @@
 import { useEffect } from "react";
-import useAuth from "../store/AuthStore";
 import jwt_decode from "jwt-decode";
+import { loginWithGoogle } from "../utils/handlers";
+import useLoader from "../store/loaderStore";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../store/AuthStore";
 
 const useGoogleAuth = () => {
-  const { setUser } = useAuth((state) => state);
+  const { login } = useAuth();
+  const { setLoader } = useLoader();
+  const navigate = useNavigate();
   const client_id =
     "180560069205-9m3kfjtjmdsjskqc9rbcj3uh1mm9b7f4.apps.googleusercontent.com";
 
@@ -13,10 +18,9 @@ const useGoogleAuth = () => {
       firstName: user.given_name,
       email: user.email,
     };
-    console.log(user);
+    // console.log(user);
     console.log(userData);
-    // localStorage.setItem("user", JSON.stringify(user.email))
-    // setUser(user.email);
+    loginWithGoogle(userData, setLoader, login, navigate);
   };
 
   useEffect(() => {

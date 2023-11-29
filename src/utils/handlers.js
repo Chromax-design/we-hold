@@ -181,9 +181,22 @@ export const handleLogin = async (
   }
 };
 
-export const loginWithGoogle = async()=>{
-  
-}
+export const loginWithGoogle = async (googledata, setLoader, login, navigate) => {
+  const url = `${BASE_URL}/mentee/loginWithGoogle`;
+  try {
+    setLoader(true);
+    const { data } = await axios.post(url, googledata);
+    localStorage.setItem("user", JSON.stringify(data));
+    login(data);
+    navigate(`/mentee/dashboard`);
+    toast.success(data.message);
+    setLoader(false);
+  } catch (error) {
+    setLoader(false);
+    console.log(error);
+    toast.error(error.response.data.message);
+  }
+};
 
 // handle profile img upload
 
@@ -211,8 +224,6 @@ export const handleUpload = async (
     console.log(error);
   }
 };
-
-
 
 export const updateLocalStorage = (data, setUser) => {
   const Profile = JSON.parse(localStorage.getItem("user"));

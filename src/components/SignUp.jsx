@@ -123,7 +123,7 @@ const SignUp = ({ userType }) => {
           create account
         </button>
       </form>
-      <FormBottom />
+      <FormBottom userType={userType} />
     </>
   );
 };
