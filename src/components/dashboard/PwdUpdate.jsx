@@ -31,7 +31,7 @@ const PwdUpdate = ({ tab }) => {
         </h2>
         <form action="" className="space-y-4" onSubmit={handleSubmit}>
           <p className="text-sm">
-            A link to reset your password will be sent to the email provided
+            A OTP to reset your password will be sent to the email provided
             below
           </p>
           <div>

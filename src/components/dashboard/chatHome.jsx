@@ -9,9 +9,12 @@ import chatServices from "../../services/chatService";
 import { socket } from "../../config/socket";
 import { BASE_URL } from "../../config/config";
 import axios from "axios";
+import useLoader from "../../store/loaderStore";
+import PreLoader from "../PreLoader";
 // import userimg from "../../assets/mentors/mentor-3.jpg";
 
 const ChatHome = () => {
+  const { Loader, setLoader } = useLoader();
   const { user } = useAuth();
   const { setChatroom } = chatStore((state) => state);
   const [users, setUsers] = useState([]);
@@ -27,10 +30,12 @@ const ChatHome = () => {
   useEffect(() => {
     try {
       const getMentors = async () => {
+        setLoader(true);
         const { data } = await axios.get(url, {
           headers: { "Content-Type": "application/json" },
         });
         setUsers(data.mentors);
+        setLoader(false);
       };
       getMentors();
     } catch (error) {
@@ -59,64 +64,67 @@ const ChatHome = () => {
   }, [socket, navigate]);
 
   return (
-    <main className="bg-gray-50 p-4">
-      <section className="max-w-6xl mx-auto px-4 py-7 ">
-        <div className="grid gap-4 grid-cols-12">
-          <div
-            className={`${
-              aside
-                ? "max-md:col-span-12 col-span-4 lg:col-span-3 bg-white rounded-md shadow-md overflow-hidden"
-                : "hidden"
-            }`}
-          >
-            <h2 className="capitalize max-md:px-6 font-semibold text-xl p-4">
-              select chat
-            </h2>
-            <hr />
-            <div className=" py-3">
-              {/* <ConversationList /> */}
-              <div>
-                {filteredUsers.map((otherUser, index) => (
-                  <div
-                    className="w-full py-2 max-md:px-6 flex items-center gap-3 px-4 hover:bg-gray-50 hover:cursor-pointer hover:border-l-2 border-lime-800"
-                    key={index}
-                    onClick={() => createChatroom(otherUser)}
-                  >
-                    <img
-                      src={otherUser.image}
-                      alt=""
-                      className="w-12 h-12 rounded-full object-cover object-center"
-                    />
-                    <div className="">
-                      <h4 className="text-sm font-semibold capitalize">
-                        {`${otherUser?.firstName} ${otherUser?.initials}`}
-                      </h4>
+    <>
+      {Loader && <PreLoader />}
+      <main className="bg-gray-50 p-4">
+        <section className="max-w-6xl mx-auto px-4 py-7 ">
+          <div className="grid gap-4 grid-cols-12">
+            <div
+              className={`${
+                aside
+                  ? "max-md:col-span-12 col-span-4 lg:col-span-3 bg-white rounded-md shadow-md overflow-hidden"
+                  : "hidden"
+              }`}
+            >
+              <h2 className="capitalize max-md:px-6 font-semibold text-xl p-4">
+                select chat
+              </h2>
+              <hr />
+              <div className=" py-3">
+                {/* <ConversationList /> */}
+                <div>
+                  {filteredUsers.map((otherUser, index) => (
+                    <div
+                      className="w-full py-2 max-md:px-6 flex items-center gap-3 px-4 hover:bg-gray-50 hover:cursor-pointer hover:border-l-2 border-lime-800"
+                      key={index}
+                      onClick={() => createChatroom(otherUser)}
+                    >
+                      <img
+                        src={otherUser.image}
+                        alt=""
+                        className="w-12 h-12 rounded-full object-cover object-center"
+                      />
+                      <div className="">
+                        <h4 className="text-sm font-semibold capitalize">
+                          {`${otherUser?.firstName} ${otherUser?.initials}`}
+                        </h4>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div
+              className={`${
+                aside ? "col-span-8 lg:col-span-9" : "col-span-12"
+              } bg-white rounded-md shadow-md relative min-h-[650px] p-5 max-md:hidden`}
+            >
+              <FontAwesomeIcon
+                icon={aside === false ? faBars : faXmark}
+                className={`text-xl cursor-pointer block`}
+                onClick={handleClick}
+              />
+              <h1 className="capitalize text-lg font-semibold text-center mt-5">
+                please select a chat to continue
+              </h1>
+              <div className="max-w-sm mx-auto mt-10">
+                <img src={talk} alt="" />
               </div>
             </div>
           </div>
-          <div
-            className={`${
-              aside ? "col-span-8 lg:col-span-9" : "col-span-12"
-            } bg-white rounded-md shadow-md relative min-h-[650px] p-5 max-md:hidden`}
-          >
-            <FontAwesomeIcon
-              icon={aside === false ? faBars : faXmark}
-              className={`text-xl cursor-pointer block`}
-              onClick={handleClick}
-            />
-            <h1 className="capitalize text-lg font-semibold text-center mt-5">
-              please select a chat to continue
-            </h1>
-            <div className="max-w-sm mx-auto mt-10">
-              <img src={talk} alt="" />
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 };
 

@@ -9,11 +9,12 @@ import chatStore from "../../store/ChatStore";
 import MessageCard from "./MessageCard";
 import MessageHeader from "./MessageHeader";
 
-
-
 import Input from "./Input";
+import useLoader from "../../store/loaderStore";
+import PreLoader from "../PreLoader";
 
 const Chat = () => {
+  const { Loader, setLoader } = useLoader();
   const { user } = useAuth();
   const { chatroom } = chatStore((state) => state);
   const [users, setUsers] = useState([]);
@@ -25,17 +26,19 @@ const Chat = () => {
   const room = chatroom[0];
   const url =
     user.role == "mentor" ? `${BASE_URL}/mentee/` : `${BASE_URL}/mentor/`;
-  // console.log(url)
 
   useEffect(() => {
     const getMentors = async () => {
       try {
+        setLoader(true);
         const { data } = await axios.get(url, {
           headers: { "Content-Type": "application/json" },
         });
         setUsers(data.mentors);
+        setLoader(false);
       } catch (error) {
         console.log(error);
+        setLoader(false);
       }
     };
 
@@ -135,30 +138,32 @@ const Chat = () => {
   }, []);
 
   return (
-    <main className="bg-gray-50 p-4">
-      <section className="max-w-6xl mx-auto px-4 py-7 ">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-md shadow-md relative h-[650px]">
-            <MessageHeader receiver={receiver} />
-            <div className="h-[calc(100%-120px)] bg-gray-100 overflow-y-scroll overflow-x-hidden py-6 px-4 space-y-3 flex flex-col messageCard">
-              
-              <ScrollToBottom className="w-full h-full messageCard">
-                {messages.map((message, index) => (
-                  <MessageCard user={user} message={message} key={index} />
-                ))}
-              </ScrollToBottom>
+    <>
+      {Loader && <PreLoader />}
+      <main className="bg-gray-50 p-4">
+        <section className="max-w-6xl mx-auto px-4 py-7 ">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-md shadow-md relative h-[650px]">
+              <MessageHeader receiver={receiver} />
+              <div className="h-[calc(100%-120px)] bg-gray-100 overflow-y-scroll overflow-x-hidden py-6 px-4 space-y-3 flex flex-col messageCard">
+                <ScrollToBottom className="w-full h-full messageCard">
+                  {messages.map((message, index) => (
+                    <MessageCard user={user} message={message} key={index} />
+                  ))}
+                </ScrollToBottom>
+              </div>
+              <Input
+                message={message}
+                setMessage={setMessage}
+                handleImageChange={handleImageChange}
+                handleDocChange={handleDocChange}
+                sendMessage={sendMessage}
+              />
             </div>
-            <Input
-              message={message}
-              setMessage={setMessage}
-              handleImageChange={handleImageChange}
-              handleDocChange={handleDocChange}
-              sendMessage={sendMessage}
-            />
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </>
   );
 };
 
