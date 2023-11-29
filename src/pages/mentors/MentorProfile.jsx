@@ -9,6 +9,15 @@ import axios from "axios";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 
+const NotFound = () => {
+  return (
+    <div className=" max-w-3xl mx-auto text-center capitalize mt-20">
+      <img src={none} alt="" className="w-full" />
+      <h2 className="capitalize text-xl font-medium">no mentors yet...</h2>
+    </div>
+  );
+};
+
 const MentorProfile = () => {
   const navigate = useNavigate();
   const { Loader, setLoader } = useLoader();
@@ -42,7 +51,7 @@ const MentorProfile = () => {
   };
 
   const makePayment = async () => {
-    setLoader(true)
+    setLoader(true);
     const stripe = await loadStripe(
       "pk_test_51N2arXIYmnZ4DnJJ1gSvYCDhGFLAVDTHGPo8vTJTdJPnioyLZYnYAJUho80iMQsHPLXRbFD0SYqyt4y1hmps79ci00xEmplYtF"
     );
@@ -65,14 +74,15 @@ const MentorProfile = () => {
 
     if (result.error) {
       console.log(result.error);
-      setLoader(false)
+      setLoader(false);
     }
-    setLoader(false)
+    setLoader(false);
   };
 
   return (
     <>
       {Loader && <PreLoader />}
+      {!mentor && <NotFound />}
       <main className="bg-gray-50 space-y-5 py-10">
         <section className="max-w-5xl mx-auto ring-1 ring-gray-100 rounded-md p-10 shadow-sm bg-white">
           <div className="lg:grid grid-cols-12 gap-10 max-lg:space-y-2">
