@@ -181,6 +181,10 @@ export const handleLogin = async (
   }
 };
 
+export const loginWithGoogle = async()=>{
+  
+}
+
 // handle profile img upload
 
 export const handleUpload = async (
