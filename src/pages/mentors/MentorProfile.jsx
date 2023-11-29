@@ -9,15 +9,6 @@ import axios from "axios";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 
-const NotFound = () => {
-  return (
-    <div className=" max-w-3xl mx-auto text-center capitalize mt-20">
-      <img src={none} alt="" className="w-full" />
-      <h2 className="capitalize text-xl font-medium">no mentors yet...</h2>
-    </div>
-  );
-};
-
 const MentorProfile = () => {
   const navigate = useNavigate();
   const { Loader, setLoader } = useLoader();
@@ -82,7 +73,6 @@ const MentorProfile = () => {
   return (
     <>
       {Loader && <PreLoader />}
-      {!mentor && <NotFound />}
       <main className="bg-gray-50 space-y-5 py-10">
         <section className="max-w-5xl mx-auto ring-1 ring-gray-100 rounded-md p-10 shadow-sm bg-white">
           <div className="lg:grid grid-cols-12 gap-10 max-lg:space-y-2">
