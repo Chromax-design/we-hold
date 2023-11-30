@@ -8,9 +8,11 @@ import { mentees } from "../../data/Mentees";
 import axios from "axios";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
+import useAuth from "../../store/AuthStore";
 
 const MentorProfile = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { Loader, setLoader } = useLoader();
   const { id } = useParams();
   const [mentor, setMentor] = useState([]);
@@ -36,6 +38,8 @@ const MentorProfile = () => {
 
   const product = {
     name: `${mentor.firstName} ${mentor.initials}`,
+    mentorId: `${mentor.id}`,
+    menteeId: `${user.id}`,
     price: 1000,
     description: "mentor subscription",
     quantity: 1,
