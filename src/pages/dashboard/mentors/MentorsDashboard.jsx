@@ -13,7 +13,7 @@ const MentorsDashboard = () => {
     <main className="bg-gray-50 p-2 sm:p-4">
       <DisplayInfo user={user} />
 
-      <section className="max-w-6xl mx-auto px-4 py-7 ">
+      <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7 ">
         <div className="bg-white rounded-md shadow-xl p-4 sm:p-10 grid lg:grid-cols-12 gap-7 items-start">
           <div className=" lg:col-span-3 rounded-full p-2 bg-gray-100 shadow-lg  mx-auto">
             <img
@@ -25,10 +25,10 @@ const MentorsDashboard = () => {
           <div className="lg:col-span-9 rounded-md">
             <div className="flex justify-between max-sm:flex-col gap-3">
               <div className="space-y-1">
-                <h2 className="text-3xl capitalize font-semibold">
+                <h2 className="text-2xl sm:text-3xl capitalize font-semibold">
                   {`${user?.firstName} ${user?.initials}`}.
                 </h2>
-                <p className="capitalize font-medium text-gray-700">
+                <p className="capitalize max-sm:text-sm font-medium text-gray-700">
                   {user?.industry}
                 </p>
               </div>
@@ -40,28 +40,28 @@ const MentorsDashboard = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 justify-between mt-5 gap-5">
               <div className="space-y-2">
                 <h2 className="capitalize font-semibold">about</h2>
-                <p className=" line-clamp-4">
+                <p className=" line-clamp-4 max-sm:text-sm">
                   {user?.bio ? user?.bio : "Nothing yet..."}
                 </p>
               </div>
               <div className="space-y-3 md:text-right">
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">phone number</h2>
-                  <p>+{user?.telNumber ? user?.telNumber : "Nothing yet..."}</p>
+                  <p className="max-sm:text-sm">+{user?.telNumber ? user?.telNumber : "Nothing yet..."}</p>
                 </div>
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">email address</h2>
-                  <p>{user?.email ? user?.email : "Nothing yet..."}</p>
+                  <p className="max-sm:text-sm">{user?.email ? user?.email : "Nothing yet..."}</p>
                 </div>
               </div>
               <div className="space-y-3 lg:text-right">
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">location</h2>
-                  <p>{user?.country ? user?.country : "Nothing yet..."}</p>
+                  <p className="max-sm:text-sm">{user?.country ? user?.country : "Nothing yet..."}</p>
                 </div>
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">industry</h2>
-                  <p className="capitalize">
+                  <p className="capitalize max-sm:text-sm">
                     {user?.industry ? user?.industry : "Nothing yet..."}
                   </p>
                 </div>
@@ -72,7 +72,7 @@ const MentorsDashboard = () => {
       </section>
       <section className="max-w-6xl mx-auto px-4 py-7 ">
         <div className="p-5 bg-white shadow-sm">
-          <h1 className="capitalize text-3xl sm:text-4xl font-medium">
+          <h1 className="capitalize text-2xl sm:text-4xl font-medium">
             my mentees
           </h1>
           <div className="flex flex-col justify-center items-center mt-20">
