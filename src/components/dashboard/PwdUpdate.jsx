@@ -29,7 +29,7 @@ const PwdUpdate = ({ tab, userType }) => {
           tab == 3 ? "block" : "hidden"
         } max-w-xl mx-auto space-y-7 p-4 pb-20`}
       >
-        <h2 className="capitalize text-3xl sm:text-4xl font-medium">
+        <h2 className="capitalize text-2xl sm:text-4xl font-medium">
           Update password
         </h2>
         <form action="" className="space-y-4" onSubmit={handleSubmit}>

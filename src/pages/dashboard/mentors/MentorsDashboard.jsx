@@ -77,7 +77,7 @@ const MentorsDashboard = () => {
           </h1>
           <div className="flex flex-col justify-center items-center mt-20">
             <img src={noMentor} alt="" className="max-w-[350px]" />
-            <h2 className="capitalize text-lg">You have no mentees yet</h2>
+            <h2 className="capitalize sm:text-lg">You have no mentees yet</h2>
           </div>
         </div>
       </section>

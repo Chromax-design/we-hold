@@ -11,7 +11,7 @@ const MessageHeader = ({receiver}) => {
           alt=""
           className="w-10 h-10 object-cover object-center rounded-full border-2 border-black shadow-md"
         />
-        <h1 className="capitalize text-lg font-semibold">{`${receiver?.firstName} ${receiver?.initials}`}</h1>
+        <h1 className="capitalize sm:text-lg font-semibold">{`${receiver?.firstName} ${receiver?.initials}`}</h1>
       </div>
       <a href="tel:+45789023">
         <img src={telephone} alt="" className="w-5" />

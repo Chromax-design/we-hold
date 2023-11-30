@@ -20,9 +20,9 @@ const MentorSetting = () => {
 
   return (
     <main>
-      <section className="max-w-6xl mx-auto px-4 py-7 ">
+      <section className="max-w-6xl mx-auto p-2 sm:px-4 py-7 ">
         <div className="bg-white rounded-md shadow-xl">
-          <div className="p-5">
+          <div className="p-2 sm:p-5">
             <ul className="flex flex-col sm:flex-row justify-center items-center capitalize font-medium text-center mb-10">
               {tabs.map((t) => (
                 <li

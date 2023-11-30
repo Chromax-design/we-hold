@@ -82,11 +82,11 @@ const PersonalDetails = ({ tab, userType }) => {
     <>
       {Loader && <PreLoader />}
       <div
-        className={`p-10 pt-5 grid md:grid-cols-12 gap-5 ${
+        className={`p-2 sm:p-10 pt-5 grid md:grid-cols-12 gap-5 ${
           tab == 1 ? "block" : "hidden"
         }`}
       >
-        <div className="md:col-span-4 rounded-md p-3 gap-5">
+        <div className="md:col-span-4 rounded-md p-2 gap-5">
           <form action="" onSubmit={Upload}>
             <div className="relative shadow-lg max-w-[300px]">
               <img

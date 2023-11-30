@@ -66,8 +66,8 @@ const ChatHome = () => {
   return (
     <>
       {Loader && <PreLoader />}
-      <main className="bg-gray-50 p-4">
-        <section className="max-w-6xl mx-auto px-4 py-7 ">
+      <main className="bg-gray-50 p-2 sm:p-4">
+        <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7 ">
           <div className="grid gap-4 grid-cols-12">
             <div
               className={`${

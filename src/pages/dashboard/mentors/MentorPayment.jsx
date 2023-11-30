@@ -8,10 +8,10 @@ const MentorPayment = () => {
         <div className="max-w-4xl mx-auto">
           <div className=" col-span-9 bg-white rounded-md shadow-md relative h-[650px]">
             <div className="p-5">
-              <h1 className="capitalize text-4xl font-medium">payments</h1>
+              <h1 className="capitalize text-2xl sm:text-4xl font-medium">payments</h1>
               <div className="flex flex-col justify-center items-center mt-20">
                 <img src={noMentor} alt="" className="max-w-[350px]" />
-                <h2 className="capitalize text-lg">
+                <h2 className="capitalize sm:text-lg">
                   You have made no payments yet
                 </h2>
               </div>

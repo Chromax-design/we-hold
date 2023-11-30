@@ -6,9 +6,9 @@ const FilePreview = ({ file }) => {
   const fileUrl = `${BASE_URL}/chat/pdf/${file.docfileName}`;
   return (
     <a href={fileUrl} download={fileUrl} target="_blank">
-      <div>
-        <img src={pdf} alt="" className="block mx-auto mb-3" />
-        <span>{file.docOriginalName}</span>
+      <div className="max-w-[150px] sm:max-w-[250px]">
+        <img src={pdf} alt="" className="block mx-auto mb-3 max-w-[50px]" />
+        <span className="text-xs">{file.docOriginalName}</span>
       </div>
     </a>
   );
@@ -21,7 +21,7 @@ const ImgPreview = ({ file }) => {
       <img
         src={imgUrl}
         alt="chat-image"
-        className="max-w-[250px] h-auto rounded-lg cursor-pointer"
+        className="max-w-[150px] sm:max-w-[250px] h-auto rounded-lg cursor-pointer"
       />
     </a>
   );

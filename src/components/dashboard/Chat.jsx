@@ -140,8 +140,8 @@ const Chat = () => {
   return (
     <>
       {Loader && <PreLoader />}
-      <main className="bg-gray-50 p-4">
-        <section className="max-w-6xl mx-auto px-4 py-7 ">
+      <main className="bg-gray-50 p-1 sm:p-4">
+        <section className="max-w-6xl mx-auto p-1 sm:px-4 py-7 ">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-md shadow-md relative h-[650px]">
               <MessageHeader receiver={receiver} />
