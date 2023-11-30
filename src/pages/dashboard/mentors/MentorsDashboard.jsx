@@ -10,16 +10,16 @@ const MentorsDashboard = () => {
   const { user } = useAuth();
 
   return (
-    <main className="bg-gray-50 p-4">
+    <main className="bg-gray-50 p-2 sm:p-4">
       <DisplayInfo user={user} />
 
       <section className="max-w-6xl mx-auto px-4 py-7 ">
-        <div className="bg-white rounded-md shadow-xl p-10 grid lg:grid-cols-12 gap-7 items-start">
+        <div className="bg-white rounded-md shadow-xl p-4 sm:p-10 grid lg:grid-cols-12 gap-7 items-start">
           <div className=" lg:col-span-3 rounded-full p-2 bg-gray-100 shadow-lg  mx-auto">
             <img
               src={user.image ? user.image : userIcon}
               alt="user image"
-              className="w-[220px] h-[220px] object-cover max-lg:mx-auto rounded-full"
+              className="w-full sm:w-[220px] sm:h-[220px] object-cover max-lg:mx-auto rounded-full"
             />
           </div>
           <div className="lg:col-span-9 rounded-md">

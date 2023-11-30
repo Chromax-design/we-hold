@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Video } from "../components/Video";
 import Intro from "../assets/video/headervideo.mp4";
 import poster from "../assets/video/poster1.jpeg";
@@ -8,10 +8,33 @@ import Trust from "../components/Trust";
 import Inspire from "../components/Inspire";
 import inspireImg from "../assets/inspire.png";
 import Faqs from "../components/Faqs";
+import { handleSearch } from "../utils/handlers";
+import { useNavigate } from "react-router-dom";
+import useLoader from "../store/loaderStore";
+import PreLoader from "../components/PreLoader";
+import SearchStore from "../store/SearchStore";
 
 const Home = () => {
+  const [search, setSearch] = useState({});
+  const {setSearchResults} = SearchStore();
+  const { Loader, setLoader } = useLoader();
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setSearch((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSearch(search, setLoader, setSearchResults, navigate);
+  };
+
   return (
     <>
+      {Loader && <PreLoader />}
       <main>
         <section className=" mx-auto relative">
           <div className="absolute top-0 left-0 w-full h-[500px] bg-[linear-gradient(to_right,rgba(230,115,0,0.3)50%,rgba(230,115,0,1))] bg-cover bg-center bg-no-repeat z-10"></div>
@@ -30,7 +53,7 @@ const Home = () => {
                   <div>
                     <h1 className="text-xl sm:text-2xl bold mb-5">
                       Join our robust mentorship community to get guidance and
-                      support from our {" "}
+                      support from our{" "}
                       <span className="font-bold capitalize">
                         reputable Mentors
                       </span>
@@ -41,14 +64,23 @@ const Home = () => {
                       and expand networks
                     </p>
                   </div>
-                  <form action="#" className="w-full px-1 mb-5 max-w-lg">
+                  <form
+                    action="#"
+                    className="w-full px-1 mb-5 max-w-lg"
+                    onSubmit={handleSubmit}
+                  >
                     <div className="my-6 gap-3 w-full space-y-3">
                       <input
-                        type="text"
-                        placeholder="find a mentor"
+                        type="search"
+                        placeholder="search mentor type"
+                        name="search"
                         className="w-full px-3 py-4 outline-lime-800 rounded-md placeholder:capitalize placeholder:text-sm text-black text-sm placeholder:font-light shadow-lg"
+                        onChange={handleChange}
                       />
-                      <button className="bg-lime-800 text-white text-sm rounded-md capitalize hover:bg-lime-900 py-3 px-4 shadow-lg">
+                      <button
+                        type="submit"
+                        className="bg-lime-800 text-white text-sm rounded-md capitalize hover:bg-lime-900 py-3 px-4 shadow-lg"
+                      >
                         search mentors
                       </button>
                     </div>

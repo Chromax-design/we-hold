@@ -50,7 +50,7 @@ export const handleEmailOTP = async (otp, userType, setLoader, navigate) => {
     setLoader(true);
     const { data } = await axios.post(url, otp);
     if (data.expired) {
-      toast.success(data.message);
+      toast.error(data.message);
       navigate(`/auth/${userType}/expiredEmailOTP`);
     } else {
       toast.success(data.message);
@@ -181,7 +181,12 @@ export const handleLogin = async (
   }
 };
 
-export const loginWithGoogle = async (googledata, setLoader, login, navigate) => {
+export const loginWithGoogle = async (
+  googledata,
+  setLoader,
+  login,
+  navigate
+) => {
   const url = `${BASE_URL}/mentee/loginWithGoogle`;
   try {
     setLoader(true);
@@ -222,6 +227,26 @@ export const handleUpload = async (
   } catch (error) {
     setLoader(false);
     console.log(error);
+  }
+};
+
+export const handleSearch = async (
+  searchParam,
+  setLoader,
+  setSearchResults,
+  navigate
+) => {
+  const url = `${BASE_URL}/mentor/search`;
+  try {
+    setLoader(true);
+    const { data } = await axios.post(url, searchParam);
+    setSearchResults(data.mentors);
+    navigate('/search');
+    setLoader(false);
+  } catch (error) {
+    setLoader(false);
+    console.log(error);
+    toast.error(error.response.data.message);
   }
 };
 

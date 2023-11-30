@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { handlesendpwdOTP } from "../../utils/handlers";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../PreLoader";
+import { useNavigate } from "react-router-dom";
 
-const PwdUpdate = ({ tab }) => {
+const PwdUpdate = ({ tab, userType }) => {
+  const navigate = useNavigate();
   const { Loader, setLoader } = useLoader();
   const [email, setEmail] = useState({});
 
@@ -15,8 +17,9 @@ const PwdUpdate = ({ tab }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handlesendpwdOTP(email, "mentee", setLoader);
+    handlesendpwdOTP(email, userType, setLoader, navigate);
   };
+
 
   return (
     <>
@@ -30,13 +33,9 @@ const PwdUpdate = ({ tab }) => {
           Update password
         </h2>
         <form action="" className="space-y-4" onSubmit={handleSubmit}>
-          <p className="text-sm">
-            A OTP to reset your password will be sent to the email provided
-            below
-          </p>
           <div>
             <label htmlFor="email" className="text-sm capitalize font-medium">
-              email
+              enter your email
             </label>
             <input
               type="email"

@@ -3,7 +3,7 @@ import PwdUpdate from '../PwdUpdate';
 
 const MentorAccount = ({tab}) => {
     return (
-        <PwdUpdate tab={tab} />
+        <PwdUpdate tab={tab} userType={'mentor'} />
     );
 }
 

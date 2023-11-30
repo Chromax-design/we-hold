@@ -82,6 +82,7 @@ import ChatHome from "./components/dashboard/chatHome";
 import Chat from "./components/dashboard/Chat";
 import StripeSuccess from "./pages/stripeSuccess";
 import StripeCancel from "./pages/stripeCancel";
+import SearchResults from "./pages/mentors/SearchResults";
 
 const Layout = () => {
   return (
@@ -139,12 +140,13 @@ function App() {
 
           <Route path="mentors/:id" element={<MentorProfile />} />
           <Route path="search/:mentorType" element={<Search />} />
+          <Route path="search" element={<SearchResults />} />
           <Route
             path="mentee/application/:userId"
             element={<MenteeApplication />}
           />
           <Route
-            path="mentor/:userId/application"
+            path="mentor/application/:userId"
             element={<MentorApplication />}
           />
         </Route>
