@@ -37,9 +37,9 @@ const MentorProfile = () => {
   }, []);
 
   const product = {
-    name: `${mentor.firstName} ${mentor.initials}`,
-    mentorId: `${mentor.id}`,
-    menteeId: `${user.id}`,
+    name: `${mentor?.firstName} ${mentor?.initials}`,
+    mentorId: `${mentor?.id}`,
+    menteeId: `${user?.id}`,
     price: 1000,
     description: "mentor subscription",
     quantity: 1,
@@ -98,7 +98,7 @@ const MentorProfile = () => {
                   </p>
                   <div className="flex gap-1 items-center max-lg:justify-center">
                     <img src={marker} alt="" className="w-[20px]" />
-                    <p className="capitalize text-sm font-medium">{`${mentor.country}`}</p>
+                    <p className="capitalize text-sm font-medium">{`${mentor?.country}`}</p>
                   </div>
                 </div>
                 <div className="flex flex-col lg:items-center">
@@ -109,7 +109,7 @@ const MentorProfile = () => {
               <div className="flex flex-col text-center mt-7 gap-4 lg:flex-row">
                 <div className="flex-1 ring-1 ring-gray-200 p-2 bg-gray-50">
                   <span className="font-bold text-xl">
-                    {mentor.yrs_of_experience} yrs
+                    {mentor?.yrs_of_experience} yrs
                   </span>
                   <h4 className=" leading-3 text-sm capitalize">experience</h4>
                 </div>
@@ -160,7 +160,7 @@ const MentorProfile = () => {
             <h3 className="capitalize font-semibold text-lg">
               how i can be of help?
             </h3>
-            <p className="text-sm leading-6">{mentor.How_help}</p>
+            <p className="text-sm leading-6">{mentor?.How_help}</p>
           </div>
         </section>
 
@@ -176,7 +176,7 @@ const MentorProfile = () => {
                     <div className="flex gap-2 items-center">
                       <img src={userIcon} alt="" className="w-[50px]" />
                       <div className="capitalize">
-                        <h3 className="font-semibold">{item.name}</h3>
+                        <h3 className="font-semibold">{item?.name}</h3>
                         <p className="text-xs tracking-wider">june 12 1911</p>
                       </div>
                     </div>
