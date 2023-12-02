@@ -1,9 +1,8 @@
 import React from "react";
-import MessageItem from "../../../components/dashboard/ConversationList";
+import ConversationList from "../../../components/dashboard/ConversationList";
 import MessageHeader from "../../../components/dashboard/MessageHeader";
 import Input from "../../../components/dashboard/Input";
 import Messages from "../../../components/dashboard/Messages";
-
 
 const MentorMessage = () => {
   return (
@@ -14,7 +13,7 @@ const MentorMessage = () => {
             <h2 className="capitalize font-semibold text-xl p-4">messages</h2>
             <hr />
             <div className=" py-3">
-              <MessageItem />
+              <ConversationList />
             </div>
           </div>
           <div className=" col-span-9 bg-white rounded-md shadow-md relative h-[650px]">

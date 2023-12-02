@@ -4,14 +4,14 @@ import noMentor from "../../../assets/dashboard/no mentor.svg";
 import edit from "../../../assets/icons/dashboards/edit.png";
 import userIcon from "../../../assets/icons/user_icon.png";
 import useAuth from "../../../store/AuthStore";
-import DisplayInfo from "../../../components/dashboard/DisplayInfo";
+import MentorInfoGraphic from "../../../components/dashboard/mentor/MentorInfoGraphic";
 
 const MentorsDashboard = () => {
   const { user } = useAuth();
 
   return (
     <main className="bg-gray-50 p-2 sm:p-4">
-      <DisplayInfo user={user} />
+      <MentorInfoGraphic user={user} />
 
       <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7 ">
         <div className="bg-white rounded-md shadow-xl p-4 sm:p-10 grid lg:grid-cols-12 gap-7 items-start">
@@ -47,17 +47,23 @@ const MentorsDashboard = () => {
               <div className="space-y-3 md:text-right">
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">phone number</h2>
-                  <p className="max-sm:text-sm">+{user?.telNumber ? user?.telNumber : "Nothing yet..."}</p>
+                  <p className="max-sm:text-sm">
+                    +{user?.telNumber ? user?.telNumber : "Nothing yet..."}
+                  </p>
                 </div>
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">email address</h2>
-                  <p className="max-sm:text-sm">{user?.email ? user?.email : "Nothing yet..."}</p>
+                  <p className="max-sm:text-sm">
+                    {user?.email ? user?.email : "Nothing yet..."}
+                  </p>
                 </div>
               </div>
               <div className="space-y-3 lg:text-right">
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">location</h2>
-                  <p className="max-sm:text-sm">{user?.country ? user?.country : "Nothing yet..."}</p>
+                  <p className="max-sm:text-sm">
+                    {user?.country ? user?.country : "Nothing yet..."}
+                  </p>
                 </div>
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">industry</h2>

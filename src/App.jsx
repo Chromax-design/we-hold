@@ -138,7 +138,6 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="mentors" element={<Mentors />} />
 
-          <Route path="mentors/:id" element={<MentorProfile />} />
           <Route path="search/:mentorType" element={<Search />} />
           <Route path="search" element={<SearchResults />} />
           <Route
@@ -152,6 +151,7 @@ function App() {
         </Route>
 
         <Route element={<MenteeRoute />}>
+          <Route path="mentors/:id" element={<MentorProfile />} />
           <Route path="/mentee/dashboard" element={<DashboardLayout />}>
             <Route index element={<MenteesDashboard />} />
             <Route path="history" element={<MenteeHistory />} />

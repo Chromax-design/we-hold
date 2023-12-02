@@ -25,7 +25,9 @@ const ChatHome = () => {
   };
 
   const url =
-    user.role == "mentee" ? `${BASE_URL}/mentor/` : `${BASE_URL}/mentee/`;
+    user.role == "mentor"
+      ? `${BASE_URL}/mentor/`
+      : `${BASE_URL}/mentee/myMentors/${user.id}`;
 
   useEffect(() => {
     try {
@@ -34,7 +36,7 @@ const ChatHome = () => {
         const { data } = await axios.get(url, {
           headers: { "Content-Type": "application/json" },
         });
-        setUsers(data.mentors);
+        setUsers(data.subscribed);
         setLoader(false);
       };
       getMentors();
@@ -42,20 +44,44 @@ const ChatHome = () => {
       console.log(error);
     }
   }, []);
-  const filteredUsers = users.filter((otherUser) => otherUser.id !== user.id);
+
+  // const filteredUsers = users.filter((otherUser) => otherUser.id !== user.id);
+  // console.log(filteredUsers);
   const navigate = useNavigate();
 
-  const createChatroom = async (otherUser) => {
-    const payload = {
-      roomId: [user.id, otherUser.id].sort().join(""),
-      participantA: user.id,
-      participantB: otherUser.id,
-    };
+  // const createChatroom = async (otherUser) => {
+  //   const payload = {
+  //     roomId: [user.id, otherUser.id].sort().join(""),
+  //     participantA: user.id,
+  //     participantB: otherUser.id,
+  //   };
 
-    const chatroom = await chatServices.createChat(payload);
-    socket.emit("create_chatroom", chatroom[0].roomId);
-    setChatroom(chatroom);
+  //   const chatroom = await chatServices.createChat(payload);
+  //   socket.emit("create_chatroom", chatroom[0].roomId);
+  //   setChatroom(chatroom);
+  // };
+
+  const generateRoomId = (userId1, userId2) =>
+    [userId1, userId2].sort().join("");
+
+  const createChatroomsForAllUsers = async () => {
+    for (const otherUser of users) {
+      if (otherUser.id !== user.id) {
+        const roomId = generateRoomId(user.id, otherUser.id);
+
+        const payload = {
+          roomId,
+          participantA: user.id,
+          participantB: otherUser.id,
+        };
+
+        const chatroom = await chatServices.createChat(payload);
+        socket.emit("create_chatroom", roomId);
+        setChatroom(chatroom);
+      }
+    }
   };
+  // createChatroomsForAllUsers();
 
   useEffect(() => {
     socket.on("chatroom_created", () => {
@@ -83,11 +109,11 @@ const ChatHome = () => {
               <div className=" py-3">
                 {/* <ConversationList /> */}
                 <div>
-                  {filteredUsers.map((otherUser, index) => (
+                  {users.map((otherUser, index) => (
                     <div
                       className="w-full py-2 max-md:px-6 flex items-center gap-3 px-4 hover:bg-gray-50 hover:cursor-pointer hover:border-l-2 border-lime-800"
                       key={index}
-                      onClick={() => createChatroom(otherUser)}
+                      onClick={() => createChatroomsForAllUsers(otherUser)}
                     >
                       <img
                         src={otherUser.image}
