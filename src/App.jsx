@@ -148,10 +148,12 @@ function App() {
             path="mentor/application/:userId"
             element={<MentorApplication />}
           />
+          <Route element={<MenteeRoute />}>
+            <Route path="mentors/:id" element={<MentorProfile />} />
+          </Route>
         </Route>
 
         <Route element={<MenteeRoute />}>
-          <Route path="mentors/:id" element={<MentorProfile />} />
           <Route path="/mentee/dashboard" element={<DashboardLayout />}>
             <Route index element={<MenteesDashboard />} />
             <Route path="history" element={<MenteeHistory />} />

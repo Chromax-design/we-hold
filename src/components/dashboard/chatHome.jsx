@@ -26,7 +26,7 @@ const ChatHome = () => {
 
   const url =
     user.role == "mentor"
-      ? `${BASE_URL}/mentor/`
+      ? `${BASE_URL}/mentor/myMentees/${user.id}`
       : `${BASE_URL}/mentee/myMentors/${user.id}`;
 
   useEffect(() => {

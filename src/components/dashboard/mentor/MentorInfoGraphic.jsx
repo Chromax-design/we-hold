@@ -1,7 +1,7 @@
 import React from "react";
-import img1 from "../../../assets/icons/dashboards/mentees.png";
-import img2 from "../../../assets/icons/dashboards/review.png";
-import img3 from "../../../assets/icons/dashboards/time.png";
+import img2 from "../../../assets/icons/dashboards/mentees.png";
+import img3 from "../../../assets/icons/dashboards/review.png";
+import img1 from "../../../assets/icons/dashboards/time.png";
 
 const createDate = (timestamp, timeZone = "UTC") => {
   if (timestamp < 1e12) {
@@ -24,19 +24,20 @@ const createDate = (timestamp, timeZone = "UTC") => {
   ];
 
   const date = new Date(timestamp);
-  const options = { year: "numeric", month: "long", day: "numeric", timeZone };
+  const options = { year: "numeric", month: "short", timeZone };
   return new Intl.DateTimeFormat("en-US", options).format(date);
 };
 
-const MentorInfoGraphic = ({ user }) => {
+const MentorInfoGraphic = ({ user, myMentees }) => {
   const MenteeAdmin = [
     {
       id: 1,
       img: img1,
       title: "member since",
       value: `${createDate(user?.created_at)}`,
+      // value: `2022`,
     },
-    { id: 2, img: img2, title: "total mentors", value: `10` },
+    { id: 2, img: img2, title: "total mentees", value: `${myMentees.length}` },
     { id: 3, img: img3, title: "reviews", value: "10" },
   ];
   return (

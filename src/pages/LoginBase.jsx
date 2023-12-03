@@ -20,11 +20,7 @@ const LoginBase = () => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-        <Partpage
-          message={
-            "Embark on the journey of a thousand steps, turning dreams into footsteps, and footsteps into your extraordinary reality."
-          }
-        />
+        <Partpage />
 
         <div className="w-full">
           <div className="bg-white p-4 sm:p-10 max-w-lg mx-auto">

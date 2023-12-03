@@ -91,11 +91,11 @@ const Home = () => {
           </div>
         </section>
 
-        {/* <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-50">
           <div className="flex">
             <Mentees />
           </div>
-        </section> */}
+        </section>
 
         <section className="bg-white py-16 px-4">
           <div className="max-w-3xl lg:max-w-5xl mx-auto">

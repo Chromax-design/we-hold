@@ -10,7 +10,11 @@ const Mentorsignup = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 mx-auto min-h-screen">
         <div className="bg-white p-4 sm:p-10 max-w-lg mx-auto">
           <Link to={"/"}>
-            <img src={Logo} alt="" className="block w-44 sm:w-52 mx-auto my-5 sm:my-10" />
+            <img
+              src={Logo}
+              alt=""
+              className="block w-44 sm:w-52 mx-auto my-5 sm:my-10"
+            />
           </Link>
           <div className="">
             <div className="bg-white">
@@ -28,11 +32,7 @@ const Mentorsignup = () => {
             </div>
           </div>
         </div>
-        <Partpage
-          message={
-            "Embark on the journey of your dreams with the determination to take each step, for it is the accumulation of these steps that shapes the extraordinary."
-          }
-        />
+        <Partpage />
       </div>
     </div>
   );

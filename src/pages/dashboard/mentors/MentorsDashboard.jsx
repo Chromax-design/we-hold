@@ -1,17 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+
 import noMentor from "../../../assets/dashboard/no mentor.svg";
 import edit from "../../../assets/icons/dashboards/edit.png";
 import userIcon from "../../../assets/icons/user_icon.png";
 import useAuth from "../../../store/AuthStore";
 import MentorInfoGraphic from "../../../components/dashboard/mentor/MentorInfoGraphic";
+import { BASE_URL } from "../../../config/config";
+import axios from "axios";
+
+const NoMentors = () => {
+  return (
+    <div className="flex flex-col justify-center items-center mt-20">
+      <img src={noMentor} alt="" className="max-w-[350px]" />
+      <h2 className="capitalize text-lg">You have no mentees yet</h2>
+    </div>
+  );
+};
 
 const MentorsDashboard = () => {
   const { user } = useAuth();
+  const [myMentees, setMyMentees] = useState([]);
+
+  const url = `${BASE_URL}/mentor/myMentees/${user.id}`;
+
+  const MyMentees = async () => {
+    const { data } = await axios.get(url);
+    setMyMentees(data.subscribed);
+  };
+
+  useEffect(() => {
+    MyMentees();
+  }, []);
 
   return (
     <main className="bg-gray-50 p-2 sm:p-4">
-      <MentorInfoGraphic user={user} />
+      <MentorInfoGraphic user={user} myMentees={myMentees} />
 
       <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7 ">
         <div className="bg-white rounded-md shadow-xl p-4 sm:p-10 grid lg:grid-cols-12 gap-7 items-start">
@@ -77,14 +103,49 @@ const MentorsDashboard = () => {
         </div>
       </section>
       <section className="max-w-6xl mx-auto px-4 py-7 ">
-        <div className="p-5 bg-white shadow-sm">
-          <h1 className="capitalize text-2xl sm:text-4xl font-medium">
+        <div className="p-2 sm:p-5 bg-white shadow-sm space-y-4">
+          <h1 className="capitalize text-2xl sm:text-3xl font-medium">
             my mentees
           </h1>
-          <div className="flex flex-col justify-center items-center mt-20">
-            <img src={noMentor} alt="" className="max-w-[350px]" />
-            <h2 className="capitalize sm:text-lg">You have no mentees yet</h2>
-          </div>
+          {myMentees.length == 0 ? (
+            <NoMentors />
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {myMentees.map((mentor) => {
+                return (
+                  <div
+                    className="shadow-lg rounded-lg overflow-hidden"
+                    key={mentor.id}
+                  >
+                    <div className="h-[400px] md:h-[300px] overflow-hidden">
+                      <img
+                        src={mentor?.image}
+                        className="min-h-full w-full object-cover"
+                      />
+                    </div>
+                    <div className="p-5 bg-white">
+                      <h2 className="capitalize font-semibold text-lg">
+                        {`${mentor?.firstName} ${mentor?.initials}`}.
+                      </h2>
+                      <p className="my-4 text-sm line-clamp-4">{mentor?.bio}</p>
+                      <div>
+                        <Link
+                          to={`/mentor/dashboard/chat`}
+                          className="bg-amber-800 inline-block text-xs text-white px-5 py-3 rounded-full capitalize font-medium hover:bg-amber-900 group"
+                        >
+                          view in chat{" "}
+                          <FontAwesomeIcon
+                            icon={faChevronRight}
+                            className={`ml-2 text-white text-sm font-medium group-hover:ml-3 transition-all ease-in-out`}
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </section>
     </main>

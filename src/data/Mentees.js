@@ -1,66 +1,66 @@
-import mentee1 from '../assets/mentees/mentee-1.jpg'
-import mentee2 from '../assets/mentees/mentee-2.jpg'
-import mentee3 from '../assets/mentees/mentee-3.jpg'
-import mentee4 from '../assets/mentees/mentee-4.jpg'
-import mentee5 from '../assets/mentees/mentee-5.jpg'
-import mentee6 from '../assets/mentees/mentee-6.jpg'
-import mentee7 from '../assets/mentees/mentee-7.jpg'
+import mentee1 from '../assets/mentees/mentee-1.jpeg'
+import mentee2 from '../assets/mentees/mentee-2.jpeg'
+import mentee3 from '../assets/mentees/mentee-3.jpeg'
+import mentee4 from '../assets/mentees/mentee-4.jpeg'
+import mentee5 from '../assets/mentees/mentee-5.jpeg'
+import mentee6 from '../assets/mentees/mentee-6.jpeg'
+import mentee7 from '../assets/mentees/mentee-7.jpeg'
 
 export const mentees = [
   {
     id: 1,
-    name: "Susan",
-    title: "leadership mentee",
+    name: "Favour E",
+    title: "mentee",
     photo: `${mentee1}`,
     review:
-      "Naz is an amazing person and a wonderful mentor. She is supportive and knowledgeable with extensive practical experience. Having been a manager at Netflix, she also knows a ton about working with teams at scale. Highly recommended.",
+      "Since my encounter with We Hold A Hand, I've gained some level of clarity and direction in my business",
   },
   {
     id: 2,
-    name: "Bobby",
-    title: "software mentee",
+    name: "Evbu E",
+    title: "mentee",
     photo: `${mentee2}`,
     review:
-      "Brandon has been supporting me with a software engineering job hunt and has provided amazing value with his industry knowledge, tips unique to my situation and support as I prepared for my interviews and applications",
+      "The platform has given me opportunity to look beyond my limitations and pointed me in the right direction in my career",
   },
   {
     id: 3,
-    name: "Clara",
-    title: "business mentee",
+    name: "Taiwo O.",
+    title: "mentee",
     photo: `${mentee3}`,
     review:
-      "Greg is literally helping me achieve my dreams. I had very little idea of what I was doing – Greg was the missing piece that offered me down to earth guidance in business.",
+      "The platform has helped me find purpose and clarity in my career. I feel like I move with speed and in the right direction.",
   },
   {
     id: 4,
-    name: "Adreil",
-    title: "design mentee",
+    name: "Mercy A.",
+    title: "mentee",
     photo: `${mentee4}`,
     review:
-      "Anna really helped me a lot. Her mentoring was very structured, she could answer all my questions and inspired me a lot. I can already see that this has made me even more successful with my agency.",
+      "The platform has helped me interact well with people and has also provided networking opportunities that has shaped me professionally.",
   },
   {
     id: 5,
-    name: "Sandra",
-    title: "java mentee",
+    name: "Emily P.",
+    title: "mentee",
     photo: `${mentee5}`,
     review:
-      "Andrii is the best mentor I have ever met. He explains things clearly and helps to solve almost any problem. He taught me so many things about the world of Java in so a short period of time!",
+      "We hold a hand has inspired me to pursue my professional career since I can see what I can accomplish and how much more is yet in store for me.",
   },
   {
     id: 6,
-    name: "Nicole",
-    title: "web dev mentee",
+    name: "Emmanuel O.",
+    title: "mentee",
     photo: `${mentee6}`,
     review:
-      "Sandrina helped me improve as an engineer. Looking back, I took a huge step, beyond my expectations.",
+      "Thanks to my mentor's support, I was able to form a close-knit group of friends who I could rely on and enjoy spending time with",
   },
   {
     id: 7,
-    name: "Telsa",
-    title: "java mentee",
+    name: "Demi C",
+    title: "mentee",
     photo: `${mentee7}`,
     review:
-      "Sandrina helped me improve as an engineer. Looking back, I took a huge step, beyond my expectations.",
+      "Thanks to my mentor's unwavering support and guidance, I have achieved amazing things in my career - things that I never would have thought possible just a few short years ago.",
   },
 ];

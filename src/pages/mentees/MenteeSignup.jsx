@@ -10,15 +10,15 @@ const MenteeSignup = () => {
   return (
     <div className="w-full ">
       <div className="grid grid-cols-1 lg:grid-cols-2 mx-auto min-h-screen">
-        <Partpage
-          message={
-            "In the dance of dreams and reality, each step is a note, and the music is composed by the journey of one's heart."
-          }
-        />
+        <Partpage />
 
         <div className="bg-white p-4 sm:p-10 max-w-lg mx-auto">
           <Link to={"/"}>
-            <img src={Logo} alt="" className="block w-44 sm:w-52 mx-auto my-5 sm:my-10" />
+            <img
+              src={Logo}
+              alt=""
+              className="block w-44 sm:w-52 mx-auto my-5 sm:my-10"
+            />
           </Link>
           <div className="">
             <div className="bg-white">
