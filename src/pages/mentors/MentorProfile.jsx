@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { loadStripe } from "@stripe/stripe-js";
 import { BASE_URL } from "../../config/config";
 import marker from "../../assets/icons/map.png";
 import userIcon from "../../assets/icons/user_icon.png";
@@ -36,43 +35,6 @@ const MentorProfile = () => {
     }
   }, []);
 
-  const product = {
-    name: `${mentor?.firstName} ${mentor?.initials}`,
-    mentorId: `${mentor?.id}`,
-    menteeId: `${user?.id}`,
-    price: 1000,
-    description: "mentor subscription",
-    quantity: 1,
-  };
-
-  const makePayment = async () => {
-    setLoader(true);
-    const stripe = await loadStripe(
-      "pk_test_51N2arXIYmnZ4DnJJ1gSvYCDhGFLAVDTHGPo8vTJTdJPnioyLZYnYAJUho80iMQsHPLXRbFD0SYqyt4y1hmps79ci00xEmplYtF"
-    );
-    const body = { product };
-    const headers = {
-      "Content-Type": "application/json",
-    };
-
-    const response = await fetch(`${BASE_URL}/stripe/create-checkout-session`, {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(body),
-    });
-
-    const session = await response.json();
-
-    const result = stripe.redirectToCheckout({
-      sessionId: session.id,
-    });
-
-    if (result.error) {
-      console.log(result.error);
-      setLoader(false);
-    }
-    setLoader(false);
-  };
 
   return (
     <>
@@ -118,13 +80,13 @@ const MentorProfile = () => {
                     quick responder
                   </h4>
                 </div>
-                <button
-                  to={""}
+                <Link
+                  to={`/checkout/${mentor?.id}`}
                   className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
-                  onClick={makePayment}
+                  // onClick={makePayment}
                 >
                   + subscribe
-                </button>
+                </Link>
               </div>
             </div>
           </div>

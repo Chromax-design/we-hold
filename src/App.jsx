@@ -83,6 +83,7 @@ import Chat from "./components/dashboard/Chat";
 import StripeSuccess from "./pages/stripeSuccess";
 import StripeCancel from "./pages/stripeCancel";
 import SearchResults from "./pages/mentors/SearchResults";
+import CheckOut from "./pages/CheckOut";
 
 const Layout = () => {
   return (
@@ -137,6 +138,7 @@ function App() {
           <Route path="Remote-jobs" element={<RemoteJobs />} />
           <Route path="blog" element={<Blog />} />
           <Route path="mentors" element={<Mentors />} />
+          <Route path="checkout/:id" element={<CheckOut />} />
 
           <Route path="search/:mentorType" element={<Search />} />
           <Route path="search" element={<SearchResults />} />
