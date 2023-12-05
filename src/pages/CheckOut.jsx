@@ -5,7 +5,7 @@ import useLoader from "../store/loaderStore";
 import PreLoader from "../components/PreLoader";
 import axios from "axios";
 import { BASE_URL } from "../config/config";
-import PayPalButton from "../components/PaypalButton";
+import PayPalButton from "../components/PayPalButton";
 import StripeButton from "../components/StripeButton";
 
 const CheckOut = () => {
