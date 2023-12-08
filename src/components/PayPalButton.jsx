@@ -30,7 +30,8 @@ const PayPalButton = () => {
             return actions.order.capture().then((details) => {
               // Send details to your server for verification
               console.log(details)
-              axios.post(`${BASE_URL}/payPal/payWithPayPal`, { orderId: data.orderID });
+              console.log(data)
+              axios.post(`${BASE_URL}/payPal/payWithPayPal`, { details: details });
             });
           },
         })
