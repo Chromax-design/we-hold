@@ -47,6 +47,8 @@ const CheckOut = () => {
     quantity: 1,
   };
 
+  console.log(product)
+
   return (
     <>
       {Loader && <PreLoader />}
