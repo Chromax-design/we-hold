@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import axios from "axios"
+import { BASE_URL } from "../config/config";
 
 const PayPalButton = () => {
   useEffect(() => {
@@ -29,7 +30,7 @@ const PayPalButton = () => {
             return actions.order.capture().then((details) => {
               // Send details to your server for verification
               console.log(details)
-              axios.post("/payPal/payWithPayPal", { orderId: data.orderID });
+              axios.post(`${BASE_URL}/payPal/payWithPayPal`, { orderId: data.orderID });
             });
           },
         })
