@@ -8,7 +8,13 @@ import photo from "../../assets/dashboard/photo.png";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 
-const Input = ({ message, setMessage, handleImageChange, handleDocChange, sendMessage }) => {
+const Input = ({
+  message,
+  setMessage,
+  handleImageChange,
+  handleDocChange,
+  sendMessage,
+}) => {
   const [showEmoji, setShowEmoji] = useState(false);
   const [addFile, setAddFile] = useState(false);
   const addEmoji = (e) => {
@@ -21,7 +27,7 @@ const Input = ({ message, setMessage, handleImageChange, handleDocChange, sendMe
   return (
     <div className=" w-full bg-white relative">
       <div className="flex items-center gap-3 h-[60px] p-2">
-        <button type="button" onClick={() => setShowEmoji(!showEmoji)}>
+        <button type="button" onClick={() => setShowEmoji(!showEmoji)} className="max-sm:hidden">
           <img src={emoji} alt="" className="w-8" />
         </button>
         <div className="w-full">
@@ -49,7 +55,7 @@ const Input = ({ message, setMessage, handleImageChange, handleDocChange, sendMe
           </button>
         </div>
         {showEmoji && (
-          <div className="absolute bottom-full left-0 z-20">
+          <div className="absolute bottom-full max-sm:hidden left-0 z-20 max-w-full">
             <Picker
               data={data}
               emojiSize={20}
@@ -63,24 +69,30 @@ const Input = ({ message, setMessage, handleImageChange, handleDocChange, sendMe
         {addFile && (
           <div className="absolute bottom-full right-2 z-20 max-w-sm bg-white rounded-md shadow-lg w-[200px] text-sm font-medium">
             <div className="cursor-pointer hover:bg-gray-50 p-3">
-              <input type="file" name="" id="img" className="hidden" onChange={handleImageChange} accept="image/*" />
+              <input
+                type="file"
+                name=""
+                id="img"
+                className="hidden"
+                onChange={handleImageChange}
+                accept="image/*"
+              />
               <label htmlFor="img" className="  flex gap-3 items-center">
-                <img
-                  src={photo}
-                  alt=""
-                  className="w-7 hover:cursor-pointer"
-                />
+                <img src={photo} alt="" className="w-7 hover:cursor-pointer" />
                 <span className="capitalize">photos</span>
               </label>
             </div>
             <div className="cursor-pointer hover:bg-gray-50 p-3">
-              <input type="file" name="" id="doc" className="hidden" onChange={handleDocChange} accept=".pdf" />
+              <input
+                type="file"
+                name=""
+                id="doc"
+                className="hidden"
+                onChange={handleDocChange}
+                accept=".pdf"
+              />
               <label htmlFor="doc" className="flex gap-3 items-center">
-                <img
-                  src={attach}
-                  alt=""
-                  className="w-7 hover:cursor-pointer"
-                />
+                <img src={attach} alt="" className="w-7 hover:cursor-pointer" />
                 <span className="capitalize">documents</span>
               </label>
             </div>

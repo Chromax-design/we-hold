@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
 import { BASE_URL } from "../config/config";
 
-const PayPalButton = () => {
+const PayPalButton = ({ product }) => {
   useEffect(() => {
     // Load the PayPal script dynamically
     const script = document.createElement("script");
@@ -29,9 +29,12 @@ const PayPalButton = () => {
             // Capture the funds when the buyer approves the payment
             return actions.order.capture().then((details) => {
               // Send details to your server for verification
-              console.log(details)
-              console.log(data)
-              axios.post(`${BASE_URL}/payPal/payWithPayPal`, { details: details });
+              console.log(details);
+              console.log(data);
+              axios.post(`${BASE_URL}/payPal/payWithPayPal`, {
+                details,
+                product,
+              });
             });
           },
         })

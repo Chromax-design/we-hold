@@ -57,7 +57,7 @@ const CheckOut = () => {
           </p>
 
           <div className="my-10">
-            <PayPalButton />
+            <PayPalButton product={product} />
             <p className="text-center font-semibold text-lg uppercase">or</p>
             <StripeButton product={product} setLoader={setLoader} />
           </div>
