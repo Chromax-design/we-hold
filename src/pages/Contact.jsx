@@ -8,7 +8,7 @@ const Contact = () => {
     <>
       <main className="w-full break-words pb-20 bg-gray-50">
         <section className="w-full bg-gray-5 mx-auto space-y-10 px-3 py-14">
-          <div className="max-w-5xl mx-auto pt-10 grid md:grid-cols-2 gap-10">
+          <div className="max-w-5xl mx-auto pt-10 grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-2">
               <h1 className="capitalize max-lg:text-3xl lg:text-5xl font-bold mb-5">
                 contact us

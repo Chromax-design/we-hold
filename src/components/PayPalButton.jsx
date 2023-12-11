@@ -2,9 +2,8 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../config/config";
 
-const PayPalButton = ({ product }) => {
+const PayPalButton = ({ checkOut }) => {
   useEffect(() => {
-    // Load the PayPal script dynamically
     const script = document.createElement("script");
     script.src =
       "https://www.paypal.com/sdk/js?client-id=AdY8T7xzo2_QnQPGAQl_x7DuuMrIMWDXa9L0YWg3AN8FYOqm8LmbJnOzGK3UPh8KhuxkyabwI14uybRf&currency=USD";
@@ -19,7 +18,7 @@ const PayPalButton = ({ product }) => {
                 {
                   amount: {
                     currency_code: "USD",
-                    value: "1.00", // Specify your payment amount
+                    value: `${50}`, // Specify your payment amount
                   },
                 },
               ],
@@ -29,11 +28,11 @@ const PayPalButton = ({ product }) => {
             // Capture the funds when the buyer approves the payment
             return actions.order.capture().then((details) => {
               // Send details to your server for verification
-              console.log(details);
-              console.log(data);
+              // console.log(details);
+              // console.log(data);
               axios.post(`${BASE_URL}/payPal/payWithPayPal`, {
                 details,
-                product,
+                checkOut,
               });
             });
           },

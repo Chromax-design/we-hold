@@ -108,7 +108,7 @@ const Home = () => {
               study plans, regular check-ins, and unlimited actionable support.
               Be part of an online mentor community that spans across the globe.
             </p>
-            <Mentor />
+            <Mentor setLoader={setLoader} />
           </div>
         </section>
 

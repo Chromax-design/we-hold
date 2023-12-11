@@ -69,7 +69,7 @@ const Search = () => {
                             {`${item?.firstName} ${item?.initials}.`}
                           </h2>
                           <span className="capitalize font-medium text-sm tracking-wide">
-                            {item.title}
+                            {item.industry}
                           </span>
                         </div>
                         <div className="font-medium">$45/Month</div>

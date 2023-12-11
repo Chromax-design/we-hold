@@ -1,6 +1,6 @@
 import React from "react";
 import img2 from "../../../assets/icons/dashboards/mentees.png";
-import img3 from "../../../assets/icons/dashboards/review.png";
+import img3 from "../../../assets/icons/dashboards/welcome.png";
 import img1 from "../../../assets/icons/dashboards/time.png";
 
 const createDate = (timestamp, timeZone = "UTC") => {
@@ -37,7 +37,7 @@ const MenteeInfoGraphic = ({ user, mymentors }) => {
       value: `${createDate(user?.created_at)}`,
     },
     { id: 2, img: img2, title: "total mentors", value: `${mymentors.length}` },
-    { id: 3, img: img3, title: "reviews", value: "10" },
+    { id: 3, img: img3, title: "Welcome back", value: `${user.firstName}` },
   ];
 
   return (

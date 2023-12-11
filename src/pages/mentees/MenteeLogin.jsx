@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Google from "../../assets/companies/google-color.svg";
 import Login from "../../components/Login";
 import LoginGoogle from "../../components/loginGoogle";
 

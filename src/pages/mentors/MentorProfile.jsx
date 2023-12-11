@@ -3,38 +3,112 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../config/config";
 import marker from "../../assets/icons/map.png";
 import userIcon from "../../assets/icons/user_icon.png";
-import { mentees } from "../../data/Mentees";
 import axios from "axios";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 import useAuth from "../../store/AuthStore";
+import { handleReviews } from "../../utils/menteeHandlers";
+import checkOutStore from "../../store/checkOutStore";
+import checked from "../../assets/icons/checked.png";
+
+const createDate = (timestamp, timeZone = "UTC") => {
+  if (timestamp < 1e12) {
+    timestamp *= 1000;
+  }
+
+  const date = new Date(timestamp);
+  const options = { year: "numeric", day: "numeric", month: "short", timeZone };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
+};
 
 const MentorProfile = () => {
-  const navigate = useNavigate();
   const { user } = useAuth();
+  const { setCheckOut } = checkOutStore();
+  const navigate = useNavigate();
+  const initialState = { review: "" };
+  const [review, setReview] = useState(initialState);
+  const [allReviews, setAllReviews] = useState([]);
   const { Loader, setLoader } = useLoader();
   const { id } = useParams();
   const [mentor, setMentor] = useState([]);
-  const url = `${BASE_URL}/mentor/${id}`;
+  const [sub, setSub] = useState(true);
+
+  useEffect(() => {
+    try {
+      const url = `${BASE_URL}/mentee/checksubscribed/${id}`;
+      const subCheck = async () => {
+        const { data } = await axios.get(url);
+        setSub(data.expired);
+      };
+      subCheck();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     try {
       const getMentor = async () => {
+        const url = `${BASE_URL}/mentor/${id}`;
         setLoader(true);
         const { data } = await axios.get(url);
         if (data.profile.length == 0) {
           navigate("/404");
         }
-        setMentor(data.profile[0]);
+        const details = data.profile[0];
+        const checkOutData = {
+          name: `${details.firstName} ${details.initials}`,
+          mentorId: details.id,
+          menteeId: user.id,
+          price: details.price ?? "50",
+          description: "mentor subscription",
+          quantity: 1,
+        };
+        setCheckOut(checkOutData);
+        setMentor(details);
         setLoader(false);
       };
 
       getMentor();
     } catch (error) {
       console.log(error);
+      setLoader(false);
     }
   }, []);
 
+  useEffect(() => {
+    try {
+      const url = `${BASE_URL}/mentee/reviews/${mentor.id}`;
+      setLoader(true);
+      const getReviews = async () => {
+        const { data } = await axios.get(url);
+        setAllReviews(data.reviews);
+        setLoader(false);
+      };
+      getReviews();
+    } catch (error) {
+      console.log(error);
+      setLoader(false);
+    }
+  }, [mentor]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setReview((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const reviewData = {
+      review: review.review,
+      mentee_Id: user.id,
+      mentor_Id: mentor.id,
+    };
+    handleReviews(reviewData, setLoader);
+    setReview(initialState);
+  };
 
   return (
     <>
@@ -44,7 +118,7 @@ const MentorProfile = () => {
           <div className="lg:grid grid-cols-12 gap-10 max-lg:space-y-2">
             <div className="col-span-3">
               <img
-                src={mentor?.image}
+                src={mentor?.image ? mentor.image : userIcon}
                 alt=""
                 className="rounded-full shadow-md border-2 border-lime-700 w-full max-lg:max-w-sm max-lg:mx-auto"
               />
@@ -80,13 +154,21 @@ const MentorProfile = () => {
                     quick responder
                   </h4>
                 </div>
-                <Link
-                  to={`/checkout/${mentor?.id}`}
-                  className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
-                  // onClick={makePayment}
-                >
-                  + subscribe
-                </Link>
+                {sub == true ? (
+                  <Link
+                    to={`/checkout/${mentor?.id}`}
+                    className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
+                  >
+                    + subscribe
+                  </Link>
+                ) : (
+                  <button
+                  type="button"
+                    className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
+                  >
+                    <img src={checked} alt="" width={25} className="mr-2"/> <span>subscribed</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -132,27 +214,57 @@ const MentorProfile = () => {
               mentee reviews
             </h2>
             <div className="space-y-7">
-              {mentees.slice(0, 2).map((item, index) => {
-                return (
-                  <div key={index}>
-                    <div className="flex gap-2 items-center">
-                      <img src={userIcon} alt="" className="w-[50px]" />
-                      <div className="capitalize">
-                        <h3 className="font-semibold">{item?.name}</h3>
-                        <p className="text-xs tracking-wider">june 12 1911</p>
+              {allReviews.length == 0 ? (
+                <p className="text-lg capitalize italic">No reviews yet...</p>
+              ) : (
+                allReviews.map((item, index) => {
+                  return (
+                    <div key={index}>
+                      <div className="flex gap-2 items-center">
+                        <img src={item.image} alt="" className="w-[50px]" />
+                        <div className="capitalize">
+                          <h3 className="font-semibold">{`${item?.firstName} ${item?.initials}`}</h3>
+                          <p className="text-xs tracking-wider">
+                            {createDate(item.created_at)}
+                          </p>
+                        </div>
                       </div>
+                      <p className="italic mt-3 text-sm first-letter:uppercase">
+                        {item?.review}
+                      </p>
                     </div>
-                    <p className="italic mt-3 text-sm">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Reiciendis labore voluptates, facere similique ullam
-                      debitis repudiandae quam molestias obcaecati magnam.
-                    </p>
-                  </div>
-                );
-              })}
+                  );
+                })
+              )}
             </div>
           </div>
         </section>
+
+        {sub == false ? (
+          <section className="max-w-4xl mx-auto p-4 space-y-2">
+            <div className="ring-1 ring-gray-100 rounded-md p-10 shadow-sm bg-white">
+              <h2 className="capitalize text-xl font-semibold mb-5">
+                write a review
+              </h2>
+              <form action="" className="space-y-2" onSubmit={handleSubmit}>
+                <textarea
+                  name="review"
+                  className=" mt-3 p-2 rounded-sm border-lime-700 border w-full resize-none h-auto"
+                  value={review.review}
+                  onChange={handleChange}
+                ></textarea>
+                <button
+                  type="submit"
+                  className="bg-lime-800 inline-block text-sm text-white px-5 py-3 rounded-md capitalize font-medium hover:bg-lime-900 group"
+                >
+                  send
+                </button>
+              </form>
+            </div>
+          </section>
+        ) : (
+          ""
+        )}
       </main>
     </>
   );

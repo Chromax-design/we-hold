@@ -1,53 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import useAuth from "../store/AuthStore";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import useLoader from "../store/loaderStore";
 import PreLoader from "../components/PreLoader";
-import axios from "axios";
-import { BASE_URL } from "../config/config";
 import PayPalButton from "../components/PayPalButton";
 import StripeButton from "../components/StripeButton";
+import checkOutStore from "../store/checkOutStore";
 
 const CheckOut = () => {
-  const { user } = useAuth();
+  const { checkOut} = checkOutStore();
   const { Loader, setLoader } = useLoader();
-  const { id } = useParams();
-  const [mentor, setMentor] = useState([]);
-  const url = `${BASE_URL}/mentor/${id}`;
 
   const navigate = useNavigate();
   const handleNavigate = () => {
     navigate(-1);
   };
 
-  useEffect(() => {
-    try {
-      const getMentor = async () => {
-        setLoader(true);
-        const { data } = await axios.get(url);
-        if (data.profile.length == 0) {
-          navigate("/404");
-        }
-        setMentor(data.profile[0]);
-        setLoader(false);
-      };
-
-      getMentor();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
-
-  const product = {
-    name: `${mentor?.firstName} ${mentor?.initials}`,
-    mentorId: `${mentor?.id}`,
-    menteeId: `${user?.id}`,
-    price: 1000,
-    description: "mentor subscription",
-    quantity: 1,
-  };
-
-  console.log(product)
+  console.log(checkOut)
 
   return (
     <>
@@ -59,9 +27,9 @@ const CheckOut = () => {
           </p>
 
           <div className="my-10">
-            <PayPalButton product={product} />
+            <PayPalButton checkOut={checkOut} />
             <p className="text-center font-semibold text-lg uppercase">or</p>
-            <StripeButton product={product} setLoader={setLoader} />
+            <StripeButton checkOut={checkOut} setLoader={setLoader} />
           </div>
 
           <p className="mt-5">

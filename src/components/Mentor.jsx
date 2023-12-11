@@ -6,21 +6,24 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import { BASE_URL } from "../config/config";
 
-const Mentor = () => {
+const Mentor = ({setLoader}) => {
   const [mentor, setMentors] = useState([]);
   const url = `${BASE_URL}/mentor/`;
 
   useEffect(() => {
     try {
+      setLoader(true)
       const getMentors = async () => {
         const { data } = await axios.get(url, {
           headers: { "Content-Type": "application/json" },
         });
         setMentors(data.mentors);
+        setLoader(false)
       };
       getMentors();
     } catch (error) {
       console.log(error);
+      setLoader(false)
     }
   }, []);
   
