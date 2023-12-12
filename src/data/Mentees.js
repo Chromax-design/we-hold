@@ -11,7 +11,7 @@ export const mentees = [
     id: 1,
     name: "Favour E",
     title: "mentee",
-    photo: `${mentee1}`,
+    photo: `${mentee2}`,
     review:
       "Since my encounter with We Hold A Hand, I've gained some level of clarity and direction in my business",
   },
@@ -19,7 +19,7 @@ export const mentees = [
     id: 2,
     name: "Evbu E",
     title: "mentee",
-    photo: `${mentee2}`,
+    photo: `${mentee3}`,
     review:
       "The platform has given me opportunity to look beyond my limitations and pointed me in the right direction in my career",
   },
@@ -27,7 +27,7 @@ export const mentees = [
     id: 3,
     name: "Taiwo O.",
     title: "mentee",
-    photo: `${mentee3}`,
+    photo: `${mentee4}`,
     review:
       "The platform has helped me find purpose and clarity in my career. I feel like I move with speed and in the right direction.",
   },
@@ -35,7 +35,7 @@ export const mentees = [
     id: 4,
     name: "Mercy A.",
     title: "mentee",
-    photo: `${mentee4}`,
+    photo: `${mentee5}`,
     review:
       "The platform has helped me interact well with people and has also provided networking opportunities that has shaped me professionally.",
   },
@@ -43,7 +43,7 @@ export const mentees = [
     id: 5,
     name: "Emily P.",
     title: "mentee",
-    photo: `${mentee5}`,
+    photo: `${mentee6}`,
     review:
       "We hold a hand has inspired me to pursue my professional career since I can see what I can accomplish and how much more is yet in store for me.",
   },
@@ -51,7 +51,7 @@ export const mentees = [
     id: 6,
     name: "Emmanuel O.",
     title: "mentee",
-    photo: `${mentee6}`,
+    photo: `${mentee7}`,
     review:
       "Thanks to my mentor's support, I was able to form a close-knit group of friends who I could rely on and enjoy spending time with",
   },
@@ -59,7 +59,7 @@ export const mentees = [
     id: 7,
     name: "Demi C",
     title: "mentee",
-    photo: `${mentee7}`,
+    photo: `${mentee1}`,
     review:
       "Thanks to my mentor's unwavering support and guidance, I have achieved amazing things in my career - things that I never would have thought possible just a few short years ago.",
   },
