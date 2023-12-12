@@ -3,6 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { BASE_URL } from "../config/config";
 
 const StripeButton = ({checkOut, setLoader}) => {
+  console.log(checkOut)
   const makePayment = async () => {
     setLoader(true);
     const stripe = await loadStripe(
