@@ -7,7 +7,7 @@ import StripeButton from "../components/StripeButton";
 import checkOutStore from "../store/checkOutStore";
 
 const CheckOut = () => {
-  const { checkOut} = checkOutStore();
+  const { checkOut } = checkOutStore();
   const { Loader, setLoader } = useLoader();
 
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const CheckOut = () => {
     navigate(-1);
   };
 
-  console.log(checkOut)
+  console.log(checkOut);
 
   return (
     <>
@@ -29,7 +29,7 @@ const CheckOut = () => {
           <div className="my-10">
             <PayPalButton checkOut={checkOut} />
             <p className="text-center font-semibold text-lg uppercase">or</p>
-            <StripeButton checkOut={checkOut} setLoader={setLoader} />
+            <StripeButton setLoader={setLoader} />
           </div>
 
           <p className="mt-5">

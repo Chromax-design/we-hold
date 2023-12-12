@@ -1,10 +1,12 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { BASE_URL } from "../config/config";
+import checkOutStore from "../store/checkOutStore";
 
-const StripeButton = ({checkOut, setLoader}) => {
-  console.log(checkOut)
+const StripeButton = ({ setLoader }) => {
+  const { checkOut } = checkOutStore();
   const makePayment = async () => {
+    console.log(checkOut);
     setLoader(true);
     const stripe = await loadStripe(
       "pk_test_51N2arXIYmnZ4DnJJ1gSvYCDhGFLAVDTHGPo8vTJTdJPnioyLZYnYAJUho80iMQsHPLXRbFD0SYqyt4y1hmps79ci00xEmplYtF"
@@ -35,7 +37,10 @@ const StripeButton = ({checkOut, setLoader}) => {
 
   return (
     <div>
-      <button className="capitalize py-3 px-5 text-center text-sm w-full my-5 block text-white font-normal shadow-sm hover:bg-lime-800 outline bg-lime-700 rounded-sm" onClick={makePayment}>
+      <button
+        className="capitalize py-3 px-5 text-center text-sm w-full my-5 block text-white font-normal shadow-sm hover:bg-lime-800 outline bg-lime-700 rounded-sm"
+        onClick={makePayment}
+      >
         pay with stripe
       </button>
     </div>
