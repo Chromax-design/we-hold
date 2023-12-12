@@ -33,18 +33,7 @@ const MentorProfile = () => {
   const [mentor, setMentor] = useState([]);
   const [sub, setSub] = useState(true);
 
-  useEffect(() => {
-    try {
-      const url = `${BASE_URL}/mentee/checksubscribed/${id}`;
-      const subCheck = async () => {
-        const { data } = await axios.get(url);
-        setSub(data.expired);
-      };
-      subCheck();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  
 
   useEffect(() => {
     try {
@@ -89,6 +78,20 @@ const MentorProfile = () => {
     } catch (error) {
       console.log(error);
       setLoader(false);
+    }
+  }, [mentor]);
+
+  useEffect(() => {
+    try {
+      const url = `${BASE_URL}/mentee/checksubscribed/${mentor.id}/${user.id}`;
+      const subCheck = async () => {
+        const { data } = await axios.get(url);
+        // console.log(data)
+        setSub(data.expired);
+      };
+      subCheck();
+    } catch (error) {
+      console.log(error);
     }
   }, [mentor]);
 
@@ -163,10 +166,11 @@ const MentorProfile = () => {
                   </Link>
                 ) : (
                   <button
-                  type="button"
+                    type="button"
                     className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
                   >
-                    <img src={checked} alt="" width={25} className="mr-2"/> <span>subscribed</span>
+                    <img src={checked} alt="" width={25} className="mr-2" />{" "}
+                    <span>subscribed</span>
                   </button>
                 )}
               </div>
