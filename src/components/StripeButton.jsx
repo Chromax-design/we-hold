@@ -2,13 +2,13 @@ import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { BASE_URL } from "../config/config";
 
-const StripeButton = ({product, setLoader}) => {
+const StripeButton = ({checkOut, setLoader}) => {
   const makePayment = async () => {
     setLoader(true);
     const stripe = await loadStripe(
       "pk_test_51N2arXIYmnZ4DnJJ1gSvYCDhGFLAVDTHGPo8vTJTdJPnioyLZYnYAJUho80iMQsHPLXRbFD0SYqyt4y1hmps79ci00xEmplYtF"
     );
-    const body = { product };
+    const body = { checkOut };
     const headers = {
       "Content-Type": "application/json",
     };
