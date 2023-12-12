@@ -28,7 +28,7 @@ const createDate = (timestamp, timeZone = "UTC") => {
   return new Intl.DateTimeFormat("en-US", options).format(date);
 };
 
-const MentorInfoGraphic = ({ user, myMentees }) => {
+const MentorInfoGraphic = ({ user, myMentees, reviewCount }) => {
   const MenteeAdmin = [
     {
       id: 1,
@@ -38,7 +38,7 @@ const MentorInfoGraphic = ({ user, myMentees }) => {
       // value: `2022`,
     },
     { id: 2, img: img2, title: "total mentees", value: `${myMentees.length}` },
-    { id: 3, img: img3, title: "reviews", value: "10" },
+    { id: 3, img: img3, title: "reviews", value: `${reviewCount}` },
   ];
   return (
     <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7">

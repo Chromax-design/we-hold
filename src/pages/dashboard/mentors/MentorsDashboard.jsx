@@ -23,6 +23,7 @@ const NoMentors = () => {
 const MentorsDashboard = () => {
   const { user } = useAuth();
   const [myMentees, setMyMentees] = useState([]);
+  const [reviewCount, setReviewCount] = useState(0);
 
   const url = `${BASE_URL}/mentor/myMentees/${user.id}`;
 
@@ -31,13 +32,24 @@ const MentorsDashboard = () => {
     setMyMentees(data.subscribed);
   };
 
+  const reviews = async () => {
+    const url = `${BASE_URL}/mentor/reviews/${user.id}`;
+    const { data } = await axios.get(url);
+    setReviewCount(data.count);
+    console.log(data);
+  };
+
   useEffect(() => {
     MyMentees();
   }, []);
 
+  useEffect(() => {
+    reviews();
+  }, []);
+
   return (
     <main className="bg-gray-50 p-2 sm:p-4">
-      <MentorInfoGraphic user={user} myMentees={myMentees} />
+      <MentorInfoGraphic user={user} myMentees={myMentees} reviewCount={reviewCount} />
 
       <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7 ">
         <div className="bg-white rounded-md shadow-xl p-4 sm:p-10 grid lg:grid-cols-12 gap-7 items-start">
