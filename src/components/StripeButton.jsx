@@ -9,7 +9,7 @@ const StripeButton = ({ setLoader }) => {
     console.log(checkOut);
     setLoader(true);
     const stripe = await loadStripe(
-      "pk_test_51N2arXIYmnZ4DnJJ1gSvYCDhGFLAVDTHGPo8vTJTdJPnioyLZYnYAJUho80iMQsHPLXRbFD0SYqyt4y1hmps79ci00xEmplYtF"
+      "pk_live_51N2arXIYmnZ4DnJJADIrHtXGUSDXLYB1tXnF7Y0MaGtC8HXZf3yFnGlFkfOSRif3DBOsJFcHrSQLSqtIhAYt3zsW004p8lRt6d"
     );
     const body = { checkOut };
     const headers = {

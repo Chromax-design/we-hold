@@ -6,7 +6,7 @@ const PayPalButton = ({ checkOut }) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "https://www.paypal.com/sdk/js?client-id=AdY8T7xzo2_QnQPGAQl_x7DuuMrIMWDXa9L0YWg3AN8FYOqm8LmbJnOzGK3UPh8KhuxkyabwI14uybRf&currency=USD";
+      "https://www.paypal.com/sdk/js?client-id=ASfxNwn0CcjjFb8xdselsMCB1tIc279UQb0dbXqpG7sPYbdEaAeJ1q80WZzdl-HI63ffmOzAhyt-GKMB&currency=USD";
     script.async = true;
     script.onload = () => {
       // Render the PayPal button when the script is loaded
