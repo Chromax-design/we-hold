@@ -52,7 +52,7 @@ const Home = () => {
                 <div className="p-2 sm:p-4">
                   <div>
                     <h1 className="text-xl sm:text-2xl bold mb-5">
-                      Guiding Africa's Youth with trusted MENTORS to navigate
+                      Guiding Africa's Youth with trusted <span className="font-extrabold">MENTORS</span> to navigate
                       knowledge gaps, boost accountability, reignite motivation
                       and expand networks
                     </h1>
