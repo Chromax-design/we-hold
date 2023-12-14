@@ -52,16 +52,11 @@ const Home = () => {
                 <div className="p-2 sm:p-4">
                   <div>
                     <h1 className="text-xl sm:text-2xl bold mb-5">
-                      Join our robust mentorship community to get guidance and
-                      support from our{" "}
-                      <span className="font-bold capitalize">
-                        reputable Mentors
-                      </span>
-                    </h1>
-                    <p className="max-sm:text-xs">
                       Guiding Africa's Youth with trusted MENTORS to navigate
                       knowledge gaps, boost accountability, reignite motivation
                       and expand networks
+                    </h1>
+                    <p className="max-sm:text-xs">
                     </p>
                   </div>
                   <form

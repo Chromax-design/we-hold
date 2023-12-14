@@ -37,9 +37,9 @@ export const handleRegister = async (
     setLoader(false);
   } catch (error) {
     setLoader(false);
-    const errorMessage = error.response?.data?.message || "An error occurred";
     console.log(error);
-    toast.error(`Error: ${errorMessage}`);
+    toast.error(error.response.data.message);
+    
   }
 };
 
