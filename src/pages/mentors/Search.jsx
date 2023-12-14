@@ -59,7 +59,7 @@ const Search = () => {
                     <div className="h-[370px] md:h-[270px] overflow-hidden lg:col-span-3">
                       <img
                         src={item?.image}
-                        className="min-h-full w-full object-cover"
+                        className="min-h-full w-full lg:object-cover"
                       />
                     </div>
                     <div className="p-4 sm:p-7 bg-white lg:col-span-9">
@@ -74,7 +74,7 @@ const Search = () => {
                         </div>
                         <div className="font-medium">$45/Month</div>
                       </div>
-                      <p className="mb-4 mt-2 max-lg:text-sm line-clamp-4">
+                      <p className="mb-4 mt-2 max-lg:text-sm line-clamp-4 break-words">
                         {item.bio}
                       </p>
                       <Link

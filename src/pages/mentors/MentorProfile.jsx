@@ -123,7 +123,7 @@ const MentorProfile = () => {
               <img
                 src={mentor?.image ? mentor.image : userIcon}
                 alt=""
-                className="rounded-full shadow-md border-2 border-lime-700 w-full max-lg:max-w-sm max-lg:mx-auto"
+                className="shadow-md border-2 border-lime-700 w-full h-full max-lg:max-w-sm max-lg:mx-auto"
               />
             </div>
             <div className="col-span-9">
@@ -141,7 +141,7 @@ const MentorProfile = () => {
                   </div>
                 </div>
                 <div className="flex flex-col lg:items-center">
-                  <span className="text-3xl font-semibold">{`${mentor?.price} || 50$`}</span>
+                  <span className="text-3xl font-semibold">{`$${mentor.price ?? "50"}`}</span>
                   <span className="text-xs font-semibold">monthly</span>
                 </div>
               </div>

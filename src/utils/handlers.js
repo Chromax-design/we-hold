@@ -33,29 +33,8 @@ export const handleRegister = async (
       setLoader(false);
     }
     toast.success(data.message);
-    navigate(`/auth/${userType}/verifyEmail`);
-    setLoader(false);
-  } catch (error) {
-    setLoader(false);
-    console.log(error);
-    toast.error(error.response.data.message);
-    
-  }
-};
-
-// email otp handler
-export const handleEmailOTP = async (otp, userType, setLoader, navigate) => {
-  const url = `${BASE_URL}/${userType}/verifyEmail`;
-  try {
-    setLoader(true);
-    const { data } = await axios.post(url, otp);
-    if (data.expired) {
-      toast.error(data.message);
-      navigate(`/auth/${userType}/expiredEmailOTP`);
-    } else {
-      toast.success(data.message);
-      navigate(`/${userType}/application/${data.userId}`);
-    }
+    // navigate(`/auth/${userType}/verifyEmail`);
+    navigate(`/${userType}/application/${data.userId}`);
     setLoader(false);
   } catch (error) {
     setLoader(false);
@@ -64,71 +43,19 @@ export const handleEmailOTP = async (otp, userType, setLoader, navigate) => {
   }
 };
 
-// handle resend email otp for both mentors and mentees
-export const handleResendEmailOTP = async (
-  data,
-  setLoader,
-  userType,
-  navigate
-) => {
-  const url =
-    userType === "mentor"
-      ? `${BASE_URL}/mentor/resendEmailOTP`
-      : `${BASE_URL}/mentee/resendEmailOTP`;
+
+export const handleCheckEmail = async (data, userType, setLoader, navigate) => {
+  const url = `${BASE_URL}/${userType}/checkEmail`;
   try {
     setLoader(true);
     const response = await axios.post(url, data);
-    navigate(`/auth/${userType}/verifyEmail`);
-    setLoader(false);
-    toast.success(response.data.message);
-  } catch (error) {
-    setLoader(false);
-    if (error.response) {
-      console.error("Error in sendOTP:", error.response.data.message);
-      toast.error(`Error: ${error.response.data.message}`);
-    } else {
-      console.error("Network error in sendOTP:", error);
-      toast.error("An error occurred while sending the OTP.");
-    }
-  }
-};
-
-// ========== REGISTRATION ENDS===============
-
-// ======= PASSWORD RESET STARTS ========
-
-// send reset password OTP for both mentor & mentee as it is the same component controlling both
-export const handlesendpwdOTP = async (data, userType, setLoader, navigate) => {
-  const url = `${BASE_URL}/${userType}/sendpwdResetOTP`;
-  try {
-    setLoader(true);
-    const response = await axios.post(url, data);
-    setLoader(false);
-    toast.success(response.data.message);
-    navigate(`/auth/${userType}/verifyPwdOTP`);
-  } catch (error) {
-    setLoader(false);
-    toast.error(`Error: ${error.response.data.message}`);
-  }
-};
-
-export const handlePwdOTP = async (data, userType, setLoader, navigate) => {
-  const url = `${BASE_URL}/${userType}/verifyPwdOTP`;
-  try {
-    setLoader(true);
-    const response = await axios.post(url, data);
-    if (response.data.expired) {
-      toast.error(response.data.message);
-      navigate(`/auth/${userType}/sendPwdOTP`);
-    } else {
-      toast.success(response.data.message);
+    if (response.data.valid) {
       navigate(`/auth/${userType}/pwdreset/${response.data.userId}`);
     }
     setLoader(false);
   } catch (error) {
+    toast.error(`Error: ${error.response.data.message}`);
     setLoader(false);
-    console.log(error);
-    toast.error(error.response.data.message);
   }
 };
 
@@ -241,7 +168,7 @@ export const handleSearch = async (
     setLoader(true);
     const { data } = await axios.post(url, searchParam);
     setSearchResults(data.mentors);
-    navigate('/search');
+    navigate("/search");
     setLoader(false);
   } catch (error) {
     setLoader(false);

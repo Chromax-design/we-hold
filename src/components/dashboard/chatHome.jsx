@@ -11,7 +11,6 @@ import { BASE_URL } from "../../config/config";
 import axios from "axios";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../PreLoader";
-// import userimg from "../../assets/mentors/mentor-3.jpg";
 
 const ChatHome = () => {
   const { Loader, setLoader } = useLoader();
@@ -19,6 +18,7 @@ const ChatHome = () => {
   const { setChatroom } = chatStore((state) => state);
   const [users, setUsers] = useState([]);
   const [aside, setAside] = useState(true);
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setAside(!aside);
@@ -41,25 +41,10 @@ const ChatHome = () => {
       };
       getMentors();
     } catch (error) {
+      setLoader(false);
       console.log(error);
     }
   }, []);
-
-  // const filteredUsers = users.filter((otherUser) => otherUser.id !== user.id);
-  // console.log(filteredUsers);
-  const navigate = useNavigate();
-
-  // const createChatroom = async (otherUser) => {
-  //   const payload = {
-  //     roomId: [user.id, otherUser.id].sort().join(""),
-  //     participantA: user.id,
-  //     participantB: otherUser.id,
-  //   };
-
-  //   const chatroom = await chatServices.createChat(payload);
-  //   socket.emit("create_chatroom", chatroom[0].roomId);
-  //   setChatroom(chatroom);
-  // };
 
   const generateRoomId = (userId1, userId2) =>
     [userId1, userId2].sort().join("");
@@ -81,7 +66,6 @@ const ChatHome = () => {
       }
     }
   };
-  // createChatroomsForAllUsers();
 
   useEffect(() => {
     socket.on("chatroom_created", () => {
@@ -107,26 +91,29 @@ const ChatHome = () => {
               </h2>
               <hr />
               <div className=" py-3">
-                {/* <ConversationList /> */}
                 <div>
-                  {users.map((otherUser, index) => (
-                    <div
-                      className="w-full py-2 max-md:px-6 flex items-center gap-3 px-4 hover:bg-gray-50 hover:cursor-pointer hover:border-l-2 border-lime-800"
-                      key={index}
-                      onClick={() => createChatroomsForAllUsers(otherUser)}
-                    >
-                      <img
-                        src={otherUser.image}
-                        alt=""
-                        className="w-12 h-12 rounded-full object-cover object-center"
-                      />
-                      <div className="">
-                        <h4 className="text-sm font-semibold capitalize">
-                          {`${otherUser?.firstName} ${otherUser?.initials}`}
-                        </h4>
+                  {users.length >0 ? (
+                    users.map((otherUser, index) => (
+                      <div
+                        className="w-full py-2 max-md:px-6 flex items-center gap-3 px-4 hover:bg-gray-50 hover:cursor-pointer hover:border-l-2 border-lime-800"
+                        key={index}
+                        onClick={() => createChatroomsForAllUsers(otherUser)}
+                      >
+                        <img
+                          src={otherUser.image}
+                          alt=""
+                          className="w-12 h-12 rounded-full object-cover object-center"
+                        />
+                        <div className="">
+                          <h4 className="text-sm font-semibold capitalize">
+                            {`${otherUser?.firstName} ${otherUser?.initials}`}
+                          </h4>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  ) : (
+                    <p className="p-4">No subscription found</p>
+                  )}
                 </div>
               </div>
             </div>

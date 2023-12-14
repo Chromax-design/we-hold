@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import error401 from "../assets/errors/401error.svg";
 import { Link, useNavigate } from "react-router-dom";
-import { handleResendEmailOTP} from "../utils/handlers";
+import Logo from "../assets/logo-full.png";
+import { handleCheckEmail } from "../utils/handlers";
 import useLoader from "../store/loaderStore";
-import Preloader from "./PreLoader";
+import PreLoader from "./PreLoader";
 
-const ResendEmailOTP = ({ userType }) => {
+const ValidateEmail = ({ userType }) => {
   const { Loader, setLoader } = useLoader();
+  const navigate = useNavigate();
   const [data, setData] = useState({});
-  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -16,22 +16,19 @@ const ResendEmailOTP = ({ userType }) => {
       return { ...prev, [name]: value };
     });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleResendEmailOTP(data, setLoader, userType, navigate);
+    handleCheckEmail(data, userType, setLoader, navigate);
   };
-
   return (
     <>
-      {Loader && <Preloader />}
-      <div className="w-full min-h-screen bg-[url('./assets/bg-gradient.jpg')] backdrop-blur-lg bg-cover pt-24 pb-20 px-4">
+      {Loader && <PreLoader />}
+      <div className="w-full min-h-screen bg-[url('./assets/bg-gradient.jpg')] backdrop-blur-lg bg-cover py-20 px-4">
+        <Link to={"/"}>
+          <img src={Logo} alt="" className="block w-52 mx-auto mb-5" />
+        </Link>
         <div className="max-w-lg mx-auto p-8 shadow-xl bg-white rounded-lg">
-          <img
-            src={error401}
-            alt=""
-            className="block max-w-[350px] mx-auto mb-5"
-          />
+          <p className="text-sm">Enter your email address</p>
           <form
             action=""
             method="post"
@@ -40,8 +37,7 @@ const ResendEmailOTP = ({ userType }) => {
           >
             <div>
               <label htmlFor="email" className="text-sm capitalize font-medium">
-                The provided token is not valid or has expired. Please enter
-                your email to resend OTP
+                Email
               </label>
               <input
                 type="text"
@@ -49,25 +45,28 @@ const ResendEmailOTP = ({ userType }) => {
                 name="email"
                 className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
                 onChange={handleChange}
+                required
               />
             </div>
             <button
               type="submit"
               className="capitalize block bg-lime-700 text-white font-medium p-3 w-full rounded-md hover:bg-lime-800"
             >
-              Resend OTP
+              verify email
             </button>
-            <Link
-              to={"/"}
-              className="underline capitalize text-sm text-lime-800 inline-block mt-3"
-            >
-              Back to home
-            </Link>
           </form>
+          <p className="mt-5">
+            <Link
+              className="first-letter:capitalize capitalize font-medium text-sm inline-block underline"
+              to={"/auth/login"}
+            >
+              back to login
+            </Link>
+          </p>
         </div>
       </div>
     </>
   );
 };
 
-export default ResendEmailOTP;
+export default ValidateEmail;

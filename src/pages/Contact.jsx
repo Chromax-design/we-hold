@@ -29,8 +29,8 @@ const Contact = () => {
           </div>
         </section>
         <section className="p-4 max-w-2xl lg:max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
-            <div className="grid max-sm:grid-cols-1 grid-cols-2 gap-3 lg:grid-cols-1">
+          <div className="grid-cols-1 lg:grid-cols-3 gap-4 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
               {address.map((item) => {
                 return (
                   <div
@@ -57,56 +57,6 @@ const Contact = () => {
                   </div>
                 );
               })}
-            </div>
-            <div className="col-span-2 bg-white rounded-md shadow-sm p-5">
-              <h3 className="font-semibold capitalize text-lg mb-3">
-                send message
-              </h3>
-              <p>
-                Get talking to the right person in our team and we'll get back
-                to you as soon as possible.
-              </p>
-              <form method="post" className="space-y-3 mt-5">
-                <div className="flex max-sm:flex-col gap-3">
-                  <input
-                    type="text"
-                    name=""
-                    className="w-full p-2 border border-lime-900 rounded-sm placeholder:capitalize placeholder:text-black placeholder:text-sm"
-                    placeholder="your name"
-                  />
-                  <input
-                    type="email"
-                    name=""
-                    className="w-full p-2 border border-lime-900 rounded-sm placeholder:capitalize placeholder:text-black placeholder:text-sm"
-                    placeholder="your email"
-                  />
-                </div>
-                <div className="flex max-sm:flex-col gap-3">
-                  <input
-                    type="tel"
-                    name=""
-                    className="w-full p-2 border border-lime-900 rounded-sm placeholder:capitalize placeholder:text-black placeholder:text-sm"
-                    placeholder="phone number"
-                  />
-                  <input
-                    type="text"
-                    name=""
-                    className="w-full p-2 border border-lime-900 rounded-sm placeholder:capitalize placeholder:text-black placeholder:text-sm"
-                    placeholder="subject"
-                  />
-                </div>
-                <textarea
-                  name=""
-                  className="w-full min-h-[200px] p-2 border border-lime-900 rounded-sm placeholder:capitalize placeholder:text-black placeholder:text-sm"
-                  placeholder="your message"
-                ></textarea>
-                <button
-                  type="submit"
-                  className="max-md:block bg-lime-800 text-white px-4 py-2 rounded-md capitalize font-medium hover:bg-lime-900"
-                >
-                  send message
-                </button>
-              </form>
             </div>
           </div>
         </section>

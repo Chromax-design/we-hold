@@ -23,26 +23,12 @@ import Collaborate from "./pages/Collaborate";
 import MenteeSignup from "./pages/mentees/MenteeSignup";
 import Mentorsignup from "./pages/mentors/Mentorsignup";
 
-// otp verification for email
-import MenteeEmailVerify from "./pages/mentees/MenteeEmailVerify";
-import MentorEmailVerify from "./pages/mentors/MentorEmailVerify";
-
-// invalid/expired otp for email)
-import ResendMenteeEmailOTP from "./pages/mentees/ResendMenteeEmailOTP";
-import ResendMentorEmailOTP from "./pages/mentors/ResendMentorEmailOTP";
-
 // login / sign in for both mentors and mentees
 import LoginBase from "./pages/LoginBase";
 
 // application
 import MenteeApplication from "./pages/mentees/MenteeApplication";
 import MentorApplication from "./pages/mentors/MentorApplication";
-
-// password otp
-import MenteePwdOTP from "./pages/mentees/MenteePwdOTP";
-import MentorPwdOTP from "./pages/mentors/MentorPwdOTP";
-import MenteePwdVerify from "./pages/mentees/MenteePwdVerify";
-import MentorPwdVerify from "./pages/mentors/MentorPwdVerify";
 
 // password reset
 import MentorPasswordreset from "./pages/mentors/MentorPasswordreset";
@@ -84,6 +70,8 @@ import StripeSuccess from "./pages/stripeSuccess";
 import StripeCancel from "./pages/stripeCancel";
 import SearchResults from "./pages/mentors/SearchResults";
 import CheckOut from "./pages/CheckOut";
+import MentorValidateEmail from "./pages/mentors/MentorvalidateEmail";
+import MenteevalidateEmail from "./pages/mentees/MenteevalidateEmail";
 
 const Layout = () => {
   return (
@@ -184,35 +172,9 @@ function App() {
         <Route path="/auth/signup-as-a-mentee" element={<MenteeSignup />} />
         <Route path="/auth/signup-as-a-mentor" element={<Mentorsignup />} />
 
-        {/* verify email otp */}
-        <Route
-          path="/auth/mentee/verifyEmail"
-          element={<MenteeEmailVerify />}
-        />
-        <Route
-          path="/auth/mentor/verifyEmail"
-          element={<MentorEmailVerify />}
-        />
-
-        {/* expired email otp */}
-        <Route
-          path="/auth/mentee/expiredEmailOTP"
-          element={<ResendMenteeEmailOTP />}
-        />
-        <Route
-          path="/auth/mentor/expiredEmailOTP"
-          element={<ResendMentorEmailOTP />}
-        />
-
-        {/* get Password reset OTP */}
-        <Route path="/auth/mentee/sendpwdOTP" element={<MenteePwdOTP />} />
-        <Route path="/auth/mentor/sendpwdOTP" element={<MentorPwdOTP />} />
-
-        {/* verify password reset otp */}
-        <Route path="/auth/mentee/verifyPwdOTP" element={<MenteePwdVerify />} />
-        <Route path="/auth/mentor/verifyPwdOTP" element={<MentorPwdVerify />} />
-
         {/* password reset */}
+        <Route path="/auth/mentor/validate" element={<MentorValidateEmail />}/>
+        <Route path="/auth/mentee/validate" element={<MenteevalidateEmail />}/>
         <Route
           path="/auth/mentee/pwdreset/:userId"
           element={<MenteePasswordreset />}

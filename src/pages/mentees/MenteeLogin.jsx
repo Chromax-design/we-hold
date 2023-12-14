@@ -9,10 +9,10 @@ const MenteeLogin = ({ tab }) => {
       <Login userType={"mentee"} />
 
       <p className="uppercase text-center font-medium my-5">or</p>
-      <LoginGoogle />
+      {/* <LoginGoogle /> */}
       <Link
         className="capitalize font-medium text-sm mt-3 inline-block underline"
-        to={"/auth/mentee/sendpwdOTP"}
+        to={"/auth/mentee/validate"}
       >
         forgot password?
       </Link>

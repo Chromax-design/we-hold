@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { handlesendpwdOTP } from "../../utils/handlers";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../PreLoader";
 import { useNavigate } from "react-router-dom";
+import { handleCheckEmail } from "../../utils/handlers";
 
 const PwdUpdate = ({ tab, userType }) => {
   const navigate = useNavigate();
@@ -17,9 +17,8 @@ const PwdUpdate = ({ tab, userType }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    handlesendpwdOTP(email, userType, setLoader, navigate);
+    handleCheckEmail(email, userType, setLoader, navigate);
   };
-
 
   return (
     <>
