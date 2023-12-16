@@ -11,8 +11,12 @@ import Faqs from "../components/Faqs";
 import { handleSearch } from "../utils/handlers";
 import { useNavigate } from "react-router-dom";
 import useLoader from "../store/loaderStore";
-import PreLoader from "../components/PreLoader";
 import SearchStore from "../store/SearchStore";
+import Loading from "../assets/icons/loading.gif"
+
+const PreLoader =()=>{
+  return <div className="flex justify-center"><img src={Loading} alt="" /></div>
+}
 
 const Home = () => {
   const [search, setSearch] = useState({});
@@ -34,7 +38,6 @@ const Home = () => {
 
   return (
     <>
-      {Loader && <PreLoader />}
       <main>
         <section className=" mx-auto relative">
           <div className="absolute top-0 left-0 w-full h-[500px] bg-[linear-gradient(to_right,rgba(230,115,0,0.3)50%,rgba(230,115,0,1))] bg-cover bg-center bg-no-repeat z-10"></div>
@@ -103,6 +106,7 @@ const Home = () => {
               study plans, regular check-ins, and unlimited actionable support.
               Be part of an online mentor community that spans across the globe.
             </p>
+            {Loader && <PreLoader />}
             <Mentor setLoader={setLoader} />
           </div>
         </section>

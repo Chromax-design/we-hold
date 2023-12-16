@@ -22,18 +22,23 @@ const createDate = (timestamp, timeZone = "UTC") => {
 };
 
 const MentorProfile = () => {
+  const navigate = useNavigate();
   const { user } = useAuth();
   const { setCheckOut } = checkOutStore();
-  const navigate = useNavigate();
   const initialState = { review: "" };
   const [review, setReview] = useState(initialState);
+
+  const [bio, setBio] = useState("");
+  const [bioArray, setBioArray] = useState([]);
+
+  const [help, setHelp] = useState("");
+  const [helpArray, setHelpArray] = useState([]);
+
   const [allReviews, setAllReviews] = useState([]);
   const { Loader, setLoader } = useLoader();
   const { id } = useParams();
   const [mentor, setMentor] = useState([]);
   const [sub, setSub] = useState(true);
-
-  
 
   useEffect(() => {
     try {
@@ -55,6 +60,8 @@ const MentorProfile = () => {
         };
         setCheckOut(checkOutData);
         setMentor(details);
+        setBio(details.bio);
+        setHelp(details.How_help);
         setLoader(false);
       };
 
@@ -95,6 +102,14 @@ const MentorProfile = () => {
     }
   }, [mentor]);
 
+  useEffect(() => {
+    const bioParagraphs = bio.split("\n");
+    const helpParagraphs = help.split("\n");
+
+    setBioArray(bioParagraphs);
+    setHelpArray(helpParagraphs);
+  }, [mentor]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setReview((prev) => {
@@ -123,7 +138,7 @@ const MentorProfile = () => {
               <img
                 src={mentor?.image ? mentor.image : userIcon}
                 alt=""
-                className="shadow-md border-2 border-lime-700 w-full h-full max-lg:max-w-sm max-lg:mx-auto"
+                className="shadow-md border-2 border-lime-700 w-full lg:max-h-[250px] object-cover max-lg:max-w-sm max-lg:mx-auto"
               />
             </div>
             <div className="col-span-9">
@@ -141,14 +156,16 @@ const MentorProfile = () => {
                   </div>
                 </div>
                 <div className="flex flex-col lg:items-center">
-                  <span className="text-3xl font-semibold">{`$${mentor.price ?? "50"}`}</span>
+                  <span className="text-3xl font-semibold">{`$${
+                    mentor.price ?? "50"
+                  }`}</span>
                   <span className="text-xs font-semibold">monthly</span>
                 </div>
               </div>
               <div className="flex flex-col text-center mt-7 gap-4 lg:flex-row">
                 <div className="flex-1 ring-1 ring-gray-200 p-2 bg-gray-50">
                   <span className="font-bold text-xl">
-                    {mentor?.yrs_of_experience} yrs
+                    {mentor?.experience} yrs
                   </span>
                   <h4 className=" leading-3 text-sm capitalize">experience</h4>
                 </div>
@@ -157,7 +174,15 @@ const MentorProfile = () => {
                     quick responder
                   </h4>
                 </div>
-                {sub == true ? (
+                {user.role == "mentor" ? (
+                  <button
+                    type="button"
+                    className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
+                  >
+                    <img src={checked} alt="" width={25} className="mr-2" />{" "}
+                    <span>for mentees</span>
+                  </button>
+                ) : sub == true ? (
                   <Link
                     to={`/checkout/${mentor?.id}`}
                     className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
@@ -187,7 +212,15 @@ const MentorProfile = () => {
                 verified
               </div>
             </div>
-            <p className="text-sm leading-6">{mentor?.bio}</p>
+            <div className="space-y-4">
+              {bioArray.map((item, i) => {
+                return (
+                  <p className="text-sm leading-6" key={i}>
+                    {item}
+                  </p>
+                );
+              })}
+            </div>
           </div>
           <div className="col-span-12 md:col-span-4">
             <h3 className="capitalize font-semibold text-lg">skills:</h3>
@@ -205,10 +238,19 @@ const MentorProfile = () => {
             </div>
           </div>
           <div className="col-span-12 bg-white ring-1 ring-gray-100 rounded-md p-4">
-            <h3 className="capitalize font-semibold text-lg">
+            <h3 className="capitalize font-semibold text-lg mb-5">
               how i can be of help?
             </h3>
-            <p className="text-sm leading-6">{mentor?.How_help}</p>
+
+            <ul className="space-y-3 list-disc list-inside">
+              {helpArray.map((item, i) => {
+                return (
+                  <li className="text-sm leading-6" key={i}>
+                    {item}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </section>
 

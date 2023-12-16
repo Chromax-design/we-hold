@@ -1,7 +1,5 @@
 import React from "react";
-import Button from "../components/Button";
 import { Video2 } from "../components/Video";
-import Admin from "../components/Admin";
 import mentor from "../assets/mentor.svg";
 import vision from "../assets/vision.svg";
 import purpose from "../assets/purpose.svg";
@@ -95,12 +93,6 @@ const About = () => {
             </div>
             <img src={purpose} alt="" className="max-md:order-1" />
           </div>
-        </section>
-        
-
-        <section className="max-w-5xl mx-auto p-5">
-          <h2 className="capitalize text-4xl font-semibold text-center mb-5">meet the team</h2>
-          <Admin />
         </section>
         </div>
       </main>

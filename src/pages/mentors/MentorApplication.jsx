@@ -29,8 +29,15 @@ const MentorApplication = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const mentorData = {
-      ...data, telNumber: phoneData
-    }
+      job_title: data.job_title,
+      industry: data.industry,
+      telNumber: phoneData,
+      experience: data.experience,
+      social_link: data?.social_link || "",
+      bio: data.bio,
+      why_mentoring: data.why_mentoring,
+    };
+    // console.log(mentorData)
     handleApplication(mentorData, userId, setLoader, navigate);
   };
   return (
@@ -57,6 +64,7 @@ const MentorApplication = () => {
                     name="job_title"
                     className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
                     onChange={handleChange}
+                    required
                   />
                 </div>
 
@@ -73,11 +81,16 @@ const MentorApplication = () => {
                     name="industry"
                     className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
                     onChange={handleChange}
+                    required
                   >
-                    <option value={''}>------</option>
+                    <option value={""}>------</option>
                     {mentor_types.map((item) => {
                       return (
-                        <option className="capitalize" value={item.value} key={item.id}>
+                        <option
+                          className="capitalize"
+                          value={item.value}
+                          key={item.id}
+                        >
                           {item.data}
                         </option>
                       );
@@ -87,7 +100,7 @@ const MentorApplication = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 max-sm:flex-col">
-                <div className="sm:col-span-12 md:col-span-5 space-y-3" >
+                <div className="sm:col-span-12 md:col-span-5 space-y-3">
                   <label
                     htmlFor="telNumber"
                     className="text-sm capitalize font-medium"
@@ -104,7 +117,7 @@ const MentorApplication = () => {
                       display: "block",
                       marginTop: "0.75rem",
                       borderColor: "rgb(77, 124, 15)",
-                      borderRadius: "0.125rem"
+                      borderRadius: "0.125rem",
                     }}
                     onChange={handlePhoneNoChange}
                   />
@@ -121,9 +134,10 @@ const MentorApplication = () => {
                     type="number"
                     min={"0"}
                     id="experience"
-                    name="yrs_of_experience"
+                    name="experience"
                     className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
                     onChange={handleChange}
+                    required
                   />
                 </div>
                 <div className="sm:col-span-10 md:col-span-5">
@@ -154,6 +168,7 @@ const MentorApplication = () => {
                   placeholder="Minimum of 100 words"
                   minLength={100}
                   onChange={handleChange}
+                  required
                 ></textarea>
               </div>
               <div>
@@ -171,6 +186,7 @@ const MentorApplication = () => {
                   className=" mt-3 p-2 rounded-sm border-lime-700 border w-full"
                   placeholder="Minimum of 100 words"
                   onChange={handleChange}
+                  required
                 ></textarea>
               </div>
               <button

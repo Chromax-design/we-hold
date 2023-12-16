@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import { mentors } from "../data/Mentors";
-import search from "../assets/search.svg";
 import { BASE_URL } from "../config/config";
 import axios from "axios";
 
@@ -13,7 +11,7 @@ const Mentors = () => {
   useEffect(() => {
     try {
       const getMentors = async () => {
-        const {data} = await axios.get(url, {
+        const { data } = await axios.get(url, {
           headers: { "Content-Type": "application/json" },
         });
         setMentors(data.mentors);
@@ -51,7 +49,9 @@ const Mentors = () => {
                         {item.industry}
                       </span>
                     </div>
-                    <div className="font-medium">$45/Month</div>
+                    <div className="font-medium">
+                      {`$${item.price ?? "50"}`}/Month
+                    </div>
                   </div>
                   <p className="mb-4 mt-2 max-lg:text-sm line-clamp-4 break-words">
                     {item.bio}

@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
 import { socket } from "./config/socket";
 
 // other pages
@@ -138,9 +144,10 @@ function App() {
             path="mentor/application/:userId"
             element={<MentorApplication />}
           />
-          <Route element={<MenteeRoute />}>
-            <Route path="mentors/:id" element={<MentorProfile />} />
-          </Route>
+          <Route
+            path={"mentors/:id"}
+            element={user ? <MentorProfile /> : <Navigate to={"/auth/login"} />}
+          />
         </Route>
 
         <Route element={<MenteeRoute />}>
@@ -173,8 +180,8 @@ function App() {
         <Route path="/auth/signup-as-a-mentor" element={<Mentorsignup />} />
 
         {/* password reset */}
-        <Route path="/auth/mentor/validate" element={<MentorValidateEmail />}/>
-        <Route path="/auth/mentee/validate" element={<MenteevalidateEmail />}/>
+        <Route path="/auth/mentor/validate" element={<MentorValidateEmail />} />
+        <Route path="/auth/mentee/validate" element={<MenteevalidateEmail />} />
         <Route
           path="/auth/mentee/pwdreset/:userId"
           element={<MenteePasswordreset />}

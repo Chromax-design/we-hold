@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import { mentors } from "../data/Mentors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -42,6 +41,7 @@ const Mentor = ({setLoader}) => {
               <h2 className="capitalize font-semibold text-lg">
                 {`${item?.firstName} ${item?.initials}`}.
               </h2>
+              <span className="capitalize text-sm">{`${item?.industry}`}</span>
               <p className="my-4 text-sm line-clamp-4">{item?.bio}</p>
               <Link
                 to={`/mentors/${item?.id}`}

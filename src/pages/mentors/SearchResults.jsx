@@ -19,7 +19,6 @@ const NotFound = () => {
 const SearchResults = () => {
   const { Loader } = useLoader();
   const { searchResults } = SearchStore();
-  console.log(searchResults)
   return (
     <>
       {Loader && <PreLoader />}
@@ -53,7 +52,9 @@ const SearchResults = () => {
                             {item.industry}
                           </span>
                         </div>
-                        <div className="font-medium">$45/Month</div>
+                        <div className="font-medium">
+                          {`$${item.price ?? "50"}`}/Month
+                        </div>
                       </div>
                       <p className="mb-4 mt-2 max-lg:text-sm line-clamp-4">
                         {item.bio}

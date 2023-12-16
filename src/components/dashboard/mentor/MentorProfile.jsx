@@ -13,7 +13,7 @@ const MentorProfile = ({ tab }) => {
   const [data, setData] = useState({
     job_title: user.job_title || "",
     industry: user.industry || "",
-    yrs_of_experience: user.yrs_of_experience || "",
+    experience: user.experience || "",
     social_link: user.social_link || "",
     bio: user.bio || "",
     why_mentoring: user.why_mentoring || ""
@@ -37,6 +37,7 @@ const MentorProfile = ({ tab }) => {
       telNumber: phoneData
     };
     handleMentorProfile(userData, setUser, user.id, setLoader);
+    // console.log(userData)
   };
 
   return (
@@ -135,8 +136,8 @@ const MentorProfile = ({ tab }) => {
                     type="number"
                     min={"0"}
                     id="experience"
-                    value={data.yrs_of_experience}
-                    name="yrs_of_experience"
+                    value={data.experience}
+                    name="experience"
                     className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
                     onChange={handleChange}
                   />

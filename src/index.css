@@ -28,7 +28,7 @@ body {
 }
 
 .animate-scroll {
-  animation: scroll 30s linear infinite;
+  animation: scroll 70s linear infinite;
 }
 
 @keyframes scroll2 {
@@ -42,7 +42,7 @@ body {
 }
 
 .animate-scroll2 {
-  animation: scroll2 30s linear infinite;
+  animation: scroll2 70s linear infinite;
 }
 
 .animate-move {

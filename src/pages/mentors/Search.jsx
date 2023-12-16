@@ -72,7 +72,9 @@ const Search = () => {
                             {item.industry}
                           </span>
                         </div>
-                        <div className="font-medium">$45/Month</div>
+                        <div className="font-medium">
+                        {`$${item.price ?? "50"}`}/Month
+                        </div>
                       </div>
                       <p className="mb-4 mt-2 max-lg:text-sm line-clamp-4 break-words">
                         {item.bio}
