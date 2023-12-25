@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../config/config";
+import { useNavigate } from "react-router-dom";
 
-const PayPalButton = ({ checkOut }) => {
+const PayPalButton = () => {
+  const savedProduct = JSON.parse(localStorage.getItem("product"));
+  const navigate = useNavigate();
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src =
-      "https://www.paypal.com/sdk/js?client-id=AdY8T7xzo2_QnQPGAQl_x7DuuMrIMWDXa9L0YWg3AN8FYOqm8LmbJnOzGK3UPh8KhuxkyabwI14uybRf&currency=USD";
+      "https://www.paypal.com/sdk/js?client-id=ASfxNwn0CcjjFb8xdselsMCB1tIc279UQb0dbXqpG7sPYbdEaAeJ1q80WZzdl-HI63ffmOzAhyt-GKMB&currency=USD";
     script.async = true;
     script.onload = () => {
-      // Render the PayPal button when the script is loaded
       window.paypal
         .Buttons({
           createOrder: (data, actions) => {
@@ -18,23 +21,25 @@ const PayPalButton = ({ checkOut }) => {
                 {
                   amount: {
                     currency_code: "USD",
-                    value: `${checkOut?.price}`, // Specify your payment amount
+                    value: `${parseInt(savedProduct.price)}`,
                   },
                 },
               ],
             });
           },
           onApprove: (data, actions) => {
-            // Capture the funds when the buyer approves the payment
             return actions.order.capture().then((details) => {
-              // Send details to your server for verification
               // console.log(details);
               // console.log(data);
-              // console.log(checkOut)
-              axios.post(`${BASE_URL}/payPal/payWithPayPal`, {
-                details,
-                checkOut,
-              });
+              // console.log(checkout);
+              axios
+                .post(`${BASE_URL}/payPal/payWithPayPal`, {
+                  details,
+                  savedProduct,
+                })
+                .then(() => {
+                  navigate("/stripe/success");
+                });
             });
           },
         })

@@ -8,7 +8,6 @@ import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 import useAuth from "../../store/AuthStore";
 import { handleReviews } from "../../utils/menteeHandlers";
-import checkOutStore from "../../store/checkOutStore";
 import checked from "../../assets/icons/checked.png";
 
 const createDate = (timestamp, timeZone = "UTC") => {
@@ -24,7 +23,6 @@ const createDate = (timestamp, timeZone = "UTC") => {
 const MentorProfile = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { setCheckOut } = checkOutStore();
   const initialState = { review: "" };
   const [review, setReview] = useState(initialState);
 
@@ -50,15 +48,6 @@ const MentorProfile = () => {
           navigate("/404");
         }
         const details = data.profile[0];
-        const checkOutData = {
-          name: `${details.firstName} ${details.initials}`,
-          mentorId: details.id,
-          menteeId: user.id,
-          price: details.price ?? "50",
-          description: "mentor subscription",
-          quantity: 1,
-        };
-        setCheckOut(checkOutData);
         setMentor(details);
         setBio(details.bio);
         setHelp(details.How_help);

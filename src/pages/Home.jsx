@@ -12,15 +12,19 @@ import { handleSearch } from "../utils/handlers";
 import { useNavigate } from "react-router-dom";
 import useLoader from "../store/loaderStore";
 import SearchStore from "../store/SearchStore";
-import Loading from "../assets/icons/loading.gif"
+import Loading from "../assets/icons/loading.gif";
 
-const PreLoader =()=>{
-  return <div className="flex justify-center"><img src={Loading} alt="" /></div>
-}
+const PreLoader = () => {
+  return (
+    <div className="flex justify-center">
+      <img src={Loading} alt="" />
+    </div>
+  );
+};
 
 const Home = () => {
   const [search, setSearch] = useState({});
-  const {setSearchResults} = SearchStore();
+  const { setSearchResults } = SearchStore();
   const { Loader, setLoader } = useLoader();
   const navigate = useNavigate();
 
@@ -39,28 +43,20 @@ const Home = () => {
   return (
     <>
       <main>
-        <section className=" mx-auto relative">
+        <section className=" mx-auto relative h-[500px] bg-[url('./assets/video/headervideo.gif')] bg-cover bg-center">
           <div className="absolute top-0 left-0 w-full h-[500px] bg-[linear-gradient(to_right,rgba(230,115,0,0.3)50%,rgba(230,115,0,1))] bg-cover bg-center bg-no-repeat z-10"></div>
-          <video
-            src={Intro}
-            poster={poster}
-            loop
-            autoPlay
-            className="h-[500px] w-full object-cover bg-[url('./assets/video/poster1.jpeg')]"
-          ></video>
-          <div className="absolute z-20 top-0 left-0 h-full w-full">
+          <div className="absolute z-20 top-0 left-0 h-full w-full ">
             <div className="max-w-6xl mx-auto pb-10 px-3 min-h-[450px] py-20 flex items-center">
               <div className="text-white max-w-xl relative">
                 <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.1)] w-full h-full -z-10 blur-2xl"></div>
                 <div className="p-2 sm:p-4">
                   <div>
                     <h1 className="text-xl sm:text-2xl bold mb-5">
-                      Guiding Africa's Youth with trusted <span className="font-extrabold">MENTORS</span> to navigate
-                      knowledge gaps, boost accountability, reignite motivation
-                      and expand networks
+                      Connecting Africa's Entrepreneurs with trusted MENTORS to
+                      boost accountability and reignite motivation to build
+                      generational wealth.
                     </h1>
-                    <p className="max-sm:text-xs">
-                    </p>
+                    <p className="max-sm:text-xs"></p>
                   </div>
                   <form
                     action="#"

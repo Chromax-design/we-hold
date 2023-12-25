@@ -8,7 +8,7 @@ const Partpage = () => {
         <div className="text-white space-y-3 bg-[rgba(0,0,0,0.3)] p-5">
           <div className="border-l border-white pl-5 sm:pl-10 pt-7">
             <p className="text-xs sm:text-lg leading-5 uppercase">
-              YOUR MENTORS IN LIFE ARE IMPORTANT, SO CHOOSE THEM WISELY
+             <q> YOUR MENTORS IN LIFE ARE IMPORTANT, SO CHOOSE THEM WISELY</q>
             </p>
             <div className="mt-5">
               <div className=" w-96">

@@ -76,6 +76,7 @@ import StripeSuccess from "./pages/stripeSuccess";
 import StripeCancel from "./pages/stripeCancel";
 import SearchResults from "./pages/mentors/SearchResults";
 import CheckOut from "./pages/CheckOut";
+import Payout from "./pages/Payout";
 import MentorValidateEmail from "./pages/mentors/MentorvalidateEmail";
 import MenteevalidateEmail from "./pages/mentees/MenteevalidateEmail";
 
@@ -133,6 +134,7 @@ function App() {
           <Route path="blog" element={<Blog />} />
           <Route path="mentors" element={<Mentors />} />
           <Route path="checkout/:id" element={<CheckOut />} />
+          <Route path="payout/:id" element={<Payout />} />
 
           <Route path="search/:mentorType" element={<Search />} />
           <Route path="search" element={<SearchResults />} />

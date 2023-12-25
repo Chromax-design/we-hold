@@ -34,9 +34,9 @@ const DesktopMenu = ({ handleClick, toggles, toggle, menu, user }) => {
             toggles[0]
               ? "max-lg:h-auto max-lg:mb-3"
               : "max-lg:h-0 overflow-hidden max-lg:p-0"
-          } max-lg:block lg:overflow-hidden lg:absolute lg:top-12 lg:-left-full lg:min-w-[850px] lg:hidden group lg:group-hover:block rounded-md p-4 shadow-lg bg-white`}
+          } max-lg:block lg:overflow-hidden lg:absolute lg:top-12 lg:-left-full lg:min-w-[650px] lg:hidden group lg:group-hover:block rounded-md p-4 shadow-lg bg-white`}
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:gap-2">
             {mentor_types.map((link, index) => (
               <Link
                 to={`/search${link.location}`}

@@ -1,18 +1,16 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { BASE_URL } from "../config/config";
-import checkOutStore from "../store/checkOutStore";
 
 const StripeButton = ({ setLoader }) => {
-  const { checkOut } = checkOutStore();
+  const savedProduct = JSON.parse(localStorage.getItem("product"));
   const makePayment = async () => {
-    console.log(checkOut);
+    console.log(checkout);
     setLoader(true);
     const stripe = await loadStripe(
-      // "pk_live_51N2arXIYmnZ4DnJJADIrHtXGUSDXLYB1tXnF7Y0MaGtC8HXZf3yFnGlFkfOSRif3DBOsJFcHrSQLSqtIhAYt3zsW004p8lRt6d"
-      "pk_test_51N2arXIYmnZ4DnJJ1gSvYCDhGFLAVDTHGPo8vTJTdJPnioyLZYnYAJUho80iMQsHPLXRbFD0SYqyt4y1hmps79ci00xEmplYtF"
+      "pk_live_51N2arXIYmnZ4DnJJADIrHtXGUSDXLYB1tXnF7Y0MaGtC8HXZf3yFnGlFkfOSRif3DBOsJFcHrSQLSqtIhAYt3zsW004p8lRt6d"
     );
-    const body = { checkOut };
+    const body = { savedProduct };
     const headers = {
       "Content-Type": "application/json",
     };

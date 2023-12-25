@@ -92,7 +92,7 @@ const ChatHome = () => {
               <hr />
               <div className=" py-3">
                 <div>
-                  {users.length >0 ? (
+                  {users.length > 0 ? (
                     users.map((otherUser, index) => (
                       <div
                         className="w-full py-2 max-md:px-6 flex items-center gap-3 px-4 hover:bg-gray-50 hover:cursor-pointer hover:border-l-2 border-lime-800"
