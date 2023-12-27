@@ -1,7 +1,7 @@
 import React from "react";
-import img2 from "../../../assets/icons/dashboards/mentees.png";
-import img3 from "../../../assets/icons/dashboards/review.png";
-import img1 from "../../../assets/icons/dashboards/time.png";
+import img2 from "/icons/mentees.png";
+import img3 from "/icons/review.png";
+import img1 from "/icons/time.png";
 
 const createDate = (timestamp, timeZone = "UTC") => {
   if (timestamp < 1e12) {

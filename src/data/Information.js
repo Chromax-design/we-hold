@@ -1,25 +1,25 @@
-import job from "../assets/icons/info_icons/job.svg";
-import development from "../assets/icons/info_icons/development.svg";
-import career from "../assets/icons/info_icons/career.svg";
-import role from "../assets/icons/info_icons/role.svg";
-import business from "../assets/icons/info_icons/business.svg";
-import balance from "../assets/icons/info_icons/balance.svg";
-import obstacle from "../assets/icons/info_icons/obstacle.svg";
-import perspective from "../assets/icons/info_icons/perspective.svg";
-import relationship from "../assets/icons/info_icons/relationship.svg";
-import skill from "../assets/icons/info_icons/skill.svg";
+import job from "/info_graphics/job.svg";
+import development from "/info_graphics/development.svg";
+import career from "/info_graphics/career.svg";
+import role from "/info_graphics/role.svg";
+import business from "/info_graphics/business.svg";
+import balance from "/info_graphics/balance.svg";
+import obstacle from "/info_graphics/obstacle.svg";
+import perspective from "/info_graphics/perspective.svg";
+import relationship from "/info_graphics/relationship.svg";
+import skill from "/info_graphics/skill.svg";
 
 // learners
-import visual from "../assets/icons/info_icons/visual_learners.svg";
-import audio from "../assets/icons/info_icons/audio_learners.svg";
-import kinesthetic from "../assets/icons/info_icons/kinesthetic_learners.svg";
-import readers from "../assets/icons/info_icons/reading_learners.svg";
+import visual from "/info_graphics/visual_learners.svg";
+import audio from "/info_graphics/audio_learners.svg";
+import kinesthetic from "/info_graphics/kinesthetic_learners.svg";
+import readers from "/info_graphics/reading_learners.svg";
 
 // personality test
-import self_awareness from "../assets/icons/info_icons/self_awareness.svg";
-import career_development from "../assets/icons/info_icons/career_development.svg";
-import team_building from "../assets/icons/info_icons/team_building.svg";
-import diagnosis_treatment from "../assets/icons/info_icons/diagnosis_treatment.svg";
+import self_awareness from "/info_graphics/self_awareness.svg";
+import career_development from "/info_graphics/career_development.svg";
+import team_building from "/info_graphics/team_building.svg";
+import diagnosis_treatment from "/info_graphics/diagnosis_treatment.svg";
 
 export const information = [
   {

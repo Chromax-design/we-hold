@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import useAuth from "../../../store/AuthStore";
 import MenteeProfile from "../../../components/dashboard/mentee/MenteeProfile";
 import MenteeAccount from "../../../components/dashboard/mentee/MenteeAccount";
 import UserProfile from "../../../components/dashboard/mentee/MenteeDetails";
 
 const MenteeSettings = () => {
-  const { user } = useAuth();
   const [tab, setTab] = useState(1);
 
   const toggleTab = (index) => {
@@ -23,7 +21,7 @@ const MenteeSettings = () => {
     <main>
       <section className="max-w-6xl mx-auto p-2 sm:px-4 py-7 ">
         <div className="bg-white rounded-md shadow-xl">
-          <div className="p-2 sm:p-5">
+          <div className="sm:p-5">
             <ul className="flex flex-col sm:flex-row justify-center items-center capitalize font-medium text-center mb-10">
               {tabs.map((t) => (
                 <li

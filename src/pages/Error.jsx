@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../components/Button";
-import error from "../assets/404error.svg";
+import error from "/info_graphics/404error.svg";
 
 const Error = () => {
   return (

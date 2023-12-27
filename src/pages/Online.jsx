@@ -1,5 +1,5 @@
 import React from "react";
-import check from "../assets/icons/check.png";
+import check from "/icons/check.png";
 import ComingSoon from "../components/ComingSoon";
 
 const Online = () => {

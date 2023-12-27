@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import edit from "../../../assets/icons/dashboards/edit.png";
+import edit from "/icons/edit.png";
 import "react-phone-input-2/lib/style.css";
-import { Country, City } from "country-state-city";
-import userIcon from "../../../assets/icons/user_icon.png";
+import { Country} from "country-state-city";
+import userIcon from "/icons/user_icon.png";
 import { handleUpload } from "../../../utils/handlers";
 import useAuth from "../../../store/AuthStore";
 import useLoader from "../../../store/loaderStore";
@@ -75,11 +75,11 @@ const MenteeDetails = ({ tab }) => {
     <>
       {Loader && <PreLoader />}
       <div
-        className={`p-10 pt-5 grid md:grid-cols-12 gap-5 ${
+        className={`p-4 sm:p-10 pt-5 grid md:grid-cols-12 gap-5 ${
           tab == 1 ? "block" : "hidden"
         }`}
       >
-        <div className="md:col-span-4 rounded-md p-3 gap-5">
+        <div className="md:col-span-4 rounded-md sm:p-3 gap-5">
           <form action="" onSubmit={Upload}>
             <div className="relative shadow-lg max-w-[300px]">
               <img

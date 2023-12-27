@@ -1,5 +1,5 @@
 import React from "react";
-import check from "../assets/icons/check.png";
+import check from "/icons/check.png";
 import ComingSoon from "../components/ComingSoon";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

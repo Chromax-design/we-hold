@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-import noMentor from "../../../assets/dashboard/no mentor.svg";
-import edit from "../../../assets/icons/dashboards/edit.png";
-import userIcon from "../../../assets/icons/user_icon.png";
+import noMentor from "/info_graphics/no-mentor.svg";
+import edit from "/icons/edit.png";
+import userIcon from "/icons/user_icon.png";
 import useAuth from "../../../store/AuthStore";
 import MentorInfoGraphic from "../../../components/dashboard/mentor/MentorInfoGraphic";
 import { BASE_URL } from "../../../config/config";
@@ -15,7 +15,7 @@ const NoMentors = () => {
   return (
     <div className="flex flex-col justify-center items-center mt-20">
       <img src={noMentor} alt="" className="max-w-[350px]" />
-      <h2 className="capitalize text-lg">You have no mentees yet</h2>
+      <h2 className="capitalize text-sm">You have no mentees yet</h2>
     </div>
   );
 };
@@ -49,22 +49,26 @@ const MentorsDashboard = () => {
 
   return (
     <main className="bg-gray-50 p-2 sm:p-4">
-      <MentorInfoGraphic user={user} myMentees={myMentees} reviewCount={reviewCount} />
+      <MentorInfoGraphic
+        user={user}
+        myMentees={myMentees}
+        reviewCount={reviewCount}
+      />
 
-      <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7 ">
-        <div className="bg-white rounded-md shadow-xl p-4 sm:p-10 grid lg:grid-cols-12 gap-7 items-start">
-          <div className=" lg:col-span-3 rounded-full p-2 bg-gray-100 shadow-lg  mx-auto">
+      <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7">
+        <div className="lg:rounded-l-full bg-white rounded-md shadow-xl p-4 sm:p-10 grid lg:grid-cols-12 gap-7 items-start">
+          <div className=" lg:col-span-3 p-2 mx-auto">
             <img
               src={user.image ? user.image : userIcon}
               alt="user image"
-              className="w-full sm:w-[220px] sm:h-[220px] object-cover max-lg:mx-auto rounded-full"
+              className="rounded-full object-top h-[200px] w-[200px] object-cover shadow-md"
             />
           </div>
           <div className="lg:col-span-9 rounded-md">
             <div className="flex justify-between max-sm:flex-col gap-3">
               <div className="space-y-1">
-                <h2 className="text-2xl sm:text-3xl capitalize font-semibold">
-                  {`${user?.firstName} ${user?.initials}`}.
+                <h2 className="text-xl sm:text-3xl capitalize font-medium">
+                  {user?.firstName + " " + user?.initials}.
                 </h2>
                 <p className="capitalize max-sm:text-sm font-medium text-gray-700">
                   {user?.industry}
@@ -76,22 +80,22 @@ const MentorsDashboard = () => {
               </Link>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 justify-between mt-5 gap-5">
-              <div className="space-y-2">
+             <div className="space-y-2">
                 <h2 className="capitalize font-semibold">about</h2>
-                <p className=" line-clamp-4 max-sm:text-sm">
-                  {user?.bio ? user?.bio : "Nothing yet..."}
+                <p className=" line-clamp-4 text-sm leading-6">
+                  {user?.bio ? user.bio : "nothing yet"}
                 </p>
               </div>
               <div className="space-y-3 md:text-right">
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">phone number</h2>
-                  <p className="max-sm:text-sm">
+                  <p className="text-sm">
                     +{user?.telNumber ? user?.telNumber : "Nothing yet..."}
                   </p>
                 </div>
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">email address</h2>
-                  <p className="max-sm:text-sm">
+                  <p className="text-sm">
                     {user?.email ? user?.email : "Nothing yet..."}
                   </p>
                 </div>
@@ -99,13 +103,13 @@ const MentorsDashboard = () => {
               <div className="space-y-3 lg:text-right">
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">location</h2>
-                  <p className="max-sm:text-sm">
+                  <p className="text-sm">
                     {user?.country ? user?.country : "Nothing yet..."}
                   </p>
                 </div>
                 <div className="space-y-1">
                   <h2 className="capitalize font-semibold">industry</h2>
-                  <p className="capitalize max-sm:text-sm">
+                  <p className="capitalize text-sm">
                     {user?.industry ? user?.industry : "Nothing yet..."}
                   </p>
                 </div>
@@ -116,7 +120,7 @@ const MentorsDashboard = () => {
       </section>
       <section className="max-w-6xl mx-auto px-4 py-7 ">
         <div className="p-2 sm:p-5 bg-white shadow-sm space-y-4">
-          <h1 className="capitalize text-2xl sm:text-3xl font-medium">
+          <h1 className="capitalize text-2xl font-medium">
             my mentees
           </h1>
           {myMentees.length == 0 ? (

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo-full.png";
-import Partpage from "../../components/Partpage";
+import Logo from "/images/logos/logo-full.png";
 import SignUp from "../../components/SignUp";
 
 const Mentorsignup = () => {
@@ -32,7 +31,7 @@ const Mentorsignup = () => {
             </div>
           </div>
         </div>
-        <div className="h-full hidden bg-[url('./assets/signup.jpg')] bg-cover bg-center relative lg:flex justify-center flex-col items-center p-5 sm:p-10 max-md:py-10">
+        <div className="h-full hidden bg-[url('/images/signup.jpg')] bg-cover bg-center relative lg:flex justify-center flex-col items-center p-5 sm:p-10 max-md:py-10">
           <div className="absolute top-0 left-0 w-full  h-full bg-[linear-gradient(to_right,rgba(230,115,0,0.3)50%,rgba(230,115,0,1))]"></div>
           <div className="max-w-sm z-10">
             <div className="text-white space-y-3 bg-[rgba(0,0,0,0.3)] p-5">

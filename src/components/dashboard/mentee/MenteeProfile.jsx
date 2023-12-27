@@ -50,7 +50,7 @@ const MenteeProfile = ({ tab }) => {
           tab == 2 ? "block" : "hidden"
         } max-w-4xl mx-auto`}
       >
-        <div className="col-span-8 rounded-md space-y-6 p-5 pt-0">
+        <div className="col-span-8 rounded-md space-y-6 sm:p-5 pt-0">
           <h2 className="font-semibold text-2xl">Profile Settings</h2>
           <form action="#" onSubmit={handleSubmit}>
             <div className="rounded-md bg-white space-y-5">

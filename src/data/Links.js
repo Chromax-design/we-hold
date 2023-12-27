@@ -1,9 +1,8 @@
-import dashimg from "../assets/icons/dashboards/dashboard.png";
-import history from "../assets/icons/dashboards/history.png";
-import messages from "../assets/icons/dashboards/messages.png";
-import notification from "../assets/icons/dashboards/notification.png";
-import payment from "../assets/icons/dashboards/payment.png";
-import setting from "../assets/icons/dashboards/setting.png";
+import dashimg from "/icons/dashboard.png";
+import history from "/icons/history.png";
+import messages from "/icons/messages.png";
+import payment from "/icons/payment.png";
+import setting from "/icons/setting.png";
 
 export const community = [
   { title: "Collaborate", location: "Collaborate" },
@@ -43,15 +42,6 @@ export const footLinks = [
       { title: "browse mentors", location: "mentors" },
     ],
   },
-  // {
-  //   title: "resources",
-  //   links: [
-  //     { title: "blog", location: "blog" },
-  //     { title: "podcasts", location: "podcasts" },
-  //     { title: "newsletters", location: "newsletters" },
-  //     { title: "video library", location: "video-library" },
-  //   ],
-  // },
   {
     title: "company",
     links: [
@@ -74,12 +64,6 @@ export const dashboard = [
   { id: "1", title: "dashboard", icon: `${dashimg}`, link: "" },
   { id: "2", title: "history", icon: `${history}`, link: "history" },
   { id: "3", title: "chat room", icon: `${messages}`, link: "chat" },
-  // {
-  //   id: "4",
-  //   title: "notifications",
-  //   icon: `${notification}`,
-  //   link: "notifications",
-  // },
   { id: "5", title: "payments", icon: `${payment}`, link: "payments" },
   { id: "6", title: "settings", icon: `${setting}`, link: "settings" },
 ];

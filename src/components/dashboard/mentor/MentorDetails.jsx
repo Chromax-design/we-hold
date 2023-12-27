@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import edit from "../../../assets/icons/dashboards/edit.png";
+import edit from "/icons/edit.png";
 import "react-phone-input-2/lib/style.css";
 import { Country } from "country-state-city";
-import userIcon from "../../../assets/icons/user_icon.png";
+import userIcon from "/icons/user_icon.png";
 import { handleUpload } from "../../../utils/handlers";
 import useAuth from "../../../store/AuthStore";
 import useLoader from "../../../store/loaderStore";

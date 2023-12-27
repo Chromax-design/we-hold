@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { faqdata } from "../data/Faqsdata";
-import plus from "../assets/icons/plus.png";
-import minus from "../assets/icons/minus.png";
+import plus from "/icons/plus.png";
+import minus from "/icons/minus.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,12 +18,12 @@ const Faqs = () => {
   };
 
   return (
-    <div className="space-y-3 mt-10">
+    <div className="space-y-1 mt-10">
       {faqdata.slice(0, 3).map((item, i) => {
         return (
-          <div key={item.id} className="space-y-3">
+          <div key={item.id} className="space-y-1">
             <div
-              className="bg-white p-4 shadow-md text-sm font-semibold rounded-sm flex justify-between items-center cursor-pointer"
+              className="bg-white p-4 shadow-sm text-sm font-medium rounded-sm flex justify-between items-center cursor-pointer"
               onClick={() => toggle(i)}
             >
               <h3>{item.title}</h3>

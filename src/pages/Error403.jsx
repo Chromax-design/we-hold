@@ -1,5 +1,5 @@
 import React from "react";
-import error from "../assets/errors/403.svg";
+import error from "/info_graphics/403.svg";
 import Button from "../components/Button";
 
 const Error403 = () => {

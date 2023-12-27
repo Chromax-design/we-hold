@@ -25,8 +25,8 @@ const MenteeHistory = () => {
       <section className="max-w-6xl mx-auto px-2 sm:px-4 py-7 ">
         <div className="grid gap-4 grid-cols-12">
           <MiniProfile user={user} />
-          <div className="col-span-12 lg:col-span-9 bg-white p-2 sm:p-5rounded-md shadow-md space-y-10">
-            <h1 className="capitalize text-2xl sm:text-4xl font-medium">
+          <div className="col-span-12 lg:col-span-9 bg-white p-2 sm:p-5 rounded-md shadow-md space-y-10">
+            <h1 className="capitalize text-2xl font-medium">
               mentorship history
             </h1>
             <div className="flex flex-col sm:flex-row justify-between sm:items-center mt-10">
@@ -54,7 +54,7 @@ const MenteeHistory = () => {
             </div>
             <div className=" bg-lime-900 text-white p-3 sm:p-5 rounded-md shadow-sm mt-10">
               <h4 className="font-semibold text-xl">Disclaimer !!!</h4>
-              <p className=" font-normal mt-3">
+              <p className=" font-normal mt-3 max-sm:text-sm">
                 The mentorship sessions provided are intended for informational
                 and guidance purposes only. By engaging in the mentorship
                 sessions, both mentors and mentees acknowledge that they have

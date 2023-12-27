@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/logo-full.png";
+import Logo from "/images/logos/logo-full.png";
 import Partpage from "../../components/Partpage";
-// import axios from "axios"
 import "react-toastify/dist/ReactToastify.css";
 
 import SignUp from "../../components/SignUp";

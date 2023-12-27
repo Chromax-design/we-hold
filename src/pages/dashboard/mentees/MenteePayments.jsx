@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import noMentor from "../../../assets/dashboard/no mentor.svg";
+import noMentor from "/info_graphics/no-mentor.svg";
 import axios from "axios";
 import { BASE_URL } from "../../../config/config";
 import useAuth from "../../../store/AuthStore";
@@ -9,7 +9,7 @@ const NoPayment = () => {
     <>
       <div className="flex flex-col justify-center items-center mt-20">
         <img src={noMentor} alt="" className="max-w-[350px]" />
-        <h2 className="capitalize sm:text-lg">You have made no payments yet</h2>
+        <h2 className="capitalize text-sm">You have made no payments yet</h2>
       </div>
     </>
   );
@@ -54,12 +54,12 @@ const MenteePayments = () => {
 
   return (
     <main className="bg-gray-50 p-4">
-      <section className="max-w-6xl mx-auto px-4 py-7 ">
+      <section className="max-w-6xl mx-auto sm:px-4 sm:py-7 ">
         <div className="max-w-5xl mx-auto">
           <div className=" col-span-9 bg-white rounded-md shadow-md relative h-[650px]">
             <div className="p-5 space-y-4">
-              <h1 className="capitalize text-2xl sm:text-4xl font-medium">
-                payments
+              <h1 className="capitalize text-2xl font-medium">
+                my payments
               </h1>
               {payments.length == 0 ? (
                 <NoPayment />

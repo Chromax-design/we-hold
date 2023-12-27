@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import noMentor from "../../../assets/dashboard/no mentor.svg";
+import noMentor from "/info_graphics/no-mentor.svg";
 import useAuth from "../../../store/AuthStore";
 import { BASE_URL } from "../../../config/config";
 import axios from "axios";
@@ -58,13 +58,11 @@ const MentorPayment = () => {
   };
   return (
     <main className="bg-gray-50 p-4">
-      <section className="max-w-6xl mx-auto px-4 py-7 ">
+      <section className="max-w-6xl mx-auto sm:px-4 sm:py-7 ">
         <div className="max-w-5xl mx-auto">
           <div className=" col-span-9 bg-white rounded-md shadow-md relative h-[650px]">
             <div className="p-5 space-y-4">
-              <h1 className="capitalize text-2xl sm:text-4xl font-medium">
-                payments
-              </h1>
+              <h1 className="capitalize text-2xl font-medium">my payments</h1>
               {payments.length == 0 ? (
                 <NoPayment />
               ) : (

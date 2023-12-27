@@ -1,5 +1,5 @@
 import React from "react";
-import noMentor from "../../../assets/dashboard/no mentor.svg";
+import noMentor from "/info_graphics/no-mentor.svg";
 
 const MentorNotification = () => {
   return (

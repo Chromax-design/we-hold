@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../config/config";
-import marker from "../../assets/icons/map.png";
-import userIcon from "../../assets/icons/user_icon.png";
+import marker from "/icons/map.png";
+import userIcon from "/icons/user_icon.png";
 import axios from "axios";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 import useAuth from "../../store/AuthStore";
 import { handleReviews } from "../../utils/menteeHandlers";
-import checked from "../../assets/icons/checked.png";
+import checked from "/icons/checked.png";
+import verified from "/icons/verified.png";
 
 const createDate = (timestamp, timeZone = "UTC") => {
   if (timestamp < 1e12) {
@@ -120,53 +121,64 @@ const MentorProfile = () => {
   return (
     <>
       {Loader && <PreLoader />}
-      <main className="bg-gray-50 space-y-5 py-10">
-        <section className="max-w-5xl mx-auto ring-1 ring-gray-100 rounded-md p-10 shadow-sm bg-white">
-          <div className="lg:grid grid-cols-12 gap-10 max-lg:space-y-2">
-            <div className="col-span-3">
+      <main className="bg-gray-50 space-y-5 py-10 px-2">
+        <section className="max-w-5xl mx-auto ring-1 ring-gray-100 rounded-md p-4 sm:p-10 shadow-xl bg-white lg:rounded-l-full">
+          <div className="md:grid grid-cols-12 gap-5 lg:gap-10 max-lg:space-y-2">
+            <div className="col-span-4 lg:col-span-3">
               <img
                 src={mentor?.image ? mentor.image : userIcon}
                 alt=""
-                className="shadow-md border-2 border-lime-700 w-full lg:max-h-[250px] object-cover max-lg:max-w-sm max-lg:mx-auto"
+                className="h-[200px] w-[200px] rounded-full object-cover object-top shadow-md"
               />
             </div>
-            <div className="col-span-9">
-              <div className="pt-3 flex flex-col gap-5 max-lg:text-center lg:justify-between lg:flex-row max-lg:items-center">
-                <div>
-                  <h2 className="capitalize text-2xl font-semibold">
+            <div className="col-span-8 lg:col-span-9 space-y-4">
+              <div className="pt-3 flex flex-col gap-5 sm:justify-between sm:flex-row">
+                <div className="">
+                  <h2 className="capitalize text-2xl font-medium text-amber-900">
                     {`${mentor?.firstName} ${mentor?.initials}`}.
                   </h2>
-                  <p className="capitalize font-medium text-lg">
-                    {mentor?.industry}
-                  </p>
-                  <div className="flex gap-1 items-center max-lg:justify-center">
-                    <img src={marker} alt="" className="w-[20px]" />
-                    <p className="capitalize text-sm font-medium">{`${mentor?.country}`}</p>
+                  <div className="flex items-center gap-1 capitalize font-medium text-sm">
+                    <img src={verified} alt="" width={25} />
+                    <p>verified mentor</p>
                   </div>
                 </div>
-                <div className="flex flex-col lg:items-center">
-                  <span className="text-3xl font-semibold">{`$${
+                <div className="flex flex-col gap-1">
+                  <span className="text-2xl font-medium">{`$${
                     mentor.price ?? "50"
                   }`}</span>
-                  <span className="text-xs font-semibold">monthly</span>
+                  <span className="text-xs font-semibold">Monthly</span>
                 </div>
               </div>
-              <div className="flex flex-col text-center mt-7 gap-4 lg:flex-row">
-                <div className="flex-1 ring-1 ring-gray-200 p-2 bg-gray-50">
-                  <span className="font-bold text-xl">
+              <div className="flex gap-5">
+                <div>
+                  <h4 className="font-medium">Industry</h4>
+                  <p className="text-xs font-normal capitalize">
+                    {mentor.industry}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-medium">Country</h4>
+                  <p className="text-xs font-normal capitalize">
+                    {mentor.country}
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col text-center mt-7 gap-4 lg:flex-row justify-between">
+                <div className="flex-1 p-2 bg-amber-50 text-amber-800 shadow-sm font-semibold rounded-md">
+                  <span className="font-semibold text-lg">
                     {mentor?.experience} yrs
                   </span>
                   <h4 className=" leading-3 text-sm capitalize">experience</h4>
                 </div>
-                <div className="flex-1 ring-1 ring-gray-200 p-2 bg-gray-50 flex place-content-center place-items-center">
-                  <h4 className=" leading-3 text-lg font-semibold capitalize p-2">
+                <div className="flex-1 p-2 bg-amber-50 text-amber-800 shadow-sm flex place-content-center place-items-center rounded-md">
+                  <h4 className=" leading-3 font-semibold capitalize p-2">
                     quick responder
                   </h4>
                 </div>
                 {user.role == "mentor" ? (
                   <button
                     type="button"
-                    className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
+                    className="bg-amber-900 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-amber-800 flex place-items-center place-content-center"
                   >
                     <img src={checked} alt="" width={25} className="mr-2" />{" "}
                     <span>for mentees</span>
@@ -174,14 +186,14 @@ const MentorProfile = () => {
                 ) : sub == true ? (
                   <Link
                     to={`/checkout/${mentor?.id}`}
-                    className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
+                    className="bg-amber-900 text-white px-5 p-4 rounded-md capitalize font-medium hover:bg-amber-800 flex place-items-center place-content-center"
                   >
                     + subscribe
                   </Link>
                 ) : (
                   <button
                     type="button"
-                    className="bg-lime-800 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-lime-900  ring-1 ring-gray-200  flex place-items-center place-content-center"
+                    className="bg-amber-900 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-amber-800 flex place-items-center place-content-center"
                   >
                     <img src={checked} alt="" width={25} className="mr-2" />{" "}
                     <span>subscribed</span>
@@ -192,15 +204,9 @@ const MentorProfile = () => {
           </div>
         </section>
 
-        <section className="max-w-4xl grid grid-cols-12 mx-auto space-y-2 gap-5 p-4">
-          <div className="col-span-12 md:col-span-8 bg-white ring-1 ring-gray-100 rounded-md p-4">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="capitalize text-2xl font-semibold">bio</h2>
-              <div className=" text-sm bg-gray-100 p-2 font-semibold">
-                {" "}
-                verified
-              </div>
-            </div>
+        <section className="max-w-5xl grid grid-cols-12 mx-auto space-y-2 gap-5">
+          <div className="col-span-12 md:col-span-8 bg-white rounded-md p-4 shadow-sm">
+            <h2 className="capitalize text-lg font-medium mb-3">bio</h2>
             <div className="space-y-4">
               {bioArray.map((item, i) => {
                 return (
@@ -211,13 +217,13 @@ const MentorProfile = () => {
               })}
             </div>
           </div>
-          <div className="col-span-12 md:col-span-4">
-            <h3 className="capitalize font-semibold text-lg">skills:</h3>
-            <div className="flex items-center flex-1 justify-around text-center capitalize font-medium gap-3 flex-wrap mt-5 text-xs">
+          <div className="col-span-12 md:col-span-4 bg-white p-4 shadow-sm">
+            <h3 className="capitalize font-medium text-lg mb-3">skills:</h3>
+            <div className="space-y-2">
               {mentor?.skills?.split(",").map((skill, index) => {
                 return (
                   <div
-                    className="flex-1 p-3 ring-1 ring-gray-100 shadow-sm bg-white "
+                    className="flex-1 p-4 capitalize text-sm shadow-sm text-amber-800 bg-amber-50 rounded-full max-md:text-center font-semibold"
                     key={index}
                   >
                     {skill}
@@ -226,31 +232,31 @@ const MentorProfile = () => {
               })}
             </div>
           </div>
-          <div className="col-span-12 bg-white ring-1 ring-gray-100 rounded-md p-4">
-            <h3 className="capitalize font-semibold text-lg mb-5">
+          <div className="col-span-12 bg-white rounded-md p-4 shadow-sm">
+            <h3 className="capitalize font-medium text-lg mb-5">
               how i can be of help?
             </h3>
 
-            <ul className="space-y-3 list-disc list-inside">
+            <div className="space-y-3">
               {helpArray.map((item, i) => {
                 return (
-                  <li className="text-sm leading-6" key={i}>
+                  <p className="text-sm leading-6" key={i}>
                     {item}
-                  </li>
+                  </p>
                 );
               })}
-            </ul>
+            </div>
           </div>
         </section>
 
-        <section className="max-w-4xl mx-auto p-4 space-y-2">
-          <div className="ring-1 ring-gray-100 rounded-md p-10 shadow-sm bg-white">
-            <h2 className="capitalize text-xl font-semibold mb-5">
+        <section className="max-w-5xl mx-auto space-y-2">
+          <div className=" rounded-md p-10 shadow-sm bg-white">
+            <h2 className="capitalize text-lg font-medium mb-5">
               mentee reviews
             </h2>
             <div className="space-y-7">
               {allReviews.length == 0 ? (
-                <p className="text-lg capitalize italic">No reviews yet...</p>
+                <p className="text-sm capitalize italic">No reviews yet...</p>
               ) : (
                 allReviews.map((item, index) => {
                   return (

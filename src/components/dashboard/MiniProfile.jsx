@@ -1,5 +1,5 @@
 import React from "react";
-import userIcon from "../../assets/icons/user_icon.png";
+import userIcon from "/icons/user_icon.png";
 
 const MiniProfile = ({ user }) => {
   return (

@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import Learner from "../assets/learning.svg";
-import check from "../assets/icons/check.png";
+import Learner from "/info_graphics/learning.svg";
+import check from "/icons/check.png";
 import { learningStyleInfo } from "../data/Information";
 
 const Learning = () => {
@@ -12,8 +12,8 @@ const Learning = () => {
       <section className="py-10 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 max-w-4xl mx-auto items-center">
           <div className="space-y-3">
-            <h1 className="text-5xl lg:text-6xl font-semibold mb-5">
-              Know Your Learning Style
+            <h1 className="text-2xl sm:text-5xl font-medium mb-5">
+              Know Your Learning Style.
             </h1>
             <Link
               to={"https://vark-learn.com/the-vark-questionnaire/"}
@@ -32,10 +32,10 @@ const Learning = () => {
 
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto p-4">
-          <h2 className="text-3xl sm:text-5xl text-center font-semibold capitalize mb-5">
+          <h2 className="text-3xl text-center font-medium capitalize mb-5">
             What are Learning styles?
           </h2>
-          <p className="text-center text-lg">
+          <p className="text-center">
             Learning styles refer to the different ways in which individuals
             prefer to receive, process, and retain information. They are often
             thought to be personal preferences or tendencies that affect how
@@ -82,10 +82,10 @@ const Learning = () => {
 
       <section className="px-4 py-20 bg-gray-50">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-5xl text-center font-semibold mb-10">
+          <h2 className="text-3xl text-center font-medium mb-10">
             4 Reasons WHY Knowing Your Learning Style Is Important
           </h2>
-          <div className="space-y-5 max-md:columns-1 columns-2 gap-7 md:text-justify">
+          <div className="space-y-5 max-md:columns-1 columns-2 gap-7 text-sm leading-6">
             <div>
               <div className="flex gap-3 items-center mb-3">
                 <img src={check} alt="" className="w-[25px]" />{" "}

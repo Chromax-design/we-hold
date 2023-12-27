@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import check from "../assets/icons/check.png";
+import check from "/icons/check.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 const inspire = [

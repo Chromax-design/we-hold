@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { Video } from "../components/Video";
-import Intro from "../assets/video/headervideo.mp4";
-import poster from "../assets/video/poster1.jpeg";
 import Mentor from "../components/Mentor";
 import Mentees from "../components/Mentees";
 import Trust from "../components/Trust";
 import Inspire from "../components/Inspire";
-import inspireImg from "../assets/inspire.png";
+import inspireImg from "/images/inspire.png";
 import Faqs from "../components/Faqs";
 import { handleSearch } from "../utils/handlers";
 import { useNavigate } from "react-router-dom";
 import useLoader from "../store/loaderStore";
 import SearchStore from "../store/SearchStore";
-import Loading from "../assets/icons/loading.gif";
+import Loading from "/images/loading.gif";
 
 const PreLoader = () => {
   return (
@@ -42,8 +40,8 @@ const Home = () => {
 
   return (
     <>
-      <main>
-        <section className=" mx-auto relative h-[500px] bg-[url('./assets/video/headervideo.gif')] bg-cover bg-center">
+      <main className="bg-gray-50 space-y-20 pb-10">
+        <section className=" mx-auto relative h-[500px] bg-[url('/images/headervideo.gif')] bg-cover bg-center">
           <div className="absolute top-0 left-0 w-full h-[500px] bg-[linear-gradient(to_right,rgba(230,115,0,0.3)50%,rgba(230,115,0,1))] bg-cover bg-center bg-no-repeat z-10"></div>
           <div className="absolute z-20 top-0 left-0 h-full w-full ">
             <div className="max-w-6xl mx-auto pb-10 px-3 min-h-[450px] py-20 flex items-center">
@@ -70,6 +68,7 @@ const Home = () => {
                         name="search"
                         className="w-full px-3 py-4 outline-lime-800 rounded-md placeholder:capitalize placeholder:text-sm text-black text-sm placeholder:font-light shadow-lg"
                         onChange={handleChange}
+                        required
                       />
                       <button
                         type="submit"
@@ -85,15 +84,15 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
+        <section className="">
           <div className="flex">
             <Mentees />
           </div>
         </section>
 
-        <section className="bg-white py-16 px-4">
+        <section className=" px-4">
           <div className="max-w-3xl lg:max-w-5xl mx-auto">
-            <h2 className="capitalize sm:text-center max-md:text-2xl text-3xl font-semibold mb-7">
+            <h2 className="capitalize sm:text-center text-2xl font-medium mb-7">
               Meet our highly esteemed mentors
             </h2>
             <p className="sm:text-center max-w-4xl mx-auto mb-10">
@@ -107,10 +106,10 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-20 px-4">
+        <section className="px-4">
           <div className="max-w-4xl lg:max-w-6xl grid grid-cols-1 lg:grid-cols-2 mx-auto gap-7">
             <div>
-              <h2 className="max-md:text-2xl text-3xl font-semibold capitalize">
+              <h2 className="text-2xl font-medium capitalize">
                 why trust us?
               </h2>
               <Trust />
@@ -119,10 +118,10 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-gray-50 px-4">
-          <h2 className="max-md:text-2xl text-3xl font-semibold capitalize mb-10 sm:text-center">
+        <section className="px-4">
+          <h2 className="text-2xl font-medium capitalize mb-10 sm:text-center">
             Inspire the future. <br />
-            Become a Mentor Today
+            Become a Mentor Today.
           </h2>
           <div className="max-w-6xl grid grid-cols-1 lg:grid-cols-2 mx-auto gap-7">
             <img
@@ -136,8 +135,8 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="bg-gray-50 py-20 px-4">
-          <h2 className="max-md:text-2xl text-3xl font-semibold sm:text-center">
+        <section className=" px-4">
+          <h2 className="text-2xl font-medium sm:text-center">
             FAQs
           </h2>
           <div className="max-w-4xl mx-auto">

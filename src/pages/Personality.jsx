@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Video4 } from "../components/Video";
-import check from "../assets/icons/check.png";
+import check from "/icons/check.png";
 import { personality_test } from "../data/Information";
 import useAuth from "../store/AuthStore";
 
@@ -15,7 +15,7 @@ const Personality = () => {
       <section className="py-20 bg-gray-50 px-3">
         <div className="max-w-6xl grid max-md:grid-cols-1 grid-cols-3 gap-10 items-center mx-auto">
           <div className="pl-5">
-            <h1 className="max-lg:text-4xl text-5xl font-black capitalize mb-5">
+            <h1 className="text-4xl font-medium capitalize mb-5">
               Know Your Personality Triat!
             </h1>
             <Link
@@ -36,10 +36,10 @@ const Personality = () => {
       </section>
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto">
-          <h2 className="capitalize text-center text-5xl font-semibold">
+          <h2 className="capitalize text-center text-3xl font-medium">
             What is a Personality test?
           </h2>
-          <div className="space-y-5 mt-5 text-lg">
+          <div className="space-y-5 mt-5">
             <p>
               A personality test is a tool designed to assess various aspects of
               an individual's personality traits, characteristics, and
@@ -75,7 +75,7 @@ const Personality = () => {
 
       <section className="bg-white py-20">
         <div className="max-w-4xl mx-auto">
-          <h2 className="capitalize text-center text-5xl font-semibold mb-10">
+          <h2 className="capitalize text-center text-3xl font-medium mb-10">
             {" "}
             4 reasons why Personality tests are important
           </h2>

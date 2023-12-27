@@ -25,7 +25,7 @@ const Mentors = () => {
   return (
     <main>
       <section className="max-w-5xl mx-auto my-5 py-10 px-3 shadow-sm rounded-sm max-lg:max-w-3xl ">
-        <h2 className="font-semibold capitalize text-3xl mb-5">all mentors</h2>
+        <h2 className="font-medium capitalize text-2xl mb-5">all mentors</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-7 p-4 md:p-0">
           {mentor.map((item, index) => {
             return (

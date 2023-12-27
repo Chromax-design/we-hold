@@ -1,7 +1,7 @@
-import Facebook from "../assets/socials/facebook.png";
-import Instagram from "../assets/socials/instagram.png";
-import Tiktok from "../assets/socials/tik-tok.png";
-import Mail from "../assets/icons/mail.png";
+import Facebook from "/icons/facebook.png";
+import Instagram from "/icons/instagram.png";
+import Tiktok from "/icons/tik-tok.png";
+import Mail from "/icons/mail.png";
 
 
 

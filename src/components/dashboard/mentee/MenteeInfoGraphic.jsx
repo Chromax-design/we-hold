@@ -1,7 +1,7 @@
 import React from "react";
-import img2 from "../../../assets/icons/dashboards/mentees.png";
-import img3 from "../../../assets/icons/dashboards/welcome.png";
-import img1 from "../../../assets/icons/dashboards/time.png";
+import img2 from "/icons/mentees.png";
+import img3 from "/icons/welcome.png";
+import img1 from "/icons/time.png";
 
 const createDate = (timestamp, timeZone = "UTC") => {
   if (timestamp < 1e12) {
@@ -60,10 +60,10 @@ const MenteeInfoGraphic = ({ user, mymentors }) => {
                 className="max-w-[60px] sm:max-w-[70px]"
               />
               <div className="text-right space-y-2">
-                <h3 className="capitalize sm:text-lg font-medium text-gray-50">
+                <h3 className="capitalize font-normal text-sm tracking-wider text-gray-50">
                   {item.title}
                 </h3>
-                <p className="text-2xl sm:text-3xl font-semibold">
+                <p className="text-2xl font-medium capitalize">
                   {item.value}
                 </p>
               </div>

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import send from "../../assets/dashboard/send.png";
-import attach from "../../assets/dashboard/attach.png";
-import emoji from "../../assets/dashboard/emoji.png";
-import add from "../../assets/dashboard/add.png";
-import remove from "../../assets/dashboard/remove.png";
-import photo from "../../assets/dashboard/photo.png";
+import send from "/icons/send.png";
+import attach from "/icons/attach.png";
+import emoji from "/icons/emoji.png";
+import add from "/icons/add.png";
+import remove from "/icons/remove.png";
+import photo from "/icons/photo.png";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 

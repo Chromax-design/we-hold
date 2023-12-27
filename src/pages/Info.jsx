@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import info from "../assets/info.svg";
+import info from "/info_graphics/info.svg";
 import { information } from "../data/Information";
-import check from "../assets/icons/check.png";
+import check from "/icons/check.png";
 import { Video3 } from "../components/Video";
 
 const Info = () => {
@@ -32,7 +32,7 @@ const Info = () => {
       </section>
 
       <section className=" bg-gray-50 px-4 py-20">
-        <h2 className="text-4xl font-bold text-center capitalize mb-5">
+        <h2 className="text-2xl font-medium text-center capitalize mb-5">
           10 situations where you need a Mentor
         </h2>
         <div className="max-md:max-w-xl md:max-w-4xl mx-auto space-y-5">
@@ -58,7 +58,7 @@ const Info = () => {
       <section className="py-20 px-3">
         <div className="max-w-3xl lg:max-w-6xl grid max-lg:grid-cols-1 grid-cols-3 gap-10 items-center mx-auto">
           <div className="pl-5">
-            <h1 className="max-lg:text-4xl text-2xl font-bold capitalize mb-5">
+            <h1 className="text-2xl font-medium capitalize mb-5">
               Book a "Strategy call" to speak to one of our representatives
             </h1>
             <p className="mb-5">

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo_2.png";
+import Logo from "/images/logos/logo_2.png";
 import { footLinks } from "../data/Links";
 import { socials } from "../data/Constants";
 

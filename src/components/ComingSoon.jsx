@@ -1,5 +1,5 @@
 import React from "react";
-import coming_soon from "../assets/icons/info_icons/coming_soon.svg";
+import coming_soon from "/info_graphics/coming_soon.svg";
 
 const ComingSoon = () => {
   return (

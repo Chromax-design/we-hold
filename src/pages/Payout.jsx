@@ -7,11 +7,10 @@ import StripeButton from "../components/StripeButton";
 import { BASE_URL } from "../config/config";
 import axios from "axios";
 import useAuth from "../store/AuthStore";
-import checkOutStore from "../store/checkOutStore";
+import transfer from "/icons/transfer.png";
 
 const Payout = () => {
   const { user } = useAuth();
-  const { checkOut, setCheckOut } = checkOutStore();
   const { Loader, setLoader } = useLoader();
   const { id } = useParams();
   const [mentor, setMentor] = useState([]);
@@ -56,21 +55,26 @@ const Payout = () => {
     navigate(-1);
   };
 
-  console.log(checkOut);
-
   return (
     <>
       {Loader && <PreLoader />}
-      <div className="w-full min-h-screen bg-[url('./assets/bg-gradient.jpg')] backdrop-blur-lg bg-cover py-20 px-4 flex justify-between items-center">
+      <div className="w-full min-h-screen bg-[url('/images/bg-gradient.jpg')] backdrop-blur-lg bg-cover py-20 px-4 flex justify-between items-center">
         <div className="max-w-lg mx-auto p-8 shadow-xl bg-white rounded-lg w-full">
           <p className="text-xl text-center font-semibold capitalize">
             Choose payment option
           </p>
 
-          <div className="my-10">
-            <PayPalButton setLoader={setLoader} />
-            <p className="text-center font-semibold text-lg uppercase">or</p>
+          <div className="my-10 space-y-4">
+            <PayPalButton />
+            <p className="text-center font-semibold text-sm uppercase">or</p>
             <StripeButton setLoader={setLoader} />
+            <a
+              href="mailto: enquiry@weholdahand.com"
+              className="capitalize w-full border border-amber-900 bg-amber-800 py-2 px-5 text-white text-sm font-normal text-center rounded-sm flex items-center gap-1 justify-center"
+            >
+              <img src={transfer} alt="" width={35}/>
+              <p>bank transfer</p>
+            </a>
           </div>
 
           <p className="mt-5">

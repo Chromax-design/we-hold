@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Logo from "../assets/logo-full.png";
+import Logo from "/images/logos/logo-full.png";
 import { handleResetPWD } from "../utils/handlers";
 import useLoader from "../store/loaderStore";
 import PreLoader from "./PreLoader";
@@ -27,7 +27,7 @@ const Passwordreset = ({ userType }) => {
   return (
     <>
       {Loader && <PreLoader />}
-      <div className="w-full min-h-screen bg-[url('./assets/bg-gradient.jpg')] backdrop-blur-lg bg-cover pt-32 pb-20 px-4">
+      <div className="w-full min-h-screen bg-[url('/images/bg-gradient.jpg')] backdrop-blur-lg bg-cover pt-32 pb-20 px-4">
         <Link to={"/"}>
           <img src={Logo} alt="" className="block w-52 mx-auto mb-5" />
         </Link>

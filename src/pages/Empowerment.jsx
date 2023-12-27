@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import Empower from "../assets/icons/info_icons/empowerment.svg";
+import Empower from "/info_graphics/empowerment.svg";
 
 const Empowerment = () => {
   return (
@@ -10,7 +10,7 @@ const Empowerment = () => {
       <section className="py-20 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10 max-w-4xl mx-auto items-center">
           <div className="space-y-3">
-            <h1 className="text-3xl lg:text-5xl font-semibold mb-5">
+            <h1 className="text-3xl font-medium mb-5">
               We Hold A Hand Equip Youth Initiative
             </h1>
             <Link
@@ -29,11 +29,11 @@ const Empowerment = () => {
       </section>
       <section className="bg-gray-50 px-4 py-20">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl capitalize text-center font-semibold mb-5">
+          <h2 className="text-2xl capitalize text-center font-medium mb-5">
             Join the waitlist
           </h2>
-          <div className="space-y-4">
-            <p className="text-lg">
+          <div className="space-y-4 text-sm leading-6">
+            <p>
               Welcome to We Hold A Hand Youth development initiative, a
               transformative initiative dedicated to bridging the digital divide
               and empowering less privileged individuals. We strive to provide
@@ -41,14 +41,14 @@ const Empowerment = () => {
               lighting, to enable them to access online learning opportunities
               and explore remote work options.
             </p>
-            <p className="text-lg">
+            <p>
               By removing barriers to entry, we aim to unlock the potential
               within these individuals and empower them to learn, acquire new
               skills, and find meaningful employment in the digital era.
               Together, let's create a level playing field and open doors to a
               brighter future for all, one device at a time.
             </p>
-            <p className="text-lg">
+            <p>
               Join us today and make a lasting impact! If you require help,
               please join the waiting list, and we will contact you as soon as
               possible.

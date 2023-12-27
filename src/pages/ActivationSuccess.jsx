@@ -1,6 +1,6 @@
 import React from "react";
 
-import successImg from "../assets/success/activation_success.svg";
+import successImg from "/info_graphics/activation_success.svg";
 import Success from "../components/Success";
 
 const ActivationSuccess = () => {

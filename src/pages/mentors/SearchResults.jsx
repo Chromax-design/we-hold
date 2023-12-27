@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import none from "../../assets/not-found.svg";
+import none from "/info_graphics/not-found.svg";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 import SearchStore from "../../store/SearchStore";

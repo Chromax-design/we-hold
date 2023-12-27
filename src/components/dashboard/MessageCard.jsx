@@ -1,6 +1,6 @@
 import React from "react";
 import { BASE_URL } from "../../config/config";
-import pdf from "../../assets/icons/pdf.png";
+import pdf from "/icons/pdf.png";
 
 const FilePreview = ({ file }) => {
   const fileUrl = `${BASE_URL}/chat/pdf/${file.docfileName}`;

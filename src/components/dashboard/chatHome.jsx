@@ -2,7 +2,7 @@ import { React, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
-import talk from "../../assets/letschat.svg";
+import talk from "/info_graphics/letschat.svg";
 import useAuth from "../../store/AuthStore";
 import chatStore from "../../store/ChatStore";
 import chatServices from "../../services/chatService";
@@ -25,7 +25,7 @@ const ChatHome = () => {
   };
 
   const url =
-    user.role == "mentor"
+    user.role === "mentor"
       ? `${BASE_URL}/mentor/myMentees/${user.id}`
       : `${BASE_URL}/mentee/myMentors/${user.id}`;
 
@@ -44,34 +44,31 @@ const ChatHome = () => {
       setLoader(false);
       console.log(error);
     }
-  }, []);
+  }, [url, setLoader]);
 
   const generateRoomId = (userId1, userId2) =>
     [userId1, userId2].sort().join("");
 
-  const createChatroomsForAllUsers = async () => {
-    for (const otherUser of users) {
-      if (otherUser.id !== user.id) {
-        const roomId = generateRoomId(user.id, otherUser.id);
+  const createChatroomForUser = async (otherUserId) => {
+    const roomId = generateRoomId(user.id, otherUserId);
 
-        const payload = {
-          roomId,
-          participantA: user.id,
-          participantB: otherUser.id,
-        };
+    const payload = {
+      roomId,
+      participantA: user.id,
+      participantB: otherUserId,
+    };
 
-        const chatroom = await chatServices.createChat(payload);
-        socket.emit("create_chatroom", roomId);
-        setChatroom(chatroom);
-      }
-    }
+    const chatroom = await chatServices.createChat(payload);
+    socket.emit("create_chatroom", roomId);
+    setChatroom(chatroom);
+    navigate(`/${user.role}/dashboard/chatRoom`);
   };
 
   useEffect(() => {
     socket.on("chatroom_created", () => {
       navigate(`/${user.role}/dashboard/chatRoom`);
     });
-  }, [socket, navigate]);
+  }, [socket, navigate, user.role]);
 
   return (
     <>
@@ -97,7 +94,7 @@ const ChatHome = () => {
                       <div
                         className="w-full py-2 max-md:px-6 flex items-center gap-3 px-4 hover:bg-gray-50 hover:cursor-pointer hover:border-l-2 border-lime-800"
                         key={index}
-                        onClick={() => createChatroomsForAllUsers(otherUser)}
+                        onClick={() => createChatroomForUser(otherUser.id)}
                       >
                         <img
                           src={otherUser.image}

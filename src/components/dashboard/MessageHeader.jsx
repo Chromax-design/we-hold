@@ -1,6 +1,5 @@
 import React from "react";
-import user from "../../assets/mentees/mentee-3.jpeg";
-import telephone from "../../assets/icons/phone.png";
+import telephone from "/icons/phone.png";
 
 const MessageHeader = ({receiver}) => {
   return (

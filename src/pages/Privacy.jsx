@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import privacy from "/info_graphics/privacy.svg";
 
 const Privacy = () => {
   return (
     <main>
-      <div className="max-w-5xl mx-auto py-20 px-3 space-y-5">
-        <h1 className="capitalize text-4xl font-semibold">Privacy policy</h1>
+      <div className="max-w-4xl mx-auto pt-10 pb-20 px-3 space-y-5">
+        <img src={privacy} alt="" className="max-w-xl mx-auto" />
+        <h1 className="capitalize text-2xl font-medium">Privacy policy</h1>
         <p>
           Welcome to We Hold A Hand Mentoring Platform ("We Hold A Hand," "us,"
           "we," or "our"). This Privacy Policy outlines the policies and
@@ -17,42 +19,44 @@ const Privacy = () => {
           Terms and Conditions, accessible from our website.
         </p>
         <div>
-          <h3 className="text-xl font-semibold mb-3">
+          <h3 className="text-lg font-medium mb-3">
             Information Collection And Use
           </h3>
-          <p>
+          <p className="text-sm leading-6">
             We collect various types of information for the purpose of providing
             and improving our mentoring platform.
           </p>
         </div>
         <h3 className="text-xl font-semibold mb-3">Types of Data Collected</h3>
         <div className="space-y-3">
-          <h4 className="text-lg font-bold capitalize">personal data:</h4>
-          <p>
-            When using our platform, we may request personally identifiable
-            information that can be used to contact or identify you ("Personal
-            Data"). This may include, but is not limited to:
-          </p>
-          <ul className="capitalize list-inside list-disc">
-            <li>email address</li>
-            <li>firstname and last name</li>
-            <li>phone number</li>
-            <li>address, state, province, ZIP/postal code, city</li>
-            <li>cookies and usage data</li>
-          </ul>
-          <p>
-            We may also collect information on how you access and use our
-            platform ("Usage Data"). This data may include your computer's
-            Internet Protocol (IP) address, browser type, browser version, pages
-            visited, time and date of visits, time spent on pages, unique device
-            identifiers, and other diagnostic data.
-          </p>
+          <h4 className="text-lg font-medium capitalize">personal data:</h4>
+          <div className="text-sm leading-6">
+            <p>
+              When using our platform, we may request personally identifiable
+              information that can be used to contact or identify you ("Personal
+              Data"). This may include, but is not limited to:
+            </p>
+            <ul className="capitalize list-inside list-disc">
+              <li>email address</li>
+              <li>firstname and last name</li>
+              <li>phone number</li>
+              <li>address, state, province, ZIP/postal code, city</li>
+              <li>cookies and usage data</li>
+            </ul>
+            <p>
+              We may also collect information on how you access and use our
+              platform ("Usage Data"). This data may include your computer's
+              Internet Protocol (IP) address, browser type, browser version,
+              pages visited, time and date of visits, time spent on pages,
+              unique device identifiers, and other diagnostic data.
+            </p>
+          </div>
         </div>
         <div className="space-y-3">
-          <h4 className="text-lg font-bold capitalize">
+          <h4 className="text-lg font-medium capitalize">
             Tracking & Cookies Data:
           </h4>
-          <p>
+          <p className="text-sm leading-6">
             We use cookies and similar tracking technologies to track activity
             on our platform and store certain information. Cookies are files
             with a small amount of data that may include an anonymous unique
@@ -66,29 +70,31 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold">Use of Data</h3>
-          <p>
-            We Hold A Hand uses the collected data for various purposes,
-            including:
-          </p>
-          <ul className="list-disc list-inside">
-            <li>Providing and maintaining the mentoring platform</li>
-            <li>Notifying you about changes to our platform</li>
-            <li>
-              Enabling you to participate in interactive features of our
-              platform when you choose to do so
-            </li>
-            <li>Providing customer care and support</li>
-            <li>Analyzing data to improve the platform</li>
-            <li>Monitoring platform usage</li>
-            <li>Detecting, preventing, and addressing technical issues</li>
-            <li>Targeted advertisements and marketing purposes</li>
-          </ul>
+          <h3 className="text-lg font-medium">Use of Data</h3>
+          <div className="text-sm leading-6">
+            <p>
+              We Hold A Hand uses the collected data for various purposes,
+              including:
+            </p>
+            <ul className="list-disc list-inside">
+              <li>Providing and maintaining the mentoring platform</li>
+              <li>Notifying you about changes to our platform</li>
+              <li>
+                Enabling you to participate in interactive features of our
+                platform when you choose to do so
+              </li>
+              <li>Providing customer care and support</li>
+              <li>Analyzing data to improve the platform</li>
+              <li>Monitoring platform usage</li>
+              <li>Detecting, preventing, and addressing technical issues</li>
+              <li>Targeted advertisements and marketing purposes</li>
+            </ul>
+          </div>
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold">Transfer Of Data</h3>
-          <p className="mt-3">
+          <h3 className="text-lg font-medium">Transfer Of Data</h3>
+          <p className="mt-3 text-sm leading-6">
             Your information, including Personal Data, may be transferred to and
             maintained on computers located outside of your state, province,
             country, or other governmental jurisdiction where data protection
@@ -106,26 +112,30 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold">Disclosure Of Data</h3>
-          <p>
-            We may disclose your Personal Data in the good faith belief that
-            such action is necessary to:
-          </p>
-          <ul className="list-disc list-inside">
-            <li>Comply with a legal obligation</li>
-            <li>Protect and defend the rights or property of We Hold A Hand</li>
-            <li>
-              Prevent or investigate possible wrongdoing in connection with the
-              platform
-            </li>
-            <li>Protect the personal safety of users or the public</li>
-            <li>Protect against legal liability</li>
-          </ul>
+          <h3 className="text-lg font-medium">Disclosure Of Data</h3>
+          <div className="text-sm leading-6">
+            <p>
+              We may disclose your Personal Data in the good faith belief that
+              such action is necessary to:
+            </p>
+            <ul className="list-disc list-inside">
+              <li>Comply with a legal obligation</li>
+              <li>
+                Protect and defend the rights or property of We Hold A Hand
+              </li>
+              <li>
+                Prevent or investigate possible wrongdoing in connection with
+                the platform
+              </li>
+              <li>Protect the personal safety of users or the public</li>
+              <li>Protect against legal liability</li>
+            </ul>
+          </div>
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold">Security Of Data</h3>
-          <p>
+          <h3 className="text-lg font-medium">Security Of Data</h3>
+          <p className="text-sm leading-6">
             The security of your data is important to us, but please remember
             that no method of transmission over the Internet or method of
             electronic storage is 100% secure. While we strive to use
@@ -135,8 +145,8 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold mb-3">Service Providers</h3>
-          <p>
+          <h3 className="text-lg font-medium mb-3">Service Providers</h3>
+          <p className="text-sm leading-6">
             We may employ third-party companies and individuals to facilitate
             our mentoring platform, provide services on our behalf, perform
             service-related tasks, or assist us in analyzing how our platform is
@@ -147,8 +157,8 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold mb-3">Analytics</h3>
-          <p>
+          <h3 className="text-lg font-medium mb-3">Analytics</h3>
+          <p className="text-sm leading-6">
             We may use third-party Service Providers to monitor and analyze the
             use of our platform, such as Google Analytics. Google Analytics is a
             web analytics service offered by Google that tracks and reports
@@ -160,8 +170,8 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold mb-3">Links To Other Sites</h3>
-          <p>
+          <h3 className="text-lg font-medium mb-3">Links To Other Sites</h3>
+          <p className="text-sm leading-6">
             Our platform may contain links to third-party sites that are not
             operated by us. We strongly advise you to review the Privacy Policy
             of any third-party site you visit. We have no control over and
@@ -171,8 +181,8 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold mb-3">Children's Privacy</h3>
-          <p>
+          <h3 className="text-lg font-medium mb-3">Children's Privacy</h3>
+          <p className="text-sm leading-6">
             Our platform does not address anyone under the age of 15
             ("Children"). We do not knowingly collect personally identifiable
             information from anyone under the age of 18. If you are a parent or
@@ -185,10 +195,10 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold mb-3">
+          <h3 className="text-lg font-medium mb-3">
             Changes To This Privacy Policy
           </h3>
-          <p>
+          <p className="text-sm leading-6">
             We may update our Privacy Policy from time to time. We will notify
             you of any changes by posting the new Privacy Policy on this page.
             We will also notify you via email and/or a prominent notice on our
@@ -199,15 +209,19 @@ const Privacy = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-xl font-semibold mb-3">Contact Us</h3>
-          <p>
-            If you have any questions about this Privacy Policy, please contact
-            us:
-          </p>
-          <p className="italic font-semibold">
-            By email:{" "}
-            <Link to={"mailto:info@weholdahand.com"}>info@weholdahand.com</Link>
-          </p>
+          <h3 className="text-lg font-medium mb-3">Contact Us</h3>
+          <div className="text-sm leading-6">
+            <p>
+              If you have any questions about this Privacy Policy, please
+              contact us:
+            </p>
+            <p className="italic font-semibold">
+              By email:{" "}
+              <Link to={"mailto:info@weholdahand.com"}>
+                info@weholdahand.com
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </main>

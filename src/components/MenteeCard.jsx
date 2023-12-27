@@ -3,7 +3,7 @@ import React from "react";
 const MenteeCard = ({mentee}) => {
   return (
     <div
-      className="bg-white inline-block shadow-lg rounded-md p-5 items-center min-w-[350px] mx-3"
+      className="bg-white inline-block shadow-md rounded-md p-5 items-center min-w-[350px] mx-3"
     >
       <div className="flex gap-2 items-center py-3">
         <img

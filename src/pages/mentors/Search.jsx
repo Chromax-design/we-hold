@@ -4,7 +4,7 @@ import { BASE_URL } from "../../config/config";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import none from "../../assets/not-found.svg";
+import none from "/info_graphics/not-found.svg";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 

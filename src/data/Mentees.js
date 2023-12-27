@@ -1,10 +1,10 @@
-import mentee1 from '../assets/mentees/mentee-1.jpeg'
-import mentee2 from '../assets/mentees/mentee-2.jpeg'
-import mentee3 from '../assets/mentees/mentee-3.jpeg'
-import mentee4 from '../assets/mentees/mentee-4.jpeg'
-import mentee5 from '../assets/mentees/mentee-5.jpeg'
-import mentee6 from '../assets/mentees/mentee-6.jpeg'
-import mentee7 from '../assets/mentees/mentee-7.jpeg'
+import mentee1 from '/images/reviews/mentee-1.jpeg'
+import mentee2 from '/images/reviews/mentee-2.jpeg'
+import mentee3 from '/images/reviews/mentee-3.jpeg'
+import mentee4 from '/images/reviews/mentee-4.jpeg'
+import mentee5 from '/images/reviews/mentee-5.jpeg'
+import mentee6 from '/images/reviews/mentee-6.jpeg'
+import mentee7 from '/images/reviews/mentee-7.jpeg'
 
 export const mentees = [
   {

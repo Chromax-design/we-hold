@@ -1,6 +1,6 @@
 import React from "react";
 import Success from "../components/Success";
-import updatesuccessImg from "../assets/success/update_successful.svg";
+import updatesuccessImg from "/info_graphics/update_successful.svg";
 
 const UpdateSuccess = () => {
   return (

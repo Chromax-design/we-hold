@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { dashboard } from "../../data/Links";
-import signOut from "../../assets/icons/dashboards/signOut.png";
-import userIcon from "../../assets/icons/user_icon.png"
+import signOut from "/icons/signOut.png";
+import userIcon from "/icons/user_icon.png"
 import useAuth from "../../store/AuthStore";
 
 
