@@ -12,7 +12,7 @@ const Personality = () => {
   console.log(user)
   return (
     <main>
-      <section className="py-20 bg-gray-50 px-3">
+      <section className="py-20 bg-gray-50 px-4">
         <div className="max-w-6xl grid max-md:grid-cols-1 grid-cols-3 gap-10 items-center mx-auto">
           <div className="pl-5">
             <h1 className="text-4xl font-medium capitalize mb-5">
@@ -34,7 +34,7 @@ const Personality = () => {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="capitalize text-center text-3xl font-medium">
             What is a Personality test?
@@ -73,7 +73,7 @@ const Personality = () => {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="capitalize text-center text-3xl font-medium mb-10">
             {" "}
