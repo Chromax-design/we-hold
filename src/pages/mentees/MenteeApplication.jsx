@@ -32,17 +32,16 @@ const MenteeApplication = () => {
       mentor_type
     };
     handleApplication(applicationdata, userId, navigate);
-    // navigate("/verification/success", { replace: true });
   };
 
   return (
     <main className="bg-gray-50 py-20 px-4">
       <section className="max-w-4xl mx-auto">
-        <p className="capitalize mb-10 mt-5 text-3xl font-semibold">
+        <p className="capitalize mb-10 mt-5 text-2xl font-medium">
           complete your mentee profile to proceed.
         </p>
         <form action="#" onSubmit={handleSubmit}>
-          <div className="shadow-lg rounded-md bg-white p-10 space-y-5">
+          <div className="shadow-lg rounded-md bg-white p-4 sm:p-10 space-y-5">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-sm:flex-col">
               <div>
                 <label

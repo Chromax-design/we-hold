@@ -12,7 +12,7 @@ const MenteeLogin = ({ tab }) => {
       <LoginGoogle />
       <Link
         className="capitalize font-medium text-sm mt-3 inline-block underline"
-        to={"/auth/mentee/validate"}
+        to={"/auth/mentee/password-reset"}
       >
         forgot password?
       </Link>

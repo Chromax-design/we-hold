@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import useLoader from "../store/loaderStore";
 import PreLoader from "../components/PreLoader";
 import check from "/icons/check.png";
@@ -8,15 +8,14 @@ import { BASE_URL } from "../config/config";
 
 const CheckOut = () => {
   const { Loader, setLoader } = useLoader();
-  const [help, setHelp] = useState("");
-  const [helpArray, setHelpArray] = useState([]);
   const [mentor, setMentor] = useState([]);
-  const { id } = useParams();
+  const { userId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
       const getMentor = async () => {
-        const url = `${BASE_URL}/mentor/${id}`;
+        const url = `${BASE_URL}/mentor/${userId}`;
         setLoader(true);
         const { data } = await axios.get(url);
         if (data.profile.length == 0) {
@@ -24,7 +23,6 @@ const CheckOut = () => {
         }
         const details = data.profile[0];
         setMentor(details);
-        setHelp(details.How_help);
         setLoader(false);
       };
 
@@ -41,11 +39,6 @@ const CheckOut = () => {
     const roundedUp =  Math.round(totalPrice * 100) / 100;
     return roundedUp;
   };
-
-  useEffect(() => {
-    const helpParagraphs = help.split("\n");
-    setHelpArray(helpParagraphs);
-  }, [mentor]);
 
   return (
     <>
@@ -75,23 +68,11 @@ const CheckOut = () => {
                 <p className="text-sm">{`$${mentor.price}`}</p>
               </div>
               <div>
-                <h4 className="capitalize font-medium text-lg">
-                  mentors offer
-                </h4>
-                {helpArray.map((item, i) => {
-                  return (
-                    <p className="text-sm leading-6" key={i}>
-                      {item}
-                    </p>
-                  );
-                })}
-              </div>
-              <div>
-                <h2 className="capitalize font-medium text-lg">extras</h2>
+                <h2 className="capitalize font-medium text-lg">mentorship plan</h2>
                 <ul className="space-y-3 text-sm mt-2">
                   <li className="flex gap-2 items-center">
                     <img src={check} alt="" width={20} />
-                    <span> Get 1 - on - 1 Mentoring session</span>
+                    <span> Get 1 - on - 1 video call session</span>
                   </li>
                   <li className="flex gap-2 items-center">
                     <img src={check} alt="" width={20} />
@@ -123,7 +104,7 @@ const CheckOut = () => {
                 </span>
               </div>
               <Link
-                to={`/payout/${mentor.id}`}
+                to={`/payout/${mentor.userId}`}
                 className="bg-amber-200 text-amber-900 px-5 p-4 rounded-sm capitalize hover:bg-amber-100 font-semibold  flex place-items-center place-content-center shadow-md"
               >
                 make payment

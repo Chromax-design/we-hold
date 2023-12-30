@@ -5,12 +5,11 @@ import Login from "../../components/Login";
 const MentorLogin = ({ tab }) => {
   return (
     <div className={`${tab == 2 ? "block" : "hidden"}`}>
-      {/* main form component*/}
       <Login userType={"mentor"} />
 
       <Link
         className="capitalize font-medium text-sm mt-3 inline-block underline"
-        to={"/auth/mentor/validate"}
+        to={"/auth/mentor/password-reset"}
       >
         forgot password?
       </Link>

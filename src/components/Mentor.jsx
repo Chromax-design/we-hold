@@ -44,7 +44,7 @@ const Mentor = ({setLoader}) => {
               <span className="capitalize text-sm">{`${item?.industry}`}</span>
               <p className="my-4 text-sm line-clamp-4">{item?.bio}</p>
               <Link
-                to={`/mentors/${item?.id}`}
+                to={`/mentor/${item?.userId}`}
                 className="bg-lime-800 inline-block text-sm text-white px-5 py-3 rounded-full capitalize font-medium hover:bg-lime-900 group"
               >
                 view profile{" "}

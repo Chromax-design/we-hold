@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
   BrowserRouter,
-  Navigate,
   Outlet,
   Route,
   Routes,
@@ -77,8 +76,10 @@ import StripeCancel from "./pages/stripeCancel";
 import SearchResults from "./pages/mentors/SearchResults";
 import CheckOut from "./pages/CheckOut";
 import Payout from "./pages/Payout";
-import MentorValidateEmail from "./pages/mentors/MentorvalidateEmail";
-import MenteevalidateEmail from "./pages/mentees/MenteevalidateEmail";
+import ConfirmMentor from "./pages/mentors/ConfirmMentor";
+import ConfirmMentee from "./pages/mentees/ConfirmMentee";
+import MentorResendOtp from "./pages/mentors/MentorResendOtp";
+import MenteeResendOtp from "./pages/mentees/MenteeResendOtp";
 
 const Layout = () => {
   return (
@@ -133,8 +134,8 @@ function App() {
           <Route path="Remote-jobs" element={<RemoteJobs />} />
           <Route path="blog" element={<Blog />} />
           <Route path="mentors" element={<Mentors />} />
-          <Route path="checkout/:id" element={<CheckOut />} />
-          <Route path="payout/:id" element={<Payout />} />
+          <Route path="checkout/:userId" element={<CheckOut />} />
+          <Route path="payout/:userId" element={<Payout />} />
 
           <Route path="search/:mentorType" element={<Search />} />
           <Route path="search" element={<SearchResults />} />
@@ -146,10 +147,7 @@ function App() {
             path="mentor/application/:userId"
             element={<MentorApplication />}
           />
-          <Route
-            path={"mentors/:id"}
-            element={user ? <MentorProfile /> : <Navigate to={"/auth/login"} />}
-          />
+          <Route path={"mentor/:userId"} element={<MentorProfile />} />
         </Route>
 
         <Route element={<MenteeRoute />}>
@@ -176,21 +174,36 @@ function App() {
           </Route>
         </Route>
 
-        <Route path="/auth/login" element={<LoginBase />} />
-
+        {/* authentication */}
         <Route path="/auth/signup-as-a-mentee" element={<MenteeSignup />} />
         <Route path="/auth/signup-as-a-mentor" element={<Mentorsignup />} />
-
-        {/* password reset */}
-        <Route path="/auth/mentor/validate" element={<MentorValidateEmail />} />
-        <Route path="/auth/mentee/validate" element={<MenteevalidateEmail />} />
         <Route
-          path="/auth/mentee/pwdreset/:userId"
-          element={<MenteePasswordreset />}
+          path="/auth/mentor/confirm-registration/:userId"
+          element={<ConfirmMentor />}
         />
         <Route
-          path="/auth/mentor/pwdreset/:userId"
+          path="/auth/mentee/confirm-registration/:userId"
+          element={<ConfirmMentee />}
+        />
+        <Route
+          path="/auth/mentor/resend-otp/:userId"
+          element={<MentorResendOtp />}
+        />
+        <Route
+          path="/auth/mentee/resend-otp/:userId"
+          element={<MenteeResendOtp />}
+        />
+
+        <Route path="/auth/login" element={<LoginBase />} />
+
+        {/* password reset */}
+        <Route
+          path="/auth/mentor/password-reset"
           element={<MentorPasswordreset />}
+        />
+        <Route
+          path="/auth/mentee/password-reset"
+          element={<MenteePasswordreset />}
         />
 
         {/* Success Routes */}

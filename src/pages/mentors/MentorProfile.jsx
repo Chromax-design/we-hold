@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../config/config";
-import marker from "/icons/map.png";
 import userIcon from "/icons/user_icon.png";
 import axios from "axios";
 import useLoader from "../../store/loaderStore";
@@ -15,7 +14,6 @@ const createDate = (timestamp, timeZone = "UTC") => {
   if (timestamp < 1e12) {
     timestamp *= 1000;
   }
-
   const date = new Date(timestamp);
   const options = { year: "numeric", day: "numeric", month: "short", timeZone };
   return new Intl.DateTimeFormat("en-US", options).format(date);
@@ -26,78 +24,70 @@ const MentorProfile = () => {
   const { user } = useAuth();
   const initialState = { review: "" };
   const [review, setReview] = useState(initialState);
-
-  const [bio, setBio] = useState("");
   const [bioArray, setBioArray] = useState([]);
-
-  const [help, setHelp] = useState("");
   const [helpArray, setHelpArray] = useState([]);
-
   const [allReviews, setAllReviews] = useState([]);
   const { Loader, setLoader } = useLoader();
-  const { id } = useParams();
+  const { userId } = useParams();
   const [mentor, setMentor] = useState([]);
   const [sub, setSub] = useState(true);
 
-  useEffect(() => {
+  const fetchMentorDetails = async () => {
     try {
-      const getMentor = async () => {
-        const url = `${BASE_URL}/mentor/${id}`;
-        setLoader(true);
-        const { data } = await axios.get(url);
-        if (data.profile.length == 0) {
-          navigate("/404");
-        }
-        const details = data.profile[0];
-        setMentor(details);
-        setBio(details.bio);
-        setHelp(details.How_help);
-        setLoader(false);
-      };
-
-      getMentor();
+      const url = `${BASE_URL}/mentor/${userId}`;
+      setLoader(true);
+      const { data } = await axios.get(url);
+      if (data.profile.length === 0) {
+        navigate("/404");
+      }
+      const details = data.profile[0];
+      setMentor(details);
+      setBioArray(details.bio.split("\n"));
+      setHelpArray(details.How_help.split("\n"));
+      setLoader(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setLoader(false);
     }
-  }, []);
+  };
 
-  useEffect(() => {
+  const fetchReviews = async () => {
     try {
       const url = `${BASE_URL}/mentee/reviews/${mentor.id}`;
       setLoader(true);
-      const getReviews = async () => {
-        const { data } = await axios.get(url);
-        setAllReviews(data.reviews);
-        setLoader(false);
-      };
-      getReviews();
+      const { data } = await axios.get(url);
+      setAllReviews(data.reviews);
+      setLoader(false);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setLoader(false);
     }
-  }, [mentor]);
+  };
 
-  useEffect(() => {
+  const checkSubscription = async () => {
     try {
       const url = `${BASE_URL}/mentee/checksubscribed/${mentor.id}/${user.id}`;
-      const subCheck = async () => {
-        const { data } = await axios.get(url);
-        // console.log(data)
-        setSub(data.expired);
-      };
-      subCheck();
+      const { data } = await axios.get(url);
+      setSub(data.expired);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchMentorDetails();
+  }, []);
+
+  useEffect(() => {
+    if (mentor.id) {
+      fetchReviews();
     }
   }, [mentor]);
 
   useEffect(() => {
-    const bioParagraphs = bio.split("\n");
-    const helpParagraphs = help.split("\n");
-
-    setBioArray(bioParagraphs);
-    setHelpArray(helpParagraphs);
+    if (mentor.id) {
+      checkSubscription();
+    }
   }, [mentor]);
 
   const handleChange = (e) => {
@@ -175,7 +165,14 @@ const MentorProfile = () => {
                     quick responder
                   </h4>
                 </div>
-                {user.role == "mentor" ? (
+                {!user ? (
+                  <Link
+                    to={`/auth/login`}
+                    className="bg-amber-900 text-white px-5 p-4 rounded-md capitalize font-medium hover:bg-amber-800 flex place-items-center place-content-center"
+                  >
+                    Login to continue
+                  </Link>
+                ) : user.role == "mentor" ? (
                   <button
                     type="button"
                     className="bg-amber-900 text-white px-5 p-4 rounded-sm capitalize font-medium hover:bg-amber-800 flex place-items-center place-content-center"
@@ -185,7 +182,7 @@ const MentorProfile = () => {
                   </button>
                 ) : sub == true ? (
                   <Link
-                    to={`/checkout/${mentor?.id}`}
+                    to={`/checkout/${mentor?.userId}`}
                     className="bg-amber-900 text-white px-5 p-4 rounded-md capitalize font-medium hover:bg-amber-800 flex place-items-center place-content-center"
                   >
                     + subscribe

@@ -7,12 +7,11 @@ import StripeButton from "../components/StripeButton";
 import { BASE_URL } from "../config/config";
 import axios from "axios";
 import useAuth from "../store/AuthStore";
-import transfer from "/icons/transfer.png";
 
 const Payout = () => {
   const { user } = useAuth();
   const { Loader, setLoader } = useLoader();
-  const { id } = useParams();
+  const { userId } = useParams();
   const [mentor, setMentor] = useState([]);
 
   const getTotalPrice = (price) => {
@@ -25,7 +24,7 @@ const Payout = () => {
   useEffect(() => {
     try {
       const getMentor = async () => {
-        const url = `${BASE_URL}/mentor/${id}`;
+        const url = `${BASE_URL}/mentor/${userId}`;
         setLoader(true);
         const { data } = await axios.get(url);
         if (data.profile.length == 0) {
@@ -68,13 +67,6 @@ const Payout = () => {
             <PayPalButton />
             <p className="text-center font-semibold text-sm uppercase">or</p>
             <StripeButton setLoader={setLoader} />
-            <a
-              href="mailto: enquiry@weholdahand.com"
-              className="capitalize w-full border border-amber-900 bg-amber-800 py-2 px-5 text-white text-sm font-normal text-center rounded-sm flex items-center gap-1 justify-center"
-            >
-              <img src={transfer} alt="" width={35}/>
-              <p>bank transfer</p>
-            </a>
           </div>
 
           <p className="mt-5">

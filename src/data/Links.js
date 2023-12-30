@@ -5,15 +5,9 @@ import payment from "/icons/payment.png";
 import setting from "/icons/setting.png";
 
 export const community = [
-  { title: "Collaborate", location: "Collaborate" },
-  { title: "Remote Jobs", location: "Remote-Jobs" },
   {
     title: "Equip Youth Initiative",
     location: "Equip-Youth-Initiative",
-  },
-  {
-    title: "Free online training",
-    location: "Free-online-training",
   },
   {
     title: "Personality Test",
@@ -27,7 +21,6 @@ export const community = [
 
 export const company = [
   { title: "about us", location: "about" },
-  // { title: "blog", location: "blog" },
   { title: "contact us", location: "contact-us" },
   { title: "become a mentor", location: "auth/signup-as-a-mentor" },
 ];
@@ -38,7 +31,6 @@ export const footLinks = [
     links: [
       { title: "become a mentor", location: "auth/signup-as-a-mentor" },
       { title: "find a mentor", location: "info" },
-      // { title: "testimonials", location: "testimonials" },
       { title: "browse mentors", location: "mentors" },
     ],
   },
@@ -46,7 +38,6 @@ export const footLinks = [
     title: "company",
     links: [
       { title: "About Us", location: "about" },
-      // { title: "Customer Stories", location: "customers" },
       { title: "terms of service", location: "terms" },
       { title: "privacy policy", location: "privacy-policy" },
     ],
@@ -65,5 +56,5 @@ export const dashboard = [
   { id: "2", title: "history", icon: `${history}`, link: "history" },
   { id: "3", title: "chat room", icon: `${messages}`, link: "chat" },
   { id: "5", title: "payments", icon: `${payment}`, link: "payments" },
-  { id: "6", title: "settings", icon: `${setting}`, link: "settings" },
+  { id: "6", title: "edit profile", icon: `${setting}`, link: "settings" },
 ];

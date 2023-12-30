@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Logo from "/images/logos/logo-full.png";
-import { handleResetPWD } from "../utils/handlers";
+import { handleResetPassword } from "../utils/handlers";
 import useLoader from "../store/loaderStore";
 import PreLoader from "./PreLoader";
-import useAuth from "../store/AuthStore";
 
 const Passwordreset = ({ userType }) => {
-  const { logout } = useAuth();
   const navigate = useNavigate();
   const { Loader, setLoader } = useLoader();
-  const [data, setData] = useState({});
-  const { userId } = useParams();
+  const initial = {
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+  const [data, setData] = useState(initial);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setData((prev) => {
@@ -21,7 +23,8 @@ const Passwordreset = ({ userType }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleResetPWD(data, userType, userId, setLoader, logout, navigate);
+    handleResetPassword(data, userType, setLoader, navigate);
+    setData(initial);
   };
 
   return (
@@ -39,6 +42,21 @@ const Passwordreset = ({ userType }) => {
             onSubmit={handleSubmit}
           >
             <div>
+              <label htmlFor="email" className="text-sm capitalize font-medium">
+                Enter your email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={data.email}
+                className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
+                onChange={handleChange}
+                required
+                minLength={7}
+              />
+            </div>
+            <div>
               <label htmlFor="pwd" className="text-sm capitalize font-medium">
                 Create new password
               </label>
@@ -46,6 +64,7 @@ const Passwordreset = ({ userType }) => {
                 type="password"
                 id="pwd"
                 name="password"
+                value={data.password}
                 className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
                 onChange={handleChange}
                 required
@@ -59,7 +78,8 @@ const Passwordreset = ({ userType }) => {
               <input
                 type="password"
                 id="pwd2"
-                name="confirm_password"
+                name="confirmPassword"
+                value={data.confirmPassword}
                 className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
                 onChange={handleChange}
                 required
@@ -73,6 +93,14 @@ const Passwordreset = ({ userType }) => {
               reset password
             </button>
           </form>
+          <div className="mt-5">
+            <Link
+              className="first-letter:capitalize capitalize font-medium text-sm inline-block underline"
+              to={"/auth/login"}
+            >
+              back to login
+            </Link>
+          </div>
         </div>
       </div>
     </>

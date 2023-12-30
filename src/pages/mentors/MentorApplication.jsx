@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import useLoader from "../../store/loaderStore";
 import PreLoader from "../../components/PreLoader";
 import { mentor_types } from "../../data/mentor_types";
-
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
@@ -37,7 +36,6 @@ const MentorApplication = () => {
       bio: data.bio,
       why_mentoring: data.why_mentoring,
     };
-    // console.log(mentorData)
     handleApplication(mentorData, userId, setLoader, navigate);
   };
   return (
@@ -45,11 +43,11 @@ const MentorApplication = () => {
       {Loader && <PreLoader />}
       <main className="bg-gray-50 py-20 px-4">
         <section className="max-w-4xl mx-auto">
-          <p className="capitalize mb-10 mt-3 text-3xl font-semibold">
+          <p className="capitalize mb-10 mt-3 text-2xl font-medium">
             complete your mentor profile to proceed.
           </p>
           <form action="#" onSubmit={handleSubmit}>
-            <div className="shadow-lg rounded-md bg-white p-10 space-y-5">
+            <div className="shadow-lg rounded-md bg-white p-3 sm:p-10 space-y-5">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-sm:flex-col">
                 <div>
                   <label

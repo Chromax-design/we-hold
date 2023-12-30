@@ -11,13 +11,11 @@ export const getUserData = async (userType, userId, token, setUser) => {
     });
     updateLocalStorage(data, setUser);
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    toast.error(`Error: ${error.response.data.message}`);
   }
 };
 
-// ========== REGISTRATION STARTS===============
-
-// registration handler
 export const handleRegister = async (
   userData,
   setLoader,
@@ -28,52 +26,68 @@ export const handleRegister = async (
   try {
     setLoader(true);
     const { data } = await axios.post(url, userData);
-    if (data.success == false) {
-      toast.error(data.message);
-      setLoader(false);
-    }
     toast.success(data.message);
-    // navigate(`/auth/${userType}/verifyEmail`);
-    navigate(`/${userType}/application/${data.userId}`);
+    navigate(`/auth/${userType}/confirm-registration/${data.userId}`);
     setLoader(false);
   } catch (error) {
     setLoader(false);
     console.log(error);
-    toast.error(error.response.data.message);
+    toast.error(`Error: ${error.response.data.message}`);
   }
 };
 
+export const handleAccountConfirmation = async (
+  otpData,
+  userId,
+  userType,
+  setLoader,
+  navigate
+) => {
+  const url = `${BASE_URL}/${userType}/confirm-registration/${userId}`;
+  try {
+    setLoader(true);
+    const { data } = await axios.put(url, otpData);
+    toast.success(data.message);
+    navigate(`/${userType}/application/${data.userId}`, { replace: true });
+    setLoader(false);
+  } catch (error) {
+    setLoader(false);
+    console.log(error);
+    toast.error(`Error: ${error.response.data.message}`);
+  }
+};
 
-export const handleCheckEmail = async (data, userType, setLoader, navigate) => {
-  const url = `${BASE_URL}/${userType}/checkEmail`;
+export const handleResendOtp = async (
+  requestData,
+  userType,
+  setLoader,
+  navigate
+) => {
+  const url = `${BASE_URL}/${userType}/resend-otp`;
+  try {
+    setLoader(true);
+    const { data } = await axios.post(url, requestData);
+    toast.success(data.message);
+    navigate(`/auth/${userType}/confirm-registration/${data.userId}`);
+    setLoader(false);
+  } catch (error) {
+    setLoader(false);
+    console.log(error);
+    toast.error(`Error: ${error.response.data.message}`);
+  }
+};
+
+export const handleResetPassword = async (
+  data,
+  userType,
+  setLoader,
+  navigate
+) => {
+  const url = `${BASE_URL}/${userType}/password-reset`;
   try {
     setLoader(true);
     const response = await axios.post(url, data);
-    if (response.data.valid) {
-      navigate(`/auth/${userType}/pwdreset/${response.data.userId}`);
-    }
     setLoader(false);
-  } catch (error) {
-    toast.error(`Error: ${error.response.data.message}`);
-    setLoader(false);
-  }
-};
-
-// reset password for mentor and mentee as it is the same component controlling both
-export const handleResetPWD = async (
-  data,
-  userType,
-  userId,
-  setLoader,
-  logout,
-  navigate
-) => {
-  const url = `${BASE_URL}/${userType}/resetPwd/${userId}`;
-  try {
-    setLoader(true);
-    const response = await axios.put(url, data);
-    setLoader(false);
-    logout();
     navigate("/auth/login", { replace: true });
     toast.success(response.data.message);
   } catch (error) {
@@ -82,7 +96,22 @@ export const handleResetPWD = async (
   }
 };
 
-// ======= PASSWORD RESET ENDS ========
+export const handleUpdatePassword = async (
+  updates,
+  userType,
+  setLoader,
+) => {
+  const url = `${BASE_URL}/${userType}/update-password/${updates.userId}`;
+  try {
+    setLoader(true);
+    const response = await axios.put(url, updates);
+    setLoader(false);
+    toast.success(response.data.message);
+  } catch (error) {
+    setLoader(false);
+    toast.error(`Error: ${error.response.data.message}`);
+  }
+};
 
 // handle login
 export const handleLogin = async (
@@ -104,7 +133,7 @@ export const handleLogin = async (
   } catch (error) {
     setLoader(false);
     console.log(error);
-    toast.error(error.response.data.message);
+    toast.error(`Error: ${error.response.data.message}`);
   }
 };
 
@@ -126,7 +155,7 @@ export const loginWithGoogle = async (
   } catch (error) {
     setLoader(false);
     console.log(error);
-    toast.error(error.response.data.message);
+    toast.error(`Error: ${error.response.data.message}`);
   }
 };
 
@@ -154,6 +183,7 @@ export const handleUpload = async (
   } catch (error) {
     setLoader(false);
     console.log(error);
+    toast.error(`Error: ${error.response.data.message}`);
   }
 };
 
@@ -173,7 +203,7 @@ export const handleSearch = async (
   } catch (error) {
     setLoader(false);
     console.log(error);
-    toast.error(error.response.data.message);
+    toast.error(`Error: ${error.response.data.message}`);
   }
 };
 

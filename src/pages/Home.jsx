@@ -46,15 +46,16 @@ const Home = () => {
           <div className="absolute z-20 top-0 left-0 h-full w-full ">
             <div className="max-w-6xl mx-auto pb-10 px-3 min-h-[450px] py-20 flex items-center">
               <div className="text-white max-w-xl relative">
-                <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.1)] w-full h-full -z-10 blur-2xl"></div>
+                <div className="absolute top-0 left-0 bg-[rgba(0,0,0,0.2)] w-full h-full -z-10 blur-2xl"></div>
                 <div className="p-2 sm:p-4">
                   <div>
-                    <h1 className="text-xl sm:text-2xl bold mb-5">
-                      Connecting Africa's Entrepreneurs with trusted MENTORS to
-                      boost accountability and reignite motivation to build
-                      generational wealth.
+                    <h1 className="text-2xl sm:text-4xl text-gray-50 capitalize font-bold mb-2">
+                      Connecting Africa's Entrepreneurs with trusted MENTORS;
                     </h1>
-                    <p className="max-sm:text-xs"></p>
+                    <p className="max-sm:text-xs">
+                      To reignite motivation and get knowledge to build
+                      generational wealth.
+                    </p>
                   </div>
                   <form
                     action="#"
@@ -109,9 +110,7 @@ const Home = () => {
         <section className="px-4">
           <div className="max-w-4xl lg:max-w-6xl grid grid-cols-1 lg:grid-cols-2 mx-auto gap-7">
             <div>
-              <h2 className="text-2xl font-medium capitalize">
-                why trust us?
-              </h2>
+              <h2 className="text-2xl font-medium capitalize">why trust us?</h2>
               <Trust />
             </div>
             <Video />
@@ -136,9 +135,7 @@ const Home = () => {
         </section>
 
         <section className=" px-4">
-          <h2 className="text-2xl font-medium sm:text-center">
-            FAQs
-          </h2>
+          <h2 className="text-2xl font-medium sm:text-center">FAQs</h2>
           <div className="max-w-4xl mx-auto">
             <Faqs />
           </div>

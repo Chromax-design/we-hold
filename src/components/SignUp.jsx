@@ -8,16 +8,17 @@ import PreLoader from "./PreLoader";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ userType }) => {
-  const {Loader, setLoader}= useLoader();
-  const navigate = useNavigate()
-
-  const [data, setdata] = useState({
-    firstname: '',
-    initials: '',
-    email: '',
-    password: '',
-    telNumber: ''
-  });
+  const { Loader, setLoader } = useLoader();
+  const navigate = useNavigate();
+  const initialState = {
+    firstname: "",
+    initials: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    telNumber: "",
+  };
+  const [data, setdata] = useState(initialState);
   const [phoneData, setPhoneData] = useState("");
 
   const handlechange = (e) => {
@@ -34,14 +35,16 @@ const SignUp = ({ userType }) => {
       initials: data.initials,
       email: data.email,
       password: data.password,
-      telNumber: phoneData
-    }
-    handleRegister(userData, setLoader, userType, navigate)
+      confirmPassword: data.confirmPassword,
+      telNumber: phoneData,
+    };
+    handleRegister(userData, setLoader, userType, navigate);
+    setdata(initialState);
   };
 
   return (
     <>
-    {Loader && <PreLoader />}
+      {Loader && <PreLoader />}
       <form
         action=""
         method="post"
@@ -57,8 +60,10 @@ const SignUp = ({ userType }) => {
               type="text"
               id="fname"
               name="firstname"
+              value={data.firstname}
               className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
-              onChange={handlechange} required
+              onChange={handlechange}
+              required
             />
           </div>
 
@@ -70,8 +75,10 @@ const SignUp = ({ userType }) => {
               type="text"
               id="initials"
               name="initials"
+              value={data.initials}
               className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
-              onChange={handlechange} required
+              onChange={handlechange}
+              required
             />
           </div>
         </div>
@@ -83,8 +90,10 @@ const SignUp = ({ userType }) => {
             type="text"
             id="email"
             name="email"
+            value={data.email}
             className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
-            onChange={handlechange} required
+            onChange={handlechange}
+            required
           />
         </div>
 
@@ -96,8 +105,27 @@ const SignUp = ({ userType }) => {
             type="password"
             id="pwd"
             name="password"
+            value={data.password}
             className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
-            onChange={handlechange} required minLength={8}
+            onChange={handlechange}
+            required
+            minLength={8}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="pwd" className="text-sm capitalize font-medium">
+            Confirm password
+          </label>
+          <input
+            type="password"
+            id="pwd"
+            name="confirmPassword"
+            value={data.confirmPassword}
+            className="mt-3 block p-2 border-lime-700 border w-full rounded-sm"
+            onChange={handlechange}
+            required
+            minLength={8}
           />
         </div>
 

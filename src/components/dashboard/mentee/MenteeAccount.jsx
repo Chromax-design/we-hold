@@ -1,8 +1,8 @@
 import React from "react";
-import PwdUpdate from "../PwdUpdate";
+import UpdatePassword from "../UpdatePassword";
 
 const MenteeAccount = ({ tab }) => {
-  return <PwdUpdate tab={tab} userType={"mentee"} />;
+  return <UpdatePassword tab={tab} userType={"mentee"} />;
 };
 
 export default MenteeAccount;
