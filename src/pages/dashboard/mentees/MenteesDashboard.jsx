@@ -132,7 +132,7 @@ const MenteesDashboard = () => {
                       <p className="my-4 text-sm line-clamp-4">{mentor?.bio}</p>
                       <div className="space-y-2">
                         <Link
-                          to={`/mentors/${mentor?.id}`}
+                          to={`/mentors/${mentor?.userId}`}
                           className="bg-lime-800 inline-block text-xs text-white px-5 py-3 rounded-full capitalize font-medium hover:bg-lime-900 group"
                         >
                           view profile{" "}
